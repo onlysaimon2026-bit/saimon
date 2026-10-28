@@ -11,7 +11,7 @@
       6.3
     ]
   ],
-  "grade": "colorchannelmixer=rr=1.13:gg=0.985:bb=0.99,eq=contrast=1.04:saturation=1.04:gamma=1.02",
+  "grade": "colorchannelmixer=rr=1.13:gg=0.985:bb=0.99,eq=contrast=1.04:saturation=1.04:gamma=1.02,hqdn3d=1.5:1.5:3:3",
   "cleanVoice": true,
   "badge": "SAIMON • Media Buyer",
   "lipTone": 0.85,

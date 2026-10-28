@@ -73,7 +73,7 @@ if (cleanVoice) {
 fs.mkdirSync("public", { recursive: true });
 console.log("Grading footage...");
 execFileSync("ffmpeg", ["-v", "error", "-y", "-i", input,
-  "-vf", `${grade ? grade + "," : ""}scale=${width}:${height}:flags=lanczos,fps=30,format=yuv420p`,
+  "-vf", `${grade ? grade + "," : ""}scale=${width}:${height}:flags=lanczos,unsharp=5:5:0.55:5:5:0,fps=30,format=yuv420p`,
   "-af", voice, "-ar", "48000",
   "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "aac", "-b:a", "256k",
   path.join("public", "input.mp4")]);

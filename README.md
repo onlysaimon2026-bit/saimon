@@ -26,3 +26,8 @@ of those keys overrides them for one render. Preview interactively with `npm run
 - `cleanVoice`: RNNoise denoise, EQ, de-ess and compression on the voice.
 - `lipTone`: 0–1 strength for natural lip-tone correction. Needs Python with
   `mediapipe` and `opencv-python-headless` (and `libegl1`); point `PYTHON` at it.
+
+## Vertical export
+
+`tools/to-9x16.sh out/final.mp4 out/final-9x16.mp4` fits the render into 1080x1920 over a
+blurred copy of itself for Reels, TikTok and Shorts.
