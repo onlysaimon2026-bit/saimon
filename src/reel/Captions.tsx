@@ -1,5 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { CaptionLine } from "./types";
+import { glass } from "../components/glass";
 
 const BN_FONT = `"Hind Siliguri", Montserrat, sans-serif`;
 
@@ -26,7 +27,9 @@ export const Captions: React.FC<{ lines: CaptionLine[]; accent: string; hidden: 
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          maxWidth: width * 0.84,
+          ...glass(width, { blur: 16, radius: width * 0.035 }),
+          padding: `${height * 0.006}px ${width * 0.04}px`,
+          maxWidth: width * 0.88,
           columnGap: width * 0.018,
           rowGap: height * 0.004,
           opacity: inP * outP,
@@ -48,7 +51,7 @@ export const Captions: React.FC<{ lines: CaptionLine[]; accent: string; hidden: 
                 opacity: spoken ? 1 : 0.55,
                 transform: `scale(${w.hl && spoken ? 1 + 0.08 * pop : 1})`,
                 display: "inline-block",
-                textShadow: "0 2px 3px rgba(0,0,0,0.55), 0 6px 22px rgba(0,0,0,0.45)",
+                textShadow: "0 2px 6px rgba(0,0,0,0.45)",
               }}
             >
               {w.w}

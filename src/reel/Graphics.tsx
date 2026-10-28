@@ -79,51 +79,36 @@ const Label: React.FC<{ g: Extract<Graphic, { type: "label" }>; accent: string }
   );
 };
 
-// Icons orbit around a glass hub in the top band: "many new things arriving".
+// Row of glass tiles that pop in one after another: "new things keep arriving".
 const Orbit: React.FC<{ g: Extract<Graphic, { type: "orbit" }>; accent: string }> = ({ g, accent }) => {
   const { frame, fps, p } = useInOut(g.duration);
   const { width, height } = useVideoConfig();
-  const cx = width / 2;
-  const cy = height * 0.125;
-  const rx = width * 0.3;
-  const ry = height * 0.03;
+  const size = width * 0.15;
   return (
-    <AbsoluteFill style={{ fontFamily: FONT, opacity: p }}>
-      <svg width={width} height={height} style={{ position: "absolute" }}>
-        <ellipse cx={cx} cy={cy} rx={rx * p} ry={ry * p} fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth={2} strokeDasharray="6 10" />
-      </svg>
-      {g.items.map((it, i) => {
-        const appear = spring({ frame: frame - 6 - i * 7, fps, config: { damping: 14 } });
-        const a = (i / g.items.length) * Math.PI * 2 + frame / fps * 0.6;
-        const x = cx + Math.cos(a) * rx;
-        const y = cy + Math.sin(a) * ry;
-        const depth = (Math.sin(a) + 1) / 2;
-        const size = width * (0.075 + 0.025 * depth);
-        return (
-          <div
-            key={i}
-            style={{
-              ...glass(width, { blur: 10, radius: size }),
-              position: "absolute",
-              left: x - size / 2,
-              top: y - size / 2,
-              width: size,
-              height: size,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transform: `scale(${appear})`,
-              zIndex: Math.round(depth * 10),
-              opacity: 0.6 + 0.4 * depth,
-            }}
-          >
-            <AnimatedIcon name={it.icon} progress={appear} size={size * 0.55} color="white" glow={accent} />
-            {it.label && <div style={{ position: "absolute", top: size * 1.02, fontSize: width * 0.026, fontWeight: 700, color: "white", whiteSpace: "nowrap", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
-              {it.label}
-            </div>}
-          </div>
-        );
-      })}
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: height * 0.085, fontFamily: FONT, opacity: p }}>
+      <div style={{ display: "flex", gap: width * 0.03 }}>
+        {g.items.map((it, i) => {
+          const appear = spring({ frame: frame - 6 - i * 7, fps, config: { damping: 13, stiffness: 160 } });
+          const float = Math.sin((frame / fps) * 2.2 + i) * height * 0.003;
+          return (
+            <div
+              key={i}
+              style={{
+                ...glass(width, { blur: 12, radius: width * 0.04, tint: `${accent}22` }),
+                width: size,
+                height: size,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transform: `translateY(${(1 - appear) * -30 + float}px) scale(${0.6 + 0.4 * appear})`,
+                opacity: appear,
+              }}
+            >
+              <AnimatedIcon name={it.icon} progress={appear} size={size * 0.55} color="white" glow={accent} />
+            </div>
+          );
+        })}
+      </div>
     </AbsoluteFill>
   );
 };
@@ -133,15 +118,15 @@ const Trend: React.FC<{ g: Extract<Graphic, { type: "trend" }>; accent: string }
   const { frame, p } = useInOut(g.duration);
   const { width, height } = useVideoConfig();
   const draw = interpolate(frame, [8, 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
-  const w = width * 0.62;
-  const h = height * 0.05;
+  const w = width * 0.78;
+  const h = height * 0.06;
   const pts = [0, 0.05, 0.08, 0.15, 0.22, 0.38, 0.6, 1].map((v, i, a) => [(i / (a.length - 1)) * w, h - v * h] as const);
   const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
   const head = pts[Math.min(pts.length - 1, Math.floor(draw * (pts.length - 1)))];
   return (
     <AbsoluteFill style={{ alignItems: "center", paddingTop: height * 0.085, fontFamily: FONT }}>
       <div style={{ ...glass(width, { radius: width * 0.04 }), padding: width * 0.025, opacity: p, transform: `translateY(${(1 - p) * -40}px)` }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: width * 0.026, fontWeight: 700, color: "rgba(255,255,255,0.8)", letterSpacing: width * 0.004, textTransform: "uppercase", marginBottom: width * 0.012 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: width * 0.034, fontWeight: 700, color: "rgba(255,255,255,0.8)", letterSpacing: width * 0.004, textTransform: "uppercase", marginBottom: width * 0.012 }}>
           <span>{g.label}</span>
           <span style={{ color: accent }}>{g.from} → {g.to}</span>
         </div>
@@ -185,8 +170,8 @@ const End: React.FC<{ g: Extract<Graphic, { type: "end" }>; accent: string }> = 
   return (
     <AbsoluteFill style={{ alignItems: "center", paddingTop: height * 0.085, fontFamily: FONT }}>
       <div style={{ ...glass(width, { radius: width * 0.06 }), display: "flex", alignItems: "center", gap: width * 0.03, padding: `${width * 0.02}px ${width * 0.03}px ${width * 0.02}px ${width * 0.05}px`, opacity: p, transform: `translateY(${(1 - p) * -30}px)` }}>
-        <div style={{ fontSize: width * 0.05, fontWeight: 800, color: "white", letterSpacing: width * 0.004 }}>{g.title}</div>
-        <div style={{ ...glass(width, { blur: 8, radius: width * 0.05, tint: `${accent}66` }), padding: `${width * 0.012}px ${width * 0.035}px`, fontSize: width * 0.036, fontWeight: 800, color: "white", transform: `scale(${btn})` }}>
+        <div style={{ fontSize: width * 0.068, fontWeight: 800, color: "white", letterSpacing: width * 0.006 }}>{g.title}</div>
+        <div style={{ ...glass(width, { blur: 8, radius: width * 0.05, tint: `${accent}66` }), padding: `${width * 0.016}px ${width * 0.045}px`, fontSize: width * 0.048, fontWeight: 800, color: "white", transform: `scale(${btn})` }}>
           {g.cta}
         </div>
       </div>
