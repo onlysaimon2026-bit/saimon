@@ -33,5 +33,6 @@ while True:
     else:
         frames.append(None)
     i += 1
+landmarker.close()
 json.dump({"fps": fps, "width": w, "height": h, "frames": frames}, open(dst, "w"))
 print(f"face track: {sum(f is not None for f in frames)}/{len(frames)} frames")

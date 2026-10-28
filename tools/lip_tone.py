@@ -66,6 +66,7 @@ def main():
             found += 1
         enc.stdin.write(frame.tobytes())
         i += 1
+    landmarker.close()
     enc.stdin.close()
     enc.wait()
     print(f"lip tone: face found in {found}/{i} frames")
