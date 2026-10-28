@@ -5,5 +5,69 @@
   "outroText": "LIKE • SHARE • FOLLOW",
   "buttonText": "FOLLOW",
   "buttonDoneText": "FOLLOWING ✓",
-  "wideRanges": [[2.3, 6.3]]
+  "wideRanges": [
+    [
+      2.3,
+      6.3
+    ]
+  ],
+  "grade": "colorchannelmixer=rr=1.13:gg=0.985:bb=0.99,eq=contrast=1.04:saturation=1.04:gamma=1.02",
+  "callouts": [
+    {
+      "at": 6.3,
+      "duration": 1.9,
+      "kicker": "Topic",
+      "text": "Digital Marketing",
+      "icon": "target",
+      "position": "bottom"
+    },
+    {
+      "at": 8.2,
+      "duration": 2.0,
+      "kicker": "Role",
+      "text": "Media Buyer",
+      "icon": "megaphone",
+      "position": "bottom"
+    },
+    {
+      "at": 10.3,
+      "duration": 2.2,
+      "kicker": "The era of",
+      "text": "Content",
+      "icon": "phone",
+      "position": "bottom"
+    },
+    {
+      "at": 12.7,
+      "duration": 2.8,
+      "kicker": "Every day",
+      "text": "New Technology",
+      "icon": "chip",
+      "position": "bottom"
+    },
+    {
+      "at": 16.2,
+      "duration": 3.0,
+      "kicker": "Skills are",
+      "text": "Changing Fast",
+      "icon": "chart",
+      "position": "bottom"
+    },
+    {
+      "at": 33.2,
+      "duration": 2.4,
+      "kicker": "Powered by",
+      "text": "AI + Modern Tech",
+      "icon": "chip",
+      "position": "bottom"
+    },
+    {
+      "at": 35.8,
+      "duration": 2.6,
+      "kicker": "Built on",
+      "text": "Creative Ideas",
+      "icon": "bulb",
+      "position": "bottom"
+    }
+  ]
 }
