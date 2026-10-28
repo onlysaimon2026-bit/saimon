@@ -1,6 +1,16 @@
 // Edit this file to customise the graphics. Times are in seconds of the source video.
 export type LowerThird = { at: number; duration: number; title: string; subtitle?: string };
-export type Callout = { at: number; duration: number; text: string; position?: "top" | "center" | "bottom" };
+import type { IconName } from "./components/Icons";
+
+export type Callout = {
+  at: number;
+  duration: number;
+  text: string;
+  // Small line above the main text.
+  kicker?: string;
+  icon?: IconName;
+  position?: "top" | "center" | "bottom";
+};
 export type Caption = { from: number; to: number; text: string };
 
 export type MotionConfig = {

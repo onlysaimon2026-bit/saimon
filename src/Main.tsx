@@ -36,6 +36,7 @@ export const Main: React.FC<MainProps> = ({ src, videoSeconds, config }) => {
         {config.cuts.map((t) => (
           <Sequence key={t} from={Math.round(t * fps) - 3} durationInFrames={12} layout="none">
             <CutFx config={config} />
+            {config.sfx && <Sfx name="swoosh" volume={0.16} />}
           </Sequence>
         ))}
         {config.lowerThirds.map((l, i) => (
@@ -46,6 +47,9 @@ export const Main: React.FC<MainProps> = ({ src, videoSeconds, config }) => {
         {config.callouts.map((c, i) => (
           <Sequence key={i} from={Math.round(c.at * fps)} durationInFrames={Math.round(c.duration * fps)}>
             <CalloutView item={c} config={config} />
+            {config.sfx && <Sfx name="pop" volume={0.45} />}
+            {config.sfx && c.icon && <Sfx name="ding" volume={0.18} from={26} />}
+            {config.sfx && <Sfx name="swoosh" volume={0.18} from={Math.round(c.duration * fps) - 10} />}
           </Sequence>
         ))}
         <Captions captions={config.captions} config={config} />
@@ -54,17 +58,21 @@ export const Main: React.FC<MainProps> = ({ src, videoSeconds, config }) => {
       </Sequence>
       <Sequence durationInFrames={intro}>
         <Intro config={config} />
-        {config.sfx && <Audio src={staticFile("sfx/whoosh.wav")} volume={0.5} />}
+        {config.sfx && <Sfx name="whoosh" volume={0.45} />}
+        {config.sfx && <Sfx name="impact" volume={0.55} from={6} />}
+        {config.sfx && <Sfx name="whoosh" volume={0.35} from={intro - 18} />}
       </Sequence>
+      {config.sfx && (
+        <Sequence from={outroStart - 45} durationInFrames={45}>
+          <Sfx name="riser" volume={0.25} />
+        </Sequence>
+      )}
       <Sequence from={outroStart} durationInFrames={outro}>
         <OutroBackdrop src={src} config={config} lastFrame={body - 1} />
         <Outro config={config} />
-        {config.sfx && <Audio src={staticFile("sfx/whoosh.wav")} volume={0.45} />}
-        {config.sfx && (
-          <Sequence from={60}>
-            <Audio src={staticFile("sfx/click.wav")} volume={0.6} />
-          </Sequence>
-        )}
+        {config.sfx && <Sfx name="impact" volume={0.5} />}
+        {config.sfx && <Sfx name="pop" volume={0.4} from={30} />}
+        {config.sfx && <Sfx name="click" volume={0.5} from={60} />}
       </Sequence>
       <Overlay config={config} />
     </AbsoluteFill>
@@ -85,3 +93,9 @@ const OutroBackdrop: React.FC<{ src: string; config: MotionConfig; lastFrame: nu
     </AbsoluteFill>
   );
 };
+
+const Sfx: React.FC<{ name: string; volume: number; from?: number }> = ({ name, volume, from = 0 }) => (
+  <Sequence from={from} layout="none">
+    <Audio src={staticFile(`sfx/${name}.wav`)} volume={volume} />
+  </Sequence>
+);

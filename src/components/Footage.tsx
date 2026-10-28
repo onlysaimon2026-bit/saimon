@@ -34,7 +34,7 @@ export const Footage: React.FC<{ src: string; config: MotionConfig; muted?: bool
           objectFit: "cover",
           transform: `scale(${drift * framing + settle + reveal * 0.15})`,
           transformOrigin: "50% 35%",
-          filter: `contrast(1.08) saturate(1.18) brightness(1.02) blur(${reveal * 12}px)`,
+          filter: reveal > 0 ? `blur(${reveal * 12}px)` : undefined,
         }}
       />
     </AbsoluteFill>

@@ -43,11 +43,19 @@ const cuts = scores
   .map((f) => Math.round(f.t * 100) / 100);
 console.log(`Video ${width}x${height}, ${videoSeconds.toFixed(1)}s, ${cuts.length} cuts`);
 
-fs.mkdirSync("public", { recursive: true });
-fs.copyFileSync(input, path.join("public", "input.mp4"));
-fs.mkdirSync(path.dirname(output), { recursive: true });
-
 const overrides = overridesPath ? JSON.parse(fs.readFileSync(overridesPath, "utf8")) : {};
+
+// Pre-pass: colour grade, scale to the render size and normalise loudness, so Remotion
+// only composites graphics. `grade` in the overrides file is an ffmpeg filter chain.
+const { grade = "", ...configOverrides } = overrides;
+fs.mkdirSync("public", { recursive: true });
+console.log("Grading footage...");
+execFileSync("ffmpeg", ["-v", "error", "-y", "-i", input,
+  "-vf", `${grade ? grade + "," : ""}scale=${width}:${height}:flags=lanczos,fps=30,format=yuv420p`,
+  "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000",
+  "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "aac", "-b:a", "256k",
+  path.join("public", "input.mp4")]);
+fs.mkdirSync(path.dirname(output), { recursive: true });
 
 const browserExecutable =
   process.env.REMOTION_CHROME ?? "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell";
@@ -55,7 +63,7 @@ const browserExecutable =
 const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts") });
 const baseProps = { src: "input.mp4", videoSeconds, width, height };
 const comp = await selectComposition({ serveUrl, id: "Main", inputProps: baseProps, browserExecutable });
-const inputProps = { ...baseProps, config: { ...comp.props.config, ...overrides, cuts: overrides.cuts ?? cuts } };
+const inputProps = { ...baseProps, config: { ...comp.props.config, ...configOverrides, cuts: configOverrides.cuts ?? cuts } };
 const composition = await selectComposition({ serveUrl, id: "Main", inputProps, browserExecutable });
 
 let lastPct = -1;
