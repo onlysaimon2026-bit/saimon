@@ -65,16 +65,21 @@ const voice = path.join(work, "voice.wav");
 const faceRaw = path.join(work, "face.json");
 if (!skipPrep) {
 console.log("1/5 Cutting, grading footage and cleaning voice...");
-const pieces = edl.map(([a, b], i) =>
-  `[0:v]trim=${a}:${b},setpts=PTS-STARTPTS[v${i}];` +
-  `[0:a]atrim=${a}:${b},asetpts=PTS-STARTPTS,afade=t=in:d=0.012,afade=t=out:st=${(b - a - 0.012).toFixed(3)}:d=0.012[a${i}];`).join("");
-const joins = edl.map((_, i) => `[v${i}][a${i}]`).join("");
+// Cut each piece separately (one filter graph over all pieces buffers the whole source
+// in memory), then concatenate and grade in a second pass.
+const pieceFiles = edl.map(([a, b], i) => {
+  const f = path.join(work, `piece${i}.mkv`);
+  run("ffmpeg", ["-v", "error", "-y", "-ss", String(a), "-to", String(b), "-i", input,
+    "-af", `afade=t=in:d=0.012,afade=t=out:st=${(b - a - 0.012).toFixed(3)}:d=0.012`,
+    "-c:v", "libx264", "-crf", "8", "-preset", "fast", "-c:a", "pcm_s16le", f]);
+  return f;
+});
+const list = path.join(work, "pieces.txt");
+fs.writeFileSync(list, pieceFiles.map((f) => `file '${f}'`).join("\n"));
 const hold = Math.max(0, plan.duration - editedSeconds);
-run("ffmpeg", ["-v", "error", "-y", "-i", input, "-filter_complex",
-  `${pieces}${joins}concat=n=${edl.length}:v=1:a=1[cv][ca];` +
-  `[cv]${plan.grade},unsharp=5:5:0.55:5:5:0,tpad=stop_mode=clone:stop_duration=${hold.toFixed(3)},format=yuv420p[v];` +
-  `[ca]${voiceChain},apad=whole_dur=${plan.duration}[a]`,
-  "-map", "[v]", "-map", "[a]", "-ar", "48000",
+run("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list,
+  "-vf", `${plan.grade},unsharp=5:5:0.55:5:5:0,tpad=stop_mode=clone:stop_duration=${hold.toFixed(3)},format=yuv420p`,
+  "-af", `${voiceChain},apad=whole_dur=${plan.duration}`, "-ar", "48000",
   "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "aac", "-b:a", "256k", graded]);
 run("ffmpeg", ["-v", "error", "-y", "-i", graded, "-vn", "-ac", "1", voice]);
 
