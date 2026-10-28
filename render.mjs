@@ -47,12 +47,34 @@ const overrides = overridesPath ? JSON.parse(fs.readFileSync(overridesPath, "utf
 
 // Pre-pass: colour grade, scale to the render size and normalise loudness, so Remotion
 // only composites graphics. `grade` in the overrides file is an ffmpeg filter chain.
-const { grade = "", ...configOverrides } = overrides;
+const { grade = "", cleanVoice = false, ...configOverrides } = overrides;
+
+// Voice cleanup: RNNoise denoise (partially mixed back to keep the natural tone), mud cut,
+// presence lift, de-ess and gentle compression before loudness normalisation.
+let voice = "loudnorm=I=-14:TP=-1.5:LRA=11";
+if (cleanVoice) {
+  const model = path.resolve("out/sh.rnnn");
+  if (!fs.existsSync(model)) {
+    execFileSync("curl", ["-sSfL", "-o", model,
+      "https://raw.githubusercontent.com/GregorR/rnnoise-models/master/somnolent-hogwash-2018-09-01/sh.rnnn"]);
+  }
+  voice = [
+    "highpass=f=80",
+    `arnndn=m=${model}:mix=0.85`,
+    "afftdn=nr=6:nf=-45",
+    "equalizer=f=300:t=q:w=1.2:g=-2.5",
+    "equalizer=f=3800:t=q:w=1.5:g=2",
+    "highshelf=f=9000:g=1.5",
+    "deesser=i=0.4",
+    "acompressor=threshold=-21dB:ratio=3:attack=8:release=90:makeup=2",
+    "loudnorm=I=-14:TP=-1.5:LRA=9",
+  ].join(",");
+}
 fs.mkdirSync("public", { recursive: true });
 console.log("Grading footage...");
 execFileSync("ffmpeg", ["-v", "error", "-y", "-i", input,
   "-vf", `${grade ? grade + "," : ""}scale=${width}:${height}:flags=lanczos,fps=30,format=yuv420p`,
-  "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000",
+  "-af", voice, "-ar", "48000",
   "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "aac", "-b:a", "256k",
   path.join("public", "input.mp4")]);
 fs.mkdirSync(path.dirname(output), { recursive: true });
