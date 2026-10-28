@@ -1,20 +1,29 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { MotionConfig } from "../config";
 
-// Short light-flash + colour wipe that lands on a cut (cut is at frame 3).
-export const CutFx: React.FC<{ config: MotionConfig }> = ({ config }) => {
+// A pane of glass slides across the cut (cut is at frame 3): blurred, brightened band
+// with bright edges, plus a soft flash.
+export const CutFx: React.FC<{ config: MotionConfig }> = () => {
   const frame = useCurrentFrame();
-  const flash = interpolate(frame, [1, 3, 8], [0, 0.3, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const wipe = interpolate(frame, [0, 8], [-120, 120], { extrapolateRight: "clamp" });
+  const { width } = useVideoConfig();
+  const flash = interpolate(frame, [1, 3, 8], [0, 0.18, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const x = interpolate(frame, [0, 10], [-0.6, 1.2], { extrapolateRight: "clamp" });
   return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
-      <AbsoluteFill style={{ background: "white", opacity: flash, mixBlendMode: "screen" }} />
-      <AbsoluteFill
+    <AbsoluteFill style={{ pointerEvents: "none", overflow: "hidden" }}>
+      <AbsoluteFill style={{ background: "white", opacity: flash }} />
+      <div
         style={{
-          background: `linear-gradient(100deg, transparent 30%, ${config.accent}aa 45%, ${config.accent2}aa 55%, transparent 70%)`,
-          transform: `translateX(${wipe}%) skewX(-15deg)`,
-          mixBlendMode: "screen",
-          opacity: 0.35,
+          position: "absolute",
+          top: "-20%",
+          bottom: "-20%",
+          left: x * width,
+          width: width * 0.35,
+          transform: "skewX(-18deg)",
+          backdropFilter: "blur(10px) brightness(1.15)",
+          WebkitBackdropFilter: "blur(10px) brightness(1.15)",
+          background: "linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, rgba(255,255,255,0.3))",
+          borderLeft: "1px solid rgba(255,255,255,0.6)",
+          borderRight: "1px solid rgba(255,255,255,0.6)",
         }}
       />
     </AbsoluteFill>

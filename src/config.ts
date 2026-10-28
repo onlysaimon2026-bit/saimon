@@ -17,6 +17,8 @@ export type MotionConfig = {
   title: string;
   subtitle: string;
   channelName: string;
+  // Persistent glass name chip shown after the intro; empty to hide.
+  badge: string;
   outroText: string;
   buttonText: string;
   buttonDoneText: string;
@@ -45,11 +47,12 @@ export const defaultConfig: MotionConfig = {
   title: "MY FIRST VIDEO",
   subtitle: "Watch till the end",
   channelName: "SAIMON",
+  badge: "",
   outroText: "LIKE • SHARE • SUBSCRIBE",
   buttonText: "SUBSCRIBE",
   buttonDoneText: "SUBSCRIBED ✓",
-  accent: "#00E5FF",
-  accent2: "#FF2E88",
+  accent: "#A8E6FF",
+  accent2: "#C9B8FF",
   introStyle: "overlay",
   introSeconds: 2.5,
   outroSeconds: 4,

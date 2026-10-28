@@ -47,7 +47,7 @@ const overrides = overridesPath ? JSON.parse(fs.readFileSync(overridesPath, "utf
 
 // Pre-pass: colour grade, scale to the render size and normalise loudness, so Remotion
 // only composites graphics. `grade` in the overrides file is an ffmpeg filter chain.
-const { grade = "", cleanVoice = false, ...configOverrides } = overrides;
+const { grade = "", cleanVoice = false, lipTone = 0, ...configOverrides } = overrides;
 
 // Voice cleanup: RNNoise denoise (partially mixed back to keep the natural tone), mud cut,
 // presence lift, de-ess and gentle compression before loudness normalisation.
@@ -77,6 +77,20 @@ execFileSync("ffmpeg", ["-v", "error", "-y", "-i", input,
   "-af", voice, "-ar", "48000",
   "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "aac", "-b:a", "256k",
   path.join("public", "input.mp4")]);
+
+// Optional lip-tone correction (needs Python with mediapipe + opencv; set PYTHON to that interpreter).
+if (lipTone > 0) {
+  const model = path.resolve("out/face_landmarker.task");
+  if (!fs.existsSync(model)) {
+    execFileSync("curl", ["-sSfL", "-o", model,
+      "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task"]);
+  }
+  console.log("Correcting lip tone...");
+  const graded = path.resolve("out/graded.mp4");
+  fs.renameSync(path.join("public", "input.mp4"), graded);
+  execFileSync(process.env.PYTHON ?? "python3", [path.resolve("tools/lip_tone.py"), graded,
+    path.resolve("public/input.mp4"), model, String(lipTone)], { stdio: ["ignore", "inherit", "ignore"] });
+}
 fs.mkdirSync(path.dirname(output), { recursive: true });
 
 const browserExecutable =

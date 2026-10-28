@@ -1,6 +1,7 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { MotionConfig } from "../config";
 import { FONT } from "../fonts";
+import { glass } from "./glass";
 
 export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
   const frame = useCurrentFrame();
@@ -19,7 +20,7 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 40%, rgba(26,31,58,0.7) 0%, rgba(5,6,10,0.92) 75%)`,
+        background: "radial-gradient(circle at 50% 40%, rgba(10,14,26,0.15) 0%, rgba(5,6,10,0.45) 80%)",
         opacity: fadeIn * fadeOut,
         justifyContent: "center",
         alignItems: "center",
@@ -29,13 +30,23 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
     >
       <div
         style={{
+          ...glass(base, { blur: 24, radius: base * 0.05 }),
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: `${base * 0.06}px ${base * 0.09}px`,
+          transform: `scale(${0.9 + 0.1 * name})`,
+        }}
+      >
+      <div
+        style={{
           fontSize: base * 0.12,
           fontWeight: 900,
           color: "white",
           letterSpacing: base * 0.01,
           transform: `scale(${0.8 + 0.2 * name})`,
           opacity: name,
-          backgroundImage: `linear-gradient(90deg, #fff, ${config.accent}, #fff)`,
+          backgroundImage: `linear-gradient(90deg, #fff 30%, ${config.accent} 50%, #fff 70%)`,
           backgroundSize: "200% 100%",
           backgroundPosition: `${frame * 2}% 0`,
           WebkitBackgroundClip: "text",
@@ -66,7 +77,7 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
             height: base * 0.5 * ripple,
             transform: "translate(-50%,-50%)",
             borderRadius: "50%",
-            border: `3px solid ${config.accent2}`,
+            border: "2px solid rgba(255,255,255,0.8)",
             opacity: 1 - ripple,
           }}
         />
@@ -74,15 +85,15 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
           style={{
             padding: `${base * 0.02}px ${base * 0.06}px`,
             borderRadius: base * 0.05,
-            background: subscribed ? "#2a2f45" : `linear-gradient(90deg, #ff0033, ${config.accent2})`,
+            ...glass(base, { blur: 10, radius: base * 0.05, tint: subscribed ? "rgba(255,255,255,0.05)" : `${config.accent}55` }),
             color: "white",
             fontSize: base * 0.04,
             fontWeight: 800,
-            boxShadow: subscribed ? "none" : `0 10px 40px ${config.accent2}88`,
           }}
         >
           {subscribed ? config.buttonDoneText : config.buttonText}
         </div>
+      </div>
       </div>
     </AbsoluteFill>
   );

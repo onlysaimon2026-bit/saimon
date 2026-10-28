@@ -7,6 +7,7 @@ import { CalloutView } from "./components/Callout";
 import { Captions } from "./components/Captions";
 import { CutFx } from "./components/CutFx";
 import { FrameCorners } from "./components/FrameCorners";
+import { Badge } from "./components/Badge";
 import { ProgressBar } from "./components/ProgressBar";
 import { Outro } from "./components/Outro";
 import { Overlay } from "./components/Overlay";
@@ -54,6 +55,7 @@ export const Main: React.FC<MainProps> = ({ src, videoSeconds, config }) => {
         ))}
         <Captions captions={config.captions} config={config} />
         <FrameCorners config={config} />
+        <Badge config={config} startFrame={config.introStyle === "overlay" ? intro : 0} />
         {config.showProgressBar && <ProgressBar config={config} />}
       </Sequence>
       <Sequence durationInFrames={intro}>

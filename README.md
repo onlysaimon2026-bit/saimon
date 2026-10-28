@@ -19,3 +19,10 @@ node render.mjs path/to/video.mp4 out/final.mp4 [overrides.json]
 Width, height, duration and cut points are read from the input video. Text, colours,
 lower thirds, callouts and captions live in `src/config.ts`; an `overrides.json` with any
 of those keys overrides them for one render. Preview interactively with `npm run studio`.
+
+## Optional clean-up passes (set in the overrides file)
+
+- `grade`: ffmpeg filter chain for colour correction.
+- `cleanVoice`: RNNoise denoise, EQ, de-ess and compression on the voice.
+- `lipTone`: 0–1 strength for natural lip-tone correction. Needs Python with
+  `mediapipe` and `opencv-python-headless` (and `libegl1`); point `PYTHON` at it.
