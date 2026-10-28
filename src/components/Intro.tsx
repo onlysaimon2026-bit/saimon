@@ -19,11 +19,14 @@ export const Intro: React.FC<{ config: MotionConfig }> = ({ config }) => {
   const bar = interpolate(frame, [6, 26], [0, 1], { extrapolateRight: "clamp", easing: Easing.out(Easing.exp) });
   const sweep = interpolate(frame, [18, 48], [-0.3, 1.3], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const sub = spring({ frame: frame - 28, fps, config: { damping: 18 } });
+  const overlay = config.introStyle === "overlay";
 
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 45%, #141a2e 0%, #05060a 70%)`,
+        background: overlay
+          ? "radial-gradient(ellipse at 50% 45%, rgba(5,6,10,0.75) 0%, rgba(5,6,10,0.35) 60%, rgba(5,6,10,0.1) 100%)"
+          : `radial-gradient(circle at 50% 45%, #141a2e 0%, #05060a 70%)`,
         opacity: 1 - exit,
         transform: `scale(${1 + exit * 0.35})`,
         filter: `blur(${exit * 14}px)`,
@@ -32,7 +35,7 @@ export const Intro: React.FC<{ config: MotionConfig }> = ({ config }) => {
       }}
     >
       {/* Perspective grid floor */}
-      <div
+      {!overlay && <div
         style={{
           position: "absolute",
           left: "-50%",
@@ -45,7 +48,7 @@ export const Intro: React.FC<{ config: MotionConfig }> = ({ config }) => {
           transform: "perspective(600px) rotateX(70deg)",
           maskImage: "linear-gradient(to top, black, transparent)",
         }}
-      />
+      />}
       {/* Floating particles */}
       {new Array(40).fill(0).map((_, i) => {
         const x = random(`x${i}`) * width;

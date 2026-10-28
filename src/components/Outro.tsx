@@ -19,7 +19,7 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 40%, #1a1f3a 0%, #05060a 75%)`,
+        background: `radial-gradient(circle at 50% 40%, rgba(26,31,58,0.7) 0%, rgba(5,6,10,0.92) 75%)`,
         opacity: fadeIn * fadeOut,
         justifyContent: "center",
         alignItems: "center",
@@ -81,7 +81,7 @@ export const Outro: React.FC<{ config: MotionConfig }> = ({ config }) => {
             boxShadow: subscribed ? "none" : `0 10px 40px ${config.accent2}88`,
           }}
         >
-          {subscribed ? "SUBSCRIBED ✓" : "SUBSCRIBE"}
+          {subscribed ? config.buttonDoneText : config.buttonText}
         </div>
       </div>
     </AbsoluteFill>

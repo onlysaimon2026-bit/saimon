@@ -24,12 +24,23 @@ width = Math.round((width * scale) / 2) * 2;
 height = Math.round((height * scale) / 2) * 2;
 const videoSeconds = Number(probe.format.duration);
 
-// Scene-cut detection drives the flash/zoom-punch transitions (showinfo logs to stderr).
-const sceneLog = spawnSync("ffmpeg", ["-hide_banner", "-i", input, "-vf", "select='gt(scene,0.35)',showinfo",
-  "-an", "-f", "null", "-"]).stderr.toString();
-const cuts = [...sceneLog.matchAll(/pts_time:([\d.]+)/g)]
-  .map((m) => Number(m[1]))
-  .filter((t, i, a) => t > 0.5 && (i === 0 || t - a[i - 1] > 1));
+// Cut detection: a jump cut is a single-frame spike in frame difference, which also
+// catches same-framing talking-head cuts that a plain scene threshold misses.
+const scoreFile = path.resolve("out/scene-scores.txt");
+fs.mkdirSync("out", { recursive: true });
+spawnSync("ffmpeg", ["-v", "error", "-i", input, "-vf",
+  `scale=240:-2,select='gte(scene,0)',metadata=print:file=${scoreFile}`, "-an", "-f", "null", "-"]);
+const scores = [];
+for (const line of fs.readFileSync(scoreFile, "utf8").split("\n")) {
+  const t = line.match(/pts_time:([\d.]+)/);
+  const sc = line.match(/scene_score=([\d.]+)/);
+  if (t) scores.push({ t: Number(t[1]), s: 0 });
+  else if (sc && scores.length) scores[scores.length - 1].s = Number(sc[1]);
+}
+const cuts = scores
+  .filter((f, i) => i > 0 && i < scores.length - 1 && f.t > 0.5 && f.s > 0.06 &&
+    f.s > 3 * scores[i - 1].s && f.s > 3 * scores[i + 1].s)
+  .map((f) => Math.round(f.t * 100) / 100);
 console.log(`Video ${width}x${height}, ${videoSeconds.toFixed(1)}s, ${cuts.length} cuts`);
 
 fs.mkdirSync("public", { recursive: true });

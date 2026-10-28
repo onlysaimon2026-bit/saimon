@@ -8,8 +8,13 @@ export type MotionConfig = {
   subtitle: string;
   channelName: string;
   outroText: string;
+  buttonText: string;
+  buttonDoneText: string;
   accent: string;
   accent2: string;
+  // "overlay" plays the title over the first seconds of footage (best for reels);
+  // "card" plays it on its own background before the footage starts.
+  introStyle: "overlay" | "card";
   introSeconds: number;
   outroSeconds: number;
   lowerThirds: LowerThird[];
@@ -17,6 +22,11 @@ export type MotionConfig = {
   captions: Caption[];
   // Filled in automatically by render.mjs from scene detection.
   cuts: number[];
+  // Alternate between wide and close framing on every cut.
+  punchZoom: number;
+  // [start, end] seconds where framing stays wide, e.g. while burned-in text is on screen.
+  wideRanges: [number, number][];
+  sfx: boolean;
   showProgressBar: boolean;
   grain: boolean;
 };
@@ -26,14 +36,20 @@ export const defaultConfig: MotionConfig = {
   subtitle: "Watch till the end",
   channelName: "SAIMON",
   outroText: "LIKE • SHARE • SUBSCRIBE",
+  buttonText: "SUBSCRIBE",
+  buttonDoneText: "SUBSCRIBED ✓",
   accent: "#00E5FF",
   accent2: "#FF2E88",
-  introSeconds: 3.5,
+  introStyle: "overlay",
+  introSeconds: 2.5,
   outroSeconds: 4,
-  lowerThirds: [{ at: 1.5, duration: 4, title: "Saimon", subtitle: "Creator" }],
+  lowerThirds: [],
   callouts: [],
   captions: [],
   cuts: [],
+  punchZoom: 1.12,
+  wideRanges: [],
+  sfx: true,
   showProgressBar: true,
   grain: true,
 };

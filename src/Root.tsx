@@ -23,7 +23,11 @@ export const RemotionRoot: React.FC = () => (
       width: props.width,
       height: props.height,
       durationInFrames: Math.ceil(
-        (props.videoSeconds + props.config.introSeconds + props.config.outroSeconds) * FPS,
+        (props.videoSeconds +
+          (props.config.introStyle === "card" ? props.config.introSeconds - 0.5 : 0) +
+          props.config.outroSeconds -
+          0.3) *
+          FPS,
       ),
     })}
   />
