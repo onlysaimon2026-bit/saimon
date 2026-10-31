@@ -49,7 +49,7 @@ execFileSync("ffmpeg", ["-v", "error", "-y", "-i", joined, "-i", music, "-filter
   // and resampling after lets the peaks climb again on the way down. The ceiling sits
   // below the target because the AAC encoder overshoots by roughly a decibel and a half
   // on dense material; 0.72 lands the delivered file at about -1.6 dBFS.
-  "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.72:level=disabled[a]",
+  "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.66:level=disabled[a]",
   "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
   "-movflags", "+faststart", out], { stdio: "inherit" });
 fs.unlinkSync(joined);

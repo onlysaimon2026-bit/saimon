@@ -23,9 +23,10 @@ cd BuzzBlu_Production
 PY=../.venv/bin/python
 
 $PY scripts/extract_players.py          # 40 players + their card artwork from the PDF
-$PY scripts/extract_structure.py        # 4 team leaders + the film's running order
 cp assets/player_photos/*.png public/cards/
-$PY scripts/voiceover.py                # the spoken opening
+$PY scripts/voiceover.py                # the spoken opening and the position calls
+$PY scripts/extract_structure.py        # leaders + running order (needs the voiceover:
+                                        # the intro segment is as long as the read)
 $PY scripts/sound_design.py public/audio
 $PY scripts/make_textures.py public/textures
 

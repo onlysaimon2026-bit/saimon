@@ -9,9 +9,9 @@ price, team or statistic that is not printed on a slide.
 | Step | Command | Output |
 |---|---|---|
 | 1. Players | `python scripts/extract_players.py` | `data/players.json`, `assets/player_photos/`, `reports/extraction_report.json` |
-| 2. Leaders + running order | `python scripts/extract_structure.py` | `data/managers.json`, `data/segments.json` |
+| 2. Voiceover | `python scripts/voiceover.py` | `public/audio/intro_vo.wav`, `public/audio/vo_cat_*.wav`, `data/intro_lines.json` |
+| 3. Leaders + running order (after the voiceover: the intro's length comes from it) | `python scripts/extract_structure.py` | `data/managers.json`, `data/segments.json` |
 | 3. Stage cards | `cp assets/player_photos/*.png public/cards/` | `public/cards/` |
-| 4. Voiceover | `python scripts/voiceover.py` | `public/audio/intro_vo.wav`, `public/audio/vo_cat_*.wav`, `data/intro_lines.json` |
 | 5. Sound design | `python scripts/sound_design.py public/audio` | `public/audio/*.wav` |
 | 6. Textures | `python scripts/make_textures.py public/textures` | `public/textures/*.png` |
 | 7. Render | `node render_segments.mjs [--only ID] [--kind K] [--from N --to M] [--force]` | `output/individual/*.mp4` |
