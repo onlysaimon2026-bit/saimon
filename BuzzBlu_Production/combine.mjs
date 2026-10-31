@@ -46,8 +46,10 @@ execFileSync("ffmpeg", ["-v", "error", "-y", "-i", joined, "-i", music, "-filter
   "[bed][key]sidechaincompress=threshold=0.02:ratio=9:attack=12:release=420:makeup=1[duck];" +
   "[film][duck]amix=inputs=2:duration=first:normalize=0," +
   // loudnorm works at 192 kHz, so come back to 48 kHz before limiting: limiting first
-  // and resampling after lets the peaks climb again on the way down.
-  "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.8:level=disabled[a]",
+  // and resampling after lets the peaks climb again on the way down. The ceiling sits
+  // below the target because the AAC encoder overshoots by roughly a decibel and a half
+  // on dense material; 0.72 lands the delivered file at about -1.6 dBFS.
+  "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000,alimiter=limit=0.72:level=disabled[a]",
   "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
   "-movflags", "+faststart", out], { stdio: "inherit" });
 fs.unlinkSync(joined);
