@@ -11,7 +11,7 @@
    "id": "intro",
    "name": "",
    "style": "icon",
-   "expected_seconds": 40.87,
+   "expected_seconds": 40.8667,
    "ok": true,
    "duration": 40.867,
    "bytes": 40343783,
@@ -1501,10 +1501,10 @@
  },
  "combined": {
   "file": "BuzzBlu_Full_Reveal.mp4",
-  "expected_seconds": 582.87,
-  "ok": false,
+  "expected_seconds": 582.8667,
+  "ok": true,
   "duration": 582.978,
-  "bytes": 656673800,
+  "bytes": 656676002,
   "width": 1920,
   "height": 1080,
   "fps": 30.0,
@@ -1518,8 +1518,6 @@
    20.8
   ]
  },
- "problems": [
-  "BuzzBlu_Full_Reveal.mp4: 582.978s not 582.87s"
- ],
- "passed": false
+ "problems": [],
+ "passed": true
 }
