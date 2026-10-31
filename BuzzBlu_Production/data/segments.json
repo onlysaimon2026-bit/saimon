@@ -1,0 +1,650 @@
+{
+ "total_seconds": 494.0,
+ "segments": [
+  {
+   "index": 1,
+   "kind": "divider",
+   "seconds": 4.0,
+   "id": "div_leaders",
+   "style": "leader",
+   "title": [
+    "MEET THE",
+    "FOUR LEADERS"
+   ],
+   "subtitle": "FOUR AMBITIONS. ONE CHAMPIONSHIP.",
+   "page": 4
+  },
+  {
+   "index": 2,
+   "kind": "manager",
+   "seconds": 10.0,
+   "id": "L01_sayem_hawlader",
+   "style": "leader",
+   "page": 5,
+   "name": "SAYEM HAWLADER",
+   "role": "TEAM OWNER",
+   "team": "TEAM LION",
+   "order": "01/04",
+   "photo": "assets/player_photos/L01_sayem_hawlader.png",
+   "photo_size": [
+    1024,
+    1536
+   ]
+  },
+  {
+   "index": 3,
+   "kind": "manager",
+   "seconds": 10.0,
+   "id": "L02_tashfee_sahil",
+   "style": "leader",
+   "page": 6,
+   "name": "TASHFEE SAHIL",
+   "role": "TEAM MANAGER",
+   "team": "MERENGUES FC",
+   "order": "02/04",
+   "photo": "assets/player_photos/L02_tashfee_sahil.png",
+   "photo_size": [
+    1024,
+    1536
+   ]
+  },
+  {
+   "index": 4,
+   "kind": "manager",
+   "seconds": 10.0,
+   "id": "L03_mihadul_rahman_rakib",
+   "style": "leader",
+   "page": 7,
+   "name": "MIHADUL RAHMAN RAKIB",
+   "role": "TEAM MANAGER",
+   "team": "NIGHT WOLVES",
+   "order": "03/04",
+   "photo": "assets/player_photos/L03_mihadul_rahman_rakib.png",
+   "photo_size": [
+    1024,
+    1536
+   ]
+  },
+  {
+   "index": 5,
+   "kind": "manager",
+   "seconds": 10.0,
+   "id": "L04_mostakim_khan",
+   "style": "leader",
+   "page": 8,
+   "name": "MOSTAKIM KHAN",
+   "role": "TEAM MANAGER",
+   "team": "THUNDER HAWKS",
+   "order": "04/04",
+   "photo": "assets/player_photos/L04_mostakim_khan.png",
+   "photo_size": [
+    1122,
+    1402
+   ]
+  },
+  {
+   "index": 6,
+   "kind": "divider",
+   "seconds": 4.0,
+   "id": "div_icons",
+   "style": "icon",
+   "title": [
+    "ICON PLAYER",
+    "AUCTION"
+   ],
+   "subtitle": "FOUR PLAYERS. FOUR MANAGERS. FIRST BIDS.",
+   "page": 16
+  },
+  {
+   "index": 7,
+   "kind": "lineup",
+   "seconds": 6.0,
+   "id": "icon_lineup",
+   "style": "icon",
+   "title": "THE FOUR ICONS",
+   "page": 17,
+   "cards": [
+    "01_mahadi_hasan",
+    "02_saidul",
+    "03_shahin_alom",
+    "04_md_rana"
+   ],
+   "card_sizes": [
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ]
+   ],
+   "names": [
+    "MAHADI HASAN",
+    "SAIDUL",
+    "SHAHIN ALOM",
+    "MD RANA"
+   ]
+  },
+  {
+   "index": 8,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "01_mahadi_hasan",
+   "style": "icon",
+   "page": 18,
+   "category": "ICON PLAYER",
+   "sequence": 1
+  },
+  {
+   "index": 9,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "02_saidul",
+   "style": "icon",
+   "page": 19,
+   "category": "ICON PLAYER",
+   "sequence": 2
+  },
+  {
+   "index": 10,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "03_shahin_alom",
+   "style": "icon",
+   "page": 20,
+   "category": "ICON PLAYER",
+   "sequence": 3
+  },
+  {
+   "index": 11,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "04_md_rana",
+   "style": "icon",
+   "page": 21,
+   "category": "ICON PLAYER",
+   "sequence": 4
+  },
+  {
+   "index": 12,
+   "kind": "divider",
+   "seconds": 4.0,
+   "id": "div_regulars",
+   "style": "regular",
+   "title": [
+    "THE REGULAR",
+    "AUCTION BEGINS"
+   ],
+   "subtitle": "POSITION BY POSITION. PLAYER BY PLAYER.",
+   "page": 22
+  },
+  {
+   "index": 13,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_goalkeeper",
+   "style": "regular",
+   "page": 23,
+   "title": "GOALKEEPER",
+   "count": "05 PLAYERS",
+   "names": "RAKIB • RABBI (LOLO VAI) • ROBAYAT • FAHIM SHIKDER • MOSTAK"
+  },
+  {
+   "index": 14,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "05_rakib",
+   "style": "regular",
+   "page": 24,
+   "category": "GOALKEEPER",
+   "sequence": 5
+  },
+  {
+   "index": 15,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "06_rabbi_lolo_vai",
+   "style": "regular",
+   "page": 25,
+   "category": "GOALKEEPER",
+   "sequence": 6
+  },
+  {
+   "index": 16,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "07_robayat",
+   "style": "regular",
+   "page": 26,
+   "category": "GOALKEEPER",
+   "sequence": 7
+  },
+  {
+   "index": 17,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "08_fahim_shikder",
+   "style": "regular",
+   "page": 27,
+   "category": "GOALKEEPER",
+   "sequence": 8
+  },
+  {
+   "index": 18,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "09_mostak",
+   "style": "regular",
+   "page": 28,
+   "category": "GOALKEEPER",
+   "sequence": 9
+  },
+  {
+   "index": 19,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_defender",
+   "style": "regular",
+   "page": 29,
+   "title": "DEFENDER",
+   "count": "03 PLAYERS",
+   "names": "MD AMDADUL HAQUE • AHNAF TAZWAR • MUIEN"
+  },
+  {
+   "index": 20,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "10_md_amdadul_haque",
+   "style": "regular",
+   "page": 30,
+   "category": "DEFENDER",
+   "sequence": 10
+  },
+  {
+   "index": 21,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "11_ahnaf_tazwar",
+   "style": "regular",
+   "page": 31,
+   "category": "DEFENDER",
+   "sequence": 11
+  },
+  {
+   "index": 22,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "12_muien",
+   "style": "regular",
+   "page": 32,
+   "category": "DEFENDER",
+   "sequence": 12
+  },
+  {
+   "index": 23,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_midfielder",
+   "style": "regular",
+   "page": 33,
+   "title": "MIDFIELDER",
+   "count": "POSITIONAL GROUP",
+   "names": "DEFENSIVE MIDFIELDER / CENTRE MIDFIELDER / ATTACKING MIDFIELDER"
+  },
+  {
+   "index": 24,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_defensive_midfielder",
+   "style": "regular",
+   "page": 34,
+   "title": "DEFENSIVE MIDFIELDER",
+   "count": "06 PLAYERS",
+   "names": "MAHTAB • RIZVI HASAN • APURBO • SHAJIBUL ISLAM • SAJJAD AFIF • GM FABIAN AHAMED"
+  },
+  {
+   "index": 25,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "13_mahtab",
+   "style": "regular",
+   "page": 35,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 13
+  },
+  {
+   "index": 26,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "14_rizvi_hasan",
+   "style": "regular",
+   "page": 36,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 14
+  },
+  {
+   "index": 27,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "15_apurbo",
+   "style": "regular",
+   "page": 37,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 15
+  },
+  {
+   "index": 28,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "16_gm_fabian_ahamed",
+   "style": "regular",
+   "page": 38,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 16
+  },
+  {
+   "index": 29,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "17_shajibul_islam",
+   "style": "regular",
+   "page": 39,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 17
+  },
+  {
+   "index": 30,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "18_sajjad_afif",
+   "style": "regular",
+   "page": 40,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 18
+  },
+  {
+   "index": 31,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_centre_midfielder",
+   "style": "regular",
+   "page": 41,
+   "title": "CENTRE MIDFIELDER",
+   "count": "09 PLAYERS",
+   "names": "RUSAD • TAHSAN • T.H SIYAM • TOUFIQ • RAYHAN RAFI • RIAZUL ISLAM • MD SADDAM HOSSAIN • MONIRUL ISLAM MONIR • IRFAN"
+  },
+  {
+   "index": 32,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "19_rusad",
+   "style": "regular",
+   "page": 42,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 19
+  },
+  {
+   "index": 33,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "20_irfan",
+   "style": "regular",
+   "page": 43,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 20
+  },
+  {
+   "index": 34,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "21_tahsan",
+   "style": "regular",
+   "page": 44,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 21
+  },
+  {
+   "index": 35,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "22_t_h_siyam",
+   "style": "regular",
+   "page": 45,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 22
+  },
+  {
+   "index": 36,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "23_monirul_islam_monir",
+   "style": "regular",
+   "page": 46,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 23
+  },
+  {
+   "index": 37,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "24_toufiq",
+   "style": "regular",
+   "page": 47,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 24
+  },
+  {
+   "index": 38,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "25_rayhan_rafi",
+   "style": "regular",
+   "page": 48,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 25
+  },
+  {
+   "index": 39,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "26_riazul_islam",
+   "style": "regular",
+   "page": 49,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 26
+  },
+  {
+   "index": 40,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "27_md_saddam_hossain",
+   "style": "regular",
+   "page": 50,
+   "category": "CENTRE MIDFIELDER",
+   "sequence": 27
+  },
+  {
+   "index": 41,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_attacking_midfielder",
+   "style": "regular",
+   "page": 51,
+   "title": "ATTACKING MIDFIELDER",
+   "count": "04 PLAYERS",
+   "names": "SOHEL RANA • AHSAN SHARIF • AL-FARDIN BHUIYAN • RAFIU"
+  },
+  {
+   "index": 42,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "28_sohel_rana",
+   "style": "regular",
+   "page": 52,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 28
+  },
+  {
+   "index": 43,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "29_ahsan_sharif",
+   "style": "regular",
+   "page": 53,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 29
+  },
+  {
+   "index": 44,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "30_al_fardin_bhuiyan",
+   "style": "regular",
+   "page": 54,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 30
+  },
+  {
+   "index": 45,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "31_rafiu",
+   "style": "regular",
+   "page": 55,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 31
+  },
+  {
+   "index": 46,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_left_wing",
+   "style": "regular",
+   "page": 56,
+   "title": "LEFT WING",
+   "count": "05 PLAYERS",
+   "names": "MASHUK • SAIMON • JOY • YEASIN SALMAN JIDAN • ABU BAKAR"
+  },
+  {
+   "index": 47,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "32_mashuk",
+   "style": "regular",
+   "page": 57,
+   "category": "LEFT WING",
+   "sequence": 32
+  },
+  {
+   "index": 48,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "33_saimon",
+   "style": "regular",
+   "page": 58,
+   "category": "LEFT WING",
+   "sequence": 33
+  },
+  {
+   "index": 49,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "34_joy",
+   "style": "regular",
+   "page": 59,
+   "category": "LEFT WING",
+   "sequence": 34
+  },
+  {
+   "index": 50,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "35_abu_bakar",
+   "style": "regular",
+   "page": 60,
+   "category": "LEFT WING",
+   "sequence": 35
+  },
+  {
+   "index": 51,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "36_yeasin_salman_jidan",
+   "style": "regular",
+   "page": 61,
+   "category": "LEFT WING",
+   "sequence": 36
+  },
+  {
+   "index": 52,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_right_wing",
+   "style": "regular",
+   "page": 62,
+   "title": "RIGHT WING",
+   "count": "01 PLAYERS",
+   "names": "MOHAMMAD RAIHAN"
+  },
+  {
+   "index": 53,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "37_mohammad_raihan",
+   "style": "regular",
+   "page": 63,
+   "category": "RIGHT WING",
+   "sequence": 37
+  },
+  {
+   "index": 54,
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_striker",
+   "style": "regular",
+   "page": 64,
+   "title": "STRIKER",
+   "count": "03 PLAYERS",
+   "names": "RAHAT • SIAM • ZAHID"
+  },
+  {
+   "index": 55,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "38_rahat",
+   "style": "regular",
+   "page": 65,
+   "category": "STRIKER",
+   "sequence": 38
+  },
+  {
+   "index": 56,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "39_siam",
+   "style": "regular",
+   "page": 66,
+   "category": "STRIKER",
+   "sequence": 39
+  },
+  {
+   "index": 57,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "40_zahid",
+   "style": "regular",
+   "page": 67,
+   "category": "STRIKER",
+   "sequence": 40
+  }
+ ]
+}

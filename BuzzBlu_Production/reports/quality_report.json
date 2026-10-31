@@ -2,337 +2,630 @@
  "spec": {
   "width": 1920,
   "height": 1080,
-  "fps": 30.0,
-  "duration": 10.0
+  "fps": 30.0
  },
- "individual": [
+ "segments": [
   {
-   "sequence": 1,
+   "index": 1,
+   "kind": "divider",
+   "id": "div_leaders",
+   "name": [
+    "MEET THE",
+    "FOUR LEADERS"
+   ],
+   "style": "leader",
+   "expected_seconds": 4.0,
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2818878,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    19.8,
+    29.1,
+    28.0
+   ]
+  },
+  {
+   "index": 2,
+   "kind": "manager",
+   "id": "L01_sayem_hawlader",
+   "name": "SAYEM HAWLADER",
+   "style": "leader",
+   "expected_seconds": 10.0,
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11752802,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.7,
+    17.6,
+    38.2,
+    39.8,
+    33.5
+   ]
+  },
+  {
+   "index": 3,
+   "kind": "manager",
+   "id": "L02_tashfee_sahil",
+   "name": "TASHFEE SAHIL",
+   "style": "leader",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 4,
+   "kind": "manager",
+   "id": "L03_mihadul_rahman_rakib",
+   "name": "MIHADUL RAHMAN RAKIB",
+   "style": "leader",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 5,
+   "kind": "manager",
+   "id": "L04_mostakim_khan",
+   "name": "MOSTAKIM KHAN",
+   "style": "leader",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 6,
+   "kind": "divider",
+   "id": "div_icons",
+   "name": [
+    "ICON PLAYER",
+    "AUCTION"
+   ],
+   "style": "icon",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 7,
+   "kind": "lineup",
+   "id": "icon_lineup",
+   "name": "THE FOUR ICONS",
+   "style": "icon",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 6092848,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    12.1,
+    34.6,
+    48.4
+   ]
+  },
+  {
+   "index": 8,
+   "kind": "player",
+   "id": "01_mahadi_hasan",
    "name": "MAHADI HASAN",
-   "icon": true,
-   "file": "01_mahadi_hasan.mp4",
+   "style": "icon",
+   "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 14577300,
+   "bytes": 14055276,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    16.7,
+    18.2,
     17.0,
-    50.8,
-    50.0,
-    31.2
+    45.8,
+    46.3,
+    32.0
    ]
   },
   {
-   "sequence": 2,
+   "index": 9,
+   "kind": "player",
+   "id": "02_saidul",
    "name": "SAIDUL",
-   "icon": true,
-   "file": "02_saidul.mp4",
+   "style": "icon",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 3,
+   "index": 10,
+   "kind": "player",
+   "id": "03_shahin_alom",
    "name": "SHAHIN ALOM",
-   "icon": true,
-   "file": "03_shahin_alom.mp4",
+   "style": "icon",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 4,
+   "index": 11,
+   "kind": "player",
+   "id": "04_md_rana",
    "name": "MD RANA",
-   "icon": true,
-   "file": "04_md_rana.mp4",
+   "style": "icon",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 5,
-   "name": "RAKIB",
-   "icon": false,
-   "file": "05_rakib.mp4",
+   "index": 12,
+   "kind": "divider",
+   "id": "div_regulars",
+   "name": [
+    "THE REGULAR",
+    "AUCTION BEGINS"
+   ],
+   "style": "regular",
+   "expected_seconds": 4.0,
    "ok": false
   },
   {
-   "sequence": 6,
-   "name": "RABBI (LOLO VAI)",
-   "icon": false,
-   "file": "06_rabbi_lolo_vai.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 7,
-   "name": "ROBAYAT",
-   "icon": false,
-   "file": "07_robayat.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 8,
-   "name": "FAHIM SHIKDER",
-   "icon": false,
-   "file": "08_fahim_shikder.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 9,
-   "name": "MOSTAK",
-   "icon": false,
-   "file": "09_mostak.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 10,
-   "name": "MD AMDADUL HAQUE",
-   "icon": false,
-   "file": "10_md_amdadul_haque.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 11,
-   "name": "AHNAF TAZWAR",
-   "icon": false,
-   "file": "11_ahnaf_tazwar.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 12,
-   "name": "MUIEN",
-   "icon": false,
-   "file": "12_muien.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 13,
-   "name": "MAHTAB",
-   "icon": false,
-   "file": "13_mahtab.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 14,
-   "name": "RIZVI HASAN",
-   "icon": false,
-   "file": "14_rizvi_hasan.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 15,
-   "name": "APURBO",
-   "icon": false,
-   "file": "15_apurbo.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 16,
-   "name": "GM FABIAN AHAMED",
-   "icon": false,
-   "file": "16_gm_fabian_ahamed.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 17,
-   "name": "SHAJIBUL ISLAM",
-   "icon": false,
-   "file": "17_shajibul_islam.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 18,
-   "name": "SAJJAD AFIF",
-   "icon": false,
-   "file": "18_sajjad_afif.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 19,
-   "name": "RUSAD",
-   "icon": false,
-   "file": "19_rusad.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 20,
-   "name": "IRFAN",
-   "icon": false,
-   "file": "20_irfan.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 21,
-   "name": "TAHSAN",
-   "icon": false,
-   "file": "21_tahsan.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 22,
-   "name": "T.H SIYAM",
-   "icon": false,
-   "file": "22_t_h_siyam.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 23,
-   "name": "MONIRUL ISLAM MONIR",
-   "icon": false,
-   "file": "23_monirul_islam_monir.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 24,
-   "name": "TOUFIQ",
-   "icon": false,
-   "file": "24_toufiq.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 25,
-   "name": "RAYHAN RAFI",
-   "icon": false,
-   "file": "25_rayhan_rafi.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 26,
-   "name": "RIAZUL ISLAM",
-   "icon": false,
-   "file": "26_riazul_islam.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 27,
-   "name": "MD SADDAM HOSSAIN",
-   "icon": false,
-   "file": "27_md_saddam_hossain.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 28,
-   "name": "SOHEL RANA",
-   "icon": false,
-   "file": "28_sohel_rana.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 29,
-   "name": "AHSAN SHARIF",
-   "icon": false,
-   "file": "29_ahsan_sharif.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 30,
-   "name": "AL-FARDIN BHUIYAN",
-   "icon": false,
-   "file": "30_al_fardin_bhuiyan.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 31,
-   "name": "RAFIU",
-   "icon": false,
-   "file": "31_rafiu.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 32,
-   "name": "MASHUK",
-   "icon": false,
-   "file": "32_mashuk.mp4",
-   "ok": false
-  },
-  {
-   "sequence": 33,
-   "name": "SAIMON",
-   "icon": false,
-   "file": "33_saimon.mp4",
+   "index": 13,
+   "kind": "category",
+   "id": "cat_goalkeeper",
+   "name": "GOALKEEPER",
+   "style": "regular",
+   "expected_seconds": 4.0,
    "ok": true,
-   "duration": 10.0,
-   "bytes": 12128169,
+   "duration": 4.0,
+   "bytes": 2775077,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    16.3,
-    16.7,
-    48.8,
-    42.8,
-    30.3
+    21.4,
+    29.8,
+    28.8
    ]
   },
   {
-   "sequence": 34,
+   "index": 14,
+   "kind": "player",
+   "id": "05_rakib",
+   "name": "RAKIB",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 15,
+   "kind": "player",
+   "id": "06_rabbi_lolo_vai",
+   "name": "RABBI (LOLO VAI)",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 16,
+   "kind": "player",
+   "id": "07_robayat",
+   "name": "ROBAYAT",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 17,
+   "kind": "player",
+   "id": "08_fahim_shikder",
+   "name": "FAHIM SHIKDER",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 18,
+   "kind": "player",
+   "id": "09_mostak",
+   "name": "MOSTAK",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 19,
+   "kind": "category",
+   "id": "cat_defender",
+   "name": "DEFENDER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 20,
+   "kind": "player",
+   "id": "10_md_amdadul_haque",
+   "name": "MD AMDADUL HAQUE",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 21,
+   "kind": "player",
+   "id": "11_ahnaf_tazwar",
+   "name": "AHNAF TAZWAR",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 22,
+   "kind": "player",
+   "id": "12_muien",
+   "name": "MUIEN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 23,
+   "kind": "category",
+   "id": "cat_midfielder",
+   "name": "MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 24,
+   "kind": "category",
+   "id": "cat_defensive_midfielder",
+   "name": "DEFENSIVE MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 25,
+   "kind": "player",
+   "id": "13_mahtab",
+   "name": "MAHTAB",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 26,
+   "kind": "player",
+   "id": "14_rizvi_hasan",
+   "name": "RIZVI HASAN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 27,
+   "kind": "player",
+   "id": "15_apurbo",
+   "name": "APURBO",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 28,
+   "kind": "player",
+   "id": "16_gm_fabian_ahamed",
+   "name": "GM FABIAN AHAMED",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 29,
+   "kind": "player",
+   "id": "17_shajibul_islam",
+   "name": "SHAJIBUL ISLAM",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 30,
+   "kind": "player",
+   "id": "18_sajjad_afif",
+   "name": "SAJJAD AFIF",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 31,
+   "kind": "category",
+   "id": "cat_centre_midfielder",
+   "name": "CENTRE MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 32,
+   "kind": "player",
+   "id": "19_rusad",
+   "name": "RUSAD",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 33,
+   "kind": "player",
+   "id": "20_irfan",
+   "name": "IRFAN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 34,
+   "kind": "player",
+   "id": "21_tahsan",
+   "name": "TAHSAN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 35,
+   "kind": "player",
+   "id": "22_t_h_siyam",
+   "name": "T.H SIYAM",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 36,
+   "kind": "player",
+   "id": "23_monirul_islam_monir",
+   "name": "MONIRUL ISLAM MONIR",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 37,
+   "kind": "player",
+   "id": "24_toufiq",
+   "name": "TOUFIQ",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 38,
+   "kind": "player",
+   "id": "25_rayhan_rafi",
+   "name": "RAYHAN RAFI",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 39,
+   "kind": "player",
+   "id": "26_riazul_islam",
+   "name": "RIAZUL ISLAM",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 40,
+   "kind": "player",
+   "id": "27_md_saddam_hossain",
+   "name": "MD SADDAM HOSSAIN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 41,
+   "kind": "category",
+   "id": "cat_attacking_midfielder",
+   "name": "ATTACKING MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 42,
+   "kind": "player",
+   "id": "28_sohel_rana",
+   "name": "SOHEL RANA",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 43,
+   "kind": "player",
+   "id": "29_ahsan_sharif",
+   "name": "AHSAN SHARIF",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 44,
+   "kind": "player",
+   "id": "30_al_fardin_bhuiyan",
+   "name": "AL-FARDIN BHUIYAN",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 45,
+   "kind": "player",
+   "id": "31_rafiu",
+   "name": "RAFIU",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 46,
+   "kind": "category",
+   "id": "cat_left_wing",
+   "name": "LEFT WING",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 47,
+   "kind": "player",
+   "id": "32_mashuk",
+   "name": "MASHUK",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 48,
+   "kind": "player",
+   "id": "33_saimon",
+   "name": "SAIMON",
+   "style": "regular",
+   "expected_seconds": 10.0,
+   "ok": false
+  },
+  {
+   "index": 49,
+   "kind": "player",
+   "id": "34_joy",
    "name": "JOY",
-   "icon": false,
-   "file": "34_joy.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 35,
+   "index": 50,
+   "kind": "player",
+   "id": "35_abu_bakar",
    "name": "ABU BAKAR",
-   "icon": false,
-   "file": "35_abu_bakar.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 36,
+   "index": 51,
+   "kind": "player",
+   "id": "36_yeasin_salman_jidan",
    "name": "YEASIN SALMAN JIDAN",
-   "icon": false,
-   "file": "36_yeasin_salman_jidan.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 37,
+   "index": 52,
+   "kind": "category",
+   "id": "cat_right_wing",
+   "name": "RIGHT WING",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 53,
+   "kind": "player",
+   "id": "37_mohammad_raihan",
    "name": "MOHAMMAD RAIHAN",
-   "icon": false,
-   "file": "37_mohammad_raihan.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 38,
+   "index": 54,
+   "kind": "category",
+   "id": "cat_striker",
+   "name": "STRIKER",
+   "style": "regular",
+   "expected_seconds": 4.0,
+   "ok": false
+  },
+  {
+   "index": 55,
+   "kind": "player",
+   "id": "38_rahat",
    "name": "RAHAT",
-   "icon": false,
-   "file": "38_rahat.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 39,
+   "index": 56,
+   "kind": "player",
+   "id": "39_siam",
    "name": "SIAM",
-   "icon": false,
-   "file": "39_siam.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   },
   {
-   "sequence": 40,
+   "index": 57,
+   "kind": "player",
+   "id": "40_zahid",
    "name": "ZAHID",
-   "icon": false,
-   "file": "40_zahid.mp4",
+   "style": "regular",
+   "expected_seconds": 10.0,
    "ok": false
   }
  ],
+ "counts": {
+  "category": 9,
+  "divider": 3,
+  "lineup": 1,
+  "manager": 4,
+  "player": 40
+ },
  "problems": [
+  "missing file L02_tashfee_sahil.mp4",
+  "missing file L03_mihadul_rahman_rakib.mp4",
+  "missing file L04_mostakim_khan.mp4",
+  "missing file div_icons.mp4",
   "missing file 02_saidul.mp4",
   "missing file 03_shahin_alom.mp4",
   "missing file 04_md_rana.mp4",
+  "missing file div_regulars.mp4",
   "missing file 05_rakib.mp4",
   "missing file 06_rabbi_lolo_vai.mp4",
   "missing file 07_robayat.mp4",
   "missing file 08_fahim_shikder.mp4",
   "missing file 09_mostak.mp4",
+  "missing file cat_defender.mp4",
   "missing file 10_md_amdadul_haque.mp4",
   "missing file 11_ahnaf_tazwar.mp4",
   "missing file 12_muien.mp4",
+  "missing file cat_midfielder.mp4",
+  "missing file cat_defensive_midfielder.mp4",
   "missing file 13_mahtab.mp4",
   "missing file 14_rizvi_hasan.mp4",
   "missing file 15_apurbo.mp4",
   "missing file 16_gm_fabian_ahamed.mp4",
   "missing file 17_shajibul_islam.mp4",
   "missing file 18_sajjad_afif.mp4",
+  "missing file cat_centre_midfielder.mp4",
   "missing file 19_rusad.mp4",
   "missing file 20_irfan.mp4",
   "missing file 21_tahsan.mp4",
@@ -342,15 +635,20 @@
   "missing file 25_rayhan_rafi.mp4",
   "missing file 26_riazul_islam.mp4",
   "missing file 27_md_saddam_hossain.mp4",
+  "missing file cat_attacking_midfielder.mp4",
   "missing file 28_sohel_rana.mp4",
   "missing file 29_ahsan_sharif.mp4",
   "missing file 30_al_fardin_bhuiyan.mp4",
   "missing file 31_rafiu.mp4",
+  "missing file cat_left_wing.mp4",
   "missing file 32_mashuk.mp4",
+  "missing file 33_saimon.mp4",
   "missing file 34_joy.mp4",
   "missing file 35_abu_bakar.mp4",
   "missing file 36_yeasin_salman_jidan.mp4",
+  "missing file cat_right_wing.mp4",
   "missing file 37_mohammad_raihan.mp4",
+  "missing file cat_striker.mp4",
   "missing file 38_rahat.mp4",
   "missing file 39_siam.mp4",
   "missing file 40_zahid.mp4"

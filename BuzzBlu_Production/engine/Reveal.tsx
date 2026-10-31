@@ -4,35 +4,31 @@ import { Card } from "./components/Card";
 import { Hero } from "./components/Hero";
 import { Signature } from "./components/Signature";
 import { Stage } from "./components/Stage";
-import { Player, THEMES } from "./theme";
+import { Subject, THEMES } from "./theme";
 import "./fonts";
 
-export type RevealProps = { player: Player };
+export type RevealProps = { subject: Subject };
 
 // One continuous 10-second shot: a single camera moves through the five acts, so the
 // brand intro, the reveal and the signature read as one take rather than five clips.
-export const Reveal: React.FC<RevealProps> = ({ player }) => {
+export const Reveal: React.FC<RevealProps> = ({ subject }) => {
   const frame = useCurrentFrame();
   const { fps, width } = useVideoConfig();
   const t = frame / fps;
-  const theme = THEMES[player.is_icon ? "icon" : "regular"];
+  const theme = THEMES[subject.style];
+  const leader = subject.style === "leader";
 
   const ease = Easing.bezier(0.4, 0, 0.2, 1);
-  const camZ = interpolate(t, [0, 1.5, 3.0, 5.0, 8.0, 10.0], [-300, -120, 150, 70, 10, -240], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: ease,
-  });
-  const camX = interpolate(t, [0, 3.0, 5.0, 8.0, 10.0], [0, -40, 30, 0, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: ease,
-  });
-  const camRot = interpolate(t, [0, 3.0, 5.0, 8.0, 10.0], [0, 1.4, -0.9, 0, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: ease,
-  });
+  // Leaders get a slower, grander move through the same beats.
+  const scale = leader ? 1.18 : 1;
+  const camZ = interpolate(t, [0, 1.5, 3.0, 5.0, 8.0, 10.0],
+    [-300 * scale, -120, 110, 55, 10, -240 * scale],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
+  const camX = interpolate(t, [0, 3.0, 5.0, 8.0, 10.0], [0, -40, 30, 0, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
+  const camRot = interpolate(t, [0, 3.0, 5.0, 8.0, 10.0],
+    [0, 1.4 * scale, -0.9 * scale, 0, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
@@ -44,11 +40,11 @@ export const Reveal: React.FC<RevealProps> = ({ player }) => {
             transform: `translate3d(${camX}px, 0px, ${camZ}px) rotateY(${camRot}deg)`,
           }}
         >
-          <Card card={player.card} aspect={player.aspect} theme={theme} />
+          <Card card={subject.card} aspect={subject.aspect} theme={theme} />
         </AbsoluteFill>
       </AbsoluteFill>
-      <Hero player={player} theme={theme} />
-      <BrandIntro theme={theme} />
+      <Hero subject={subject} theme={theme} />
+      <BrandIntro theme={theme} subtitle={subject.category} />
       <Signature theme={theme} />
     </AbsoluteFill>
   );

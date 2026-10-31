@@ -1,0 +1,58 @@
+[
+ {
+  "sequence": 1,
+  "page": 5,
+  "name": "SAYEM HAWLADER",
+  "role": "TEAM OWNER",
+  "team": "TEAM LION",
+  "order": "01/04",
+  "image_xref": 28,
+  "photo": "assets/player_photos/L01_sayem_hawlader.png",
+  "photo_size": [
+   1024,
+   1536
+  ]
+ },
+ {
+  "sequence": 2,
+  "page": 6,
+  "name": "TASHFEE SAHIL",
+  "role": "TEAM MANAGER",
+  "team": "MERENGUES FC",
+  "order": "02/04",
+  "image_xref": 57,
+  "photo": "assets/player_photos/L02_tashfee_sahil.png",
+  "photo_size": [
+   1024,
+   1536
+  ]
+ },
+ {
+  "sequence": 3,
+  "page": 7,
+  "name": "MIHADUL RAHMAN RAKIB",
+  "role": "TEAM MANAGER",
+  "team": "NIGHT WOLVES",
+  "order": "03/04",
+  "image_xref": 60,
+  "photo": "assets/player_photos/L03_mihadul_rahman_rakib.png",
+  "photo_size": [
+   1024,
+   1536
+  ]
+ },
+ {
+  "sequence": 4,
+  "page": 8,
+  "name": "MOSTAKIM KHAN",
+  "role": "TEAM MANAGER",
+  "team": "THUNDER HAWKS",
+  "order": "04/04",
+  "image_xref": 63,
+  "photo": "assets/player_photos/L04_mostakim_khan.png",
+  "photo_size": [
+   1122,
+   1402
+  ]
+ }
+]

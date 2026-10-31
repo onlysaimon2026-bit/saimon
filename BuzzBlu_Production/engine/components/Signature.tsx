@@ -1,6 +1,7 @@
 import { AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { DISPLAY, UI } from "../fonts";
 import { GREEN, Theme } from "../theme";
+import { Football } from "./Football";
 
 // 8.0-10.0s. The card recedes, the tournament lockup lands on the final impact, and the
 // frame settles to black so the next player's segment can begin cleanly.
@@ -34,11 +35,16 @@ export const Signature: React.FC<{ theme: Theme }> = ({ theme }) => {
       <div
         style={{
           display: "flex",
+          alignItems: "center",
+          gap: width * 0.012,
           opacity: hit,
           transform: `scale(${0.82 + 0.18 * hit})`,
           filter: `blur(${(1 - hit) * 12}px)`,
         }}
       >
+        <div style={{ filter: `drop-shadow(0 0 20px ${theme.glow})` }}>
+          <Football size={width * 0.056} spin={200 + t * 150} theme={theme} />
+        </div>
         {"BUZZBLU".split("").map((ch, i) => (
           <span
             key={i}

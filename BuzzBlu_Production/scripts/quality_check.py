@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SPEC = {"width": 1920, "height": 1080, "fps": 30.0, "duration": 10.0}
+SPEC = {"width": 1920, "height": 1080, "fps": 30.0}
 # Sampled at moments where each act should have something on screen.
 PROBE_TIMES = (0.8, 2.4, 3.6, 6.2, 8.4)
 
@@ -37,7 +37,7 @@ def frame_stats(path, t):
     return sum(data) / len(data) if data else 0.0
 
 
-def check_video(path, expect_duration=SPEC["duration"]):
+def check_video(path, expect_duration):
     issues = []
     if not path.exists():
         return [f"missing file {path.name}"], {}
@@ -68,7 +68,8 @@ def check_video(path, expect_duration=SPEC["duration"]):
     if abs(duration - expect_duration) > 0.05:
         issues.append(f"{path.name}: {duration:.3f}s not {expect_duration}s")
 
-    lums = [round(frame_stats(path, min(t, duration - 0.2)), 1) for t in PROBE_TIMES]
+    times = [t for t in PROBE_TIMES if t < duration - 0.25] or [duration * 0.4]
+    lums = [round(frame_stats(path, t), 1) for t in times]
     info["luma"] = lums
     if max(lums) < 4:
         issues.append(f"{path.name}: appears black throughout")
@@ -78,32 +79,43 @@ def check_video(path, expect_duration=SPEC["duration"]):
 
 
 def main():
-    players = json.loads((ROOT / "data" / "players.json").read_text())
+    data = json.loads((ROOT / "data" / "segments.json").read_text())
+    segments = data["segments"]
+    players = {pathlib.Path(p["photo"]).stem: p for p in json.loads((ROOT / "data" / "players.json").read_text())}
+    managers = {pathlib.Path(m["photo"]).stem: m for m in json.loads((ROOT / "data" / "managers.json").read_text())}
     individual = ROOT / "output" / "individual"
     results, issues = [], []
 
-    for p in players:
-        stem = pathlib.Path(p["photo"]).stem
-        path = individual / f"{stem}.mp4"
-        probs, info = check_video(path)
+    for seg in segments:
+        path = individual / f"{seg['id']}.mp4"
+        probs, info = check_video(path, seg["seconds"])
         issues += probs
-        results.append({"sequence": p["sequence"], "name": p["name"], "icon": p["is_icon"],
-                        "file": path.name, "ok": not probs, **info})
+        subject = players.get(seg["id"]) or managers.get(seg["id"]) or {}
+        results.append({"index": seg["index"], "kind": seg["kind"], "id": seg["id"],
+                        "name": subject.get("name", seg.get("title", "")), "style": seg["style"],
+                        "expected_seconds": seg["seconds"], "ok": not probs, **info})
 
-    files = sorted(individual.glob("*.mp4"))
-    expected = {f"{pathlib.Path(p['photo']).stem}.mp4" for p in players}
-    extra = sorted({f.name for f in files} - expected)
+    expected = {f"{s['id']}.mp4" for s in segments}
+    extra = sorted({f.name for f in individual.glob("*.mp4")} - expected)
     if extra:
         issues.append(f"unexpected files in output/individual: {extra}")
-    if len(results) != 40:
-        issues.append(f"expected 40 players, data has {len(results)}")
 
-    report = {"spec": SPEC, "individual": results, "problems": issues}
+    # Every player and leader from the PDF must appear exactly once, in order.
+    seq = [s["id"] for s in segments if s["kind"] == "player"]
+    if sorted(seq) != sorted(players):
+        issues.append("the running order does not cover every player exactly once")
+    if sorted(s["id"] for s in segments if s["kind"] == "manager") != sorted(managers):
+        issues.append("the running order does not cover every team leader exactly once")
+
+    report = {"spec": SPEC, "segments": results,
+              "counts": {k: sum(1 for s in segments if s["kind"] == k)
+                         for k in sorted({s["kind"] for s in segments})}}
 
     if "--combined" in sys.argv:
+        total = sum(s["seconds"] for s in segments)
         combined = ROOT / "output" / "combined" / "BuzzBlu_Full_Reveal.mp4"
-        probs, info = check_video(combined, expect_duration=len(players) * SPEC["duration"])
-        report["combined"] = {"file": combined.name, "ok": not probs, **info}
+        probs, info = check_video(combined, total)
+        report["combined"] = {"file": combined.name, "expected_seconds": total, "ok": not probs, **info}
         issues += probs
 
     report["problems"] = issues
@@ -112,11 +124,11 @@ def main():
     (ROOT / "reports" / "quality_report.json").write_text(json.dumps(report, indent=1))
 
     ok = sum(1 for r in results if r["ok"])
-    print(f"individual: {ok}/{len(results)} passed")
+    print(f"segments: {ok}/{len(results)} passed  {report['counts']}")
     if "combined" in report:
         c = report["combined"]
-        print(f"combined:   {'ok' if c['ok'] else 'FAILED'}  {c.get('duration')}s")
-    for problem in issues:
+        print(f"combined: {'ok' if c['ok'] else 'FAILED'}  {c.get('duration')}s of {c['expected_seconds']}s")
+    for problem in issues[:12]:
         print("  !", problem)
     return 0 if not issues else 1
 

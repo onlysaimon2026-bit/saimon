@@ -33,6 +33,36 @@ export const cardPose = (frame: number, fps: number): CardPose => {
   };
 };
 
+// A gold crown that draws itself in above a team leader's card.
+const Crown: React.FC<{ width: number; progress: number; color: string; glow: string }> = ({
+  width,
+  progress,
+  color,
+  glow,
+}) => (
+  <svg
+    width={width}
+    height={width * 0.62}
+    viewBox="0 0 100 62"
+    style={{ overflow: "visible", filter: `drop-shadow(0 0 ${width * 0.08}px ${glow})` }}
+  >
+    <path
+      d="M8 50 L4 14 L26 31 L50 6 L74 31 L96 14 L92 50 Z M8 50 H92"
+      fill={color}
+      fillOpacity={progress * 0.9}
+      stroke={color}
+      strokeWidth={4}
+      strokeLinejoin="round"
+      pathLength={1}
+      strokeDasharray={1}
+      strokeDashoffset={1 - progress}
+    />
+    {[26, 50, 74].map((cx, i) => (
+      <circle key={cx} cx={cx} cy={i === 1 ? 6 : 31} r={5} fill={color} opacity={Math.max(0, progress * 1.4 - 0.6)} />
+    ))}
+  </svg>
+);
+
 export const Card: React.FC<{ card: string; aspect: number; theme: Theme }> = ({ card, aspect, theme }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -41,13 +71,17 @@ export const Card: React.FC<{ card: string; aspect: number; theme: Theme }> = ({
   if (pose.opacity <= 0) return null;
 
   // Constant height, width from the source aspect, so no card is cropped or stretched.
-  const h = height * 0.94;
+  // Leader cards sit a little smaller and lower to leave headroom for the crown.
+  const h = height * (theme.crown ? 0.78 : 0.82);
   const w = h * aspect;
   // Light rakes across the metal as it lands, and once more on the hero beat.
   const sweep =
     interpolate(t, [3.25, 4.15], [-1.3, 1.5], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) +
-    interpolate(t, [5.0, 5.9], [0, 2.8], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+    interpolate(t, [5.0, 5.9], [0, 2.8], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) +
+    (theme.crown ? interpolate(t, [3.9, 4.8], [0, 1.6], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 0);
   const edge = Math.max(0.25, Math.min(1, Math.abs(Math.sin((pose.rotY * Math.PI) / 180)) * 2 + 0.3));
+
+  const crown = interpolate(t, [3.35, 4.1], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
   const face = (
     <div
@@ -58,8 +92,9 @@ export const Card: React.FC<{ card: string; aspect: number; theme: Theme }> = ({
         borderRadius: 18,
         overflow: "hidden",
         background: `linear-gradient(150deg, ${theme.metalDim}, #06090f 45%, ${theme.metalDim})`,
-        boxShadow: `0 0 0 3px ${theme.metal}, 0 0 0 7px rgba(4,7,13,0.9), 0 0 ${70}px ${theme.glow},
-                    0 46px 90px rgba(0,0,0,0.75)`,
+        boxShadow: `0 0 0 3px ${theme.metal}, 0 0 0 7px rgba(4,7,13,0.9),
+                    0 0 0 ${theme.crown ? 10 : 7}px ${theme.crown ? theme.accent : "rgba(4,7,13,0.9)"},
+                    0 0 70px ${theme.glow}, 0 46px 90px rgba(0,0,0,0.75)`,
       }}
     >
       <Img src={staticFile(card)} style={{ width: "100%", height: "100%", objectFit: "fill", display: "block" }} />
@@ -96,10 +131,16 @@ export const Card: React.FC<{ card: string; aspect: number; theme: Theme }> = ({
         top: "50%",
         transformStyle: "preserve-3d",
         transform: `translate(-50%, -50%) translate3d(${pose.x}px, ${pose.y}px, ${pose.z}px)
+                    translateY(${theme.crown ? h * 0.07 : 0}px)
                     rotateX(${pose.rotX}deg) rotateY(${pose.rotY}deg) scale(${pose.scale})`,
         opacity: pose.opacity,
       }}
     >
+      {theme.crown && (
+        <div style={{ position: "absolute", left: "50%", top: -h * 0.17, transform: "translateX(-50%)" }}>
+          <Crown width={w * 0.34} progress={crown} color={theme.accent} glow={theme.glow} />
+        </div>
+      )}
       {face}
       {/* Floor reflection, faded and blurred so it reads as polished ground. */}
       <div
