@@ -115,6 +115,80 @@ def crowd(d):
     return band_noise(d, 180, 2400) * swell
 
 
+def stomp(d, tone=52, punch=1.0):
+    """A deep stadium drum: the stamp of a crowd on a stand."""
+    t = seconds(d)
+    skin = np.sin(2 * np.pi * (tone + 70 * np.exp(-t * 26)) * t) * np.exp(-t * 9)
+    thud = band_noise(d, 60, 420) * np.exp(-t * 16) * 0.6
+    return (skin + thud) * punch
+
+
+def clap(d=0.4, spread=1.0):
+    """Crowd clap: a few noise bursts a few milliseconds apart, so it is a crowd."""
+    t = seconds(d)
+    out = np.zeros(len(t))
+    for offset in (0.0, 0.011, 0.023, 0.036):
+        k = int(offset * SR)
+        burst = band_noise(d, 900, 5200) * np.exp(-np.clip(t - offset, 0, None) * 38)
+        burst[:k] = 0
+        out += burst * (1.0 - offset * 8 * spread)
+    return out / (np.max(np.abs(out)) + 1e-9)
+
+
+def roar(d, peak):
+    """A crowd lifting into a moment and settling after it."""
+    t = seconds(d)
+    env = np.exp(-((t - peak) ** 2) / (2 * (d * 0.16) ** 2))
+    body = band_noise(d, 200, 2600) * (0.55 + 0.45 * np.sin(2 * np.pi * 0.7 * t))
+    return body * env
+
+
+def motif(voice, notes, step=0.33):
+    """A short heroic line, so the bed is composed rather than only sound effects."""
+    harmonics = {"leader": (1.0, 0.3, 0.16, 0.08),
+                 "icon": (1.0, 0.66, 0.44, 0.26, 0.14),
+                 "regular": (1.0, 0.38, 0.16, 0.07)}[voice]
+    total = step * len(notes) + 1.6
+    out = np.zeros(int(total * SR))
+    for i, m in enumerate(notes):
+        note = tone_stack(1.5 if i < len(notes) - 1 else 2.2, (m, m + 12), harmonics, 0.9, 0.06, 0.8)
+        place(out, i * step, note, 0.85 - i * 0.05)
+        place(out, i * step, bell(0.9, 440 * 2 ** ((m + 24 - 69) / 12), (1.0, 2.0, 3.01), rate=3.4), 0.12)
+    return out
+
+
+def comb(x, delay, gain):
+    """Feedback comb, stepped a delay-length at a time so it stays vectorised."""
+    d = int(delay * SR)
+    y = np.copy(x)
+    for i in range(d, len(y), d):
+        block = min(d, len(y) - i)
+        y[i : i + block] += gain * y[i - d : i - d + block]
+    return y
+
+
+def allpass(x, delay, gain=0.62):
+    d = int(delay * SR)
+    y = np.copy(x)
+    for i in range(d, len(y), d):
+        block = min(d, len(y) - i)
+        y[i : i + block] += gain * y[i - d : i - d + block]
+    return y * (1 - gain) - np.concatenate([np.zeros(d), x[:-d]]) * gain
+
+
+def reverb(x, size=1.0, damp=4200):
+    """Schroeder hall: four combs into two allpasses. This is what makes the mix
+    sound like a stadium rather than a pile of dry samples."""
+    tail = np.zeros(len(x) + int(1.4 * SR))
+    tail[: len(x)] = x
+    wet = np.zeros_like(tail)
+    for delay, gain in ((0.0297, 0.80), (0.0371, 0.78), (0.0411, 0.76), (0.0437, 0.74)):
+        wet += comb(tail, delay * size, gain)
+    wet = allpass(allpass(wet / 4, 0.005), 0.0017)
+    wet = one_pole(wet, damp)
+    return wet[: len(x)]
+
+
 def one_pole(x, cutoff):
     a = np.exp(-2 * np.pi * cutoff / SR)
     b = 1 - a
@@ -139,17 +213,67 @@ def logo_sting(voice):
 
 
 def card_swing(voice):
-    """The card arcing in: a band of air moving past, with a touch of doppler."""
-    d = 0.78
-    t = seconds(d)
-    body = sweep_noise(d, 380, 4200, curve=1.5)
-    env = np.exp(-((t - 0.62 * d) ** 2) / (2 * (0.19 * d) ** 2))
-    out = body * env
-    if voice == "leader":
-        out += bell(d, 3100, (1.0, 2.41, 4.2), rate=3.2) * 0.22 * env
-    elif voice == "icon":
-        out += np.sin(2 * np.pi * np.cumsum(170 + 520 * (t / d) ** 2) / SR) * env * 0.2
-    return out
+    """Mono core of the swing, kept for the chapter beds."""
+    return _swing_parts(voice)["mono"]
+
+
+def _swing_parts(voice):
+    """The card arcing in, built from the parts a real pass-by is made of:
+
+    a low rumble growing as it approaches, three bands of air at different rates so the
+    turbulence is not one flat hiss, a tonal doppler that rises on approach and drops as
+    it passes, the bright zing of the metal edge catching the light at the closest point,
+    and a short tail of rotation after it.
+    """
+    d = 1.35
+    n = int(d * SR)
+    t = np.arange(n) / SR
+    pass_at = 0.56 * d          # the moment it is closest to the listener
+
+    # Asymmetric envelope: a long approach, a quick departure.
+    approach = np.exp(-((t - pass_at) ** 2) / (2 * (0.22 * d) ** 2))
+    depart = np.exp(-np.clip(t - pass_at, 0, None) * 5.5)
+    env = np.clip(approach * 0.75 + depart * 0.45, 0, 1.2)
+
+    # Air: three bands sweeping at different speeds gives the whoosh its body.
+    air = (sweep_noise(d, 300, 2600, curve=1.4)[:n] * 0.9
+           + sweep_noise(d, 900, 6200, curve=2.0)[:n] * 0.55
+           + sweep_noise(d, 2400, 9000, curve=2.6)[:n] * 0.28)
+    air *= env
+
+    # Rumble underneath, only while it is coming toward us.
+    rumble = band_noise(d, 45, 260)[:n] * np.clip(approach * 1.3, 0, 1) * 0.5
+
+    # Doppler: pitch climbs on approach, drops away after the pass.
+    ratio = 1.0 + 0.42 * np.tanh((pass_at - t) * 4.5)
+    base = {"leader": 190, "icon": 240, "regular": 300}[voice]
+    doppler = np.sin(2 * np.pi * np.cumsum(base * ratio) / SR) * env * 0.35
+    doppler += np.sin(2 * np.pi * np.cumsum(base * 1.5 * ratio) / SR) * env * 0.12
+
+    # The edge of the card catching the light, right on the pass.
+    zing = np.zeros(n)
+    zing_src = bell(0.9, {"leader": 2950, "icon": 2450, "regular": 3200}[voice],
+                    (1.0, 2.41, 4.2, 6.6), bright=1.3, rate=4.2)
+    place(zing, pass_at - 0.02, zing_src, {"leader": 0.3, "icon": 0.22, "regular": 0.16}[voice])
+
+    # Rotation tail: the card still turning as it settles.
+    tail = np.zeros(n)
+    place(tail, pass_at + 0.06, sweep_noise(0.55, 3800, 700)[: int(0.55 * SR)]
+          * np.exp(-seconds(0.55) * 5.0), 0.3)
+    place(tail, pass_at + 0.42, bell(0.35, 5200, (1.0, 2.1), rate=9.0), 0.07)  # lock tick
+
+    mono = air * 0.7 + rumble + doppler + zing + tail
+    mono /= np.max(np.abs(mono)) + 1e-9
+
+    # Stereo: the card crosses from left to right as it passes.
+    pan = np.clip(0.5 + 0.5 * np.tanh((t - pass_at) * 5.0), 0, 1)
+    left = mono * np.cos(pan * np.pi / 2)
+    right = mono * np.sin(pan * np.pi / 2)
+    # A few samples of delay on the far side sells the movement.
+    shift = int(0.0007 * SR)
+    stereo = np.stack([np.concatenate([np.zeros(shift), left])[:n],
+                       np.concatenate([right, np.zeros(shift)])[:n]], axis=1)
+    return {"mono": mono, "stereo": stereo, "pass_at": pass_at}
 
 
 def card_arrival(voice):
@@ -209,7 +333,15 @@ def transition(bright=1.0):
 
 
 # ------------------------------------------------------------------------ the beds
-def finish(bus, fade=0.45):
+def place_stereo(buf, start, sig, gain=1.0):
+    i = int(start * SR)
+    if i >= len(buf):
+        return
+    sig = sig[: len(buf) - i]
+    buf[i : i + len(sig)] += sig * gain
+
+
+def finish(bus, fade=0.45, stereo_layers=()):
     """Glue the sub, fade the tail to silence, soft clip and normalise."""
     low = one_pole(bus, 150) * 0.5
     bus = bus * 0.78 + low
@@ -217,14 +349,18 @@ def finish(bus, fade=0.45):
     bus[-k:] *= np.linspace(1, 0, k) ** 1.6
     bus[: int(0.012 * SR)] *= np.linspace(0, 1, int(0.012 * SR))
     bus = np.tanh(bus * 0.8) / np.tanh(0.8)
-    bus /= np.max(np.abs(bus)) + 1e-9
-    bus *= 0.89
-    return np.stack([bus, np.roll(bus, int(0.009 * SR))], axis=1)
+    out = np.stack([bus, np.roll(bus, int(0.009 * SR))], axis=1)
+    for start, sig, gain in stereo_layers:
+        place_stereo(out, start, sig, gain)
+    out = np.tanh(out * 0.82) / np.tanh(0.82)
+    out /= np.max(np.abs(out)) + 1e-9
+    return out * 0.89
 
 
 def reveal_bed(voice):
     n = int(10.0 * SR)
-    bus = np.zeros(n)
+    bus = np.zeros(n)        # dry
+    send = np.zeros(n)       # fed to the hall
     root = {"leader": 31, "icon": 33, "regular": 36}[voice]
     # Choir for leaders, brass for icons, a clean synth bed for regular players.
     harmonics = {"leader": (1.0, 0.34, 0.2, 0.11, 0.06),
@@ -233,33 +369,69 @@ def reveal_bed(voice):
     chord_a = [root, root + 7, root + 12, root + 19]
     chord_b = ([root + 5, root + 12, root + 17, root + 24] if voice != "regular"
                else [root + 3, root + 10, root + 15, root + 22])
+    # A rising line over the chord, answered after the name appears.
+    lead = {"leader": (root + 19, root + 24, root + 26, root + 31),
+            "icon": (root + 12, root + 19, root + 24, root + 23),
+            "regular": (root + 12, root + 15, root + 19, root + 22)}[voice]
+
+    def put(start, sig, dry=1.0, wet=0.0):
+        place(bus, start, sig, dry)
+        if wet:
+            place(send, start, sig, wet)
 
     # 0.0-1.5 brand intro
-    place(bus, 0.0, tone_stack(3.3, chord_a, harmonics, 0.75, 0.6, 0.9), 0.4)
-    place(bus, 0.30, logo_sting(voice), 0.5)
+    put(0.0, tone_stack(3.3, chord_a, harmonics, 0.75, 0.6, 0.9), 0.38, 0.22)
+    put(0.30, logo_sting(voice), 0.5, 0.42)
+    put(0.0, crowd(10.0), 0.018, 0.0)
 
-    # 1.5-3.0 stadium lights and build-up
-    for i, t0 in enumerate((1.50, 1.62, 1.74)):
-        place(bus, t0, impact(0.5, 320 + i * 90, 0.45), 0.09)
-        place(bus, t0, bell(0.55, 2600 + i * 420, (1.0, 2.4, 3.8), rate=4.0), 0.06)
-    place(bus, 1.55, crowd(8.2), 0.034 if voice == "leader" else 0.028)
-    place(bus, 1.72, sweep_noise(1.28, 200, 3000, curve=1.8) * np.linspace(0, 1, int(1.28 * SR)) ** 2, 0.15)
+    # 1.5-3.0 the stand starts stamping: four on the floor with claps between.
+    for i in range(4):
+        t0 = 1.50 + i * 0.30
+        put(t0, stomp(0.75, 50, 0.55 + i * 0.09), 0.30, 0.16)
+        if i:
+            put(t0 - 0.15, clap() * (0.3 + i * 0.07), 0.12, 0.2)
+        put(t0, bell(0.5, 2600 + i * 300, (1.0, 2.4, 3.8), rate=4.5), 0.035, 0.1)
+    put(1.55, roar(3.0, 1.6), 0.09, 0.14)
+    put(1.72, sweep_noise(1.28, 200, 3000, curve=1.8) * np.linspace(0, 1, int(1.28 * SR)) ** 2, 0.15, 0.18)
 
-    # 2.72 swing, 3.00 arrival
-    place(bus, 2.72, card_swing(voice), 0.34)
-    place(bus, 3.00, card_arrival(voice), 0.82)
-    place(bus, 4.30, bell(1.1, 2480, (1.0, 2.4, 4.1), rate=3.4), 0.08)  # light crossing the metal
+    # 2.72 swing, 3.00 arrival: the biggest moment in the clip.
+    swing = _swing_parts(voice)
+    swing_at = 3.00 - swing["pass_at"]          # so the pass lands exactly on the impact
+    put(swing_at, swing["mono"], 0.0, 0.26)     # reverb send only; the dry part is stereo
+    put(3.00, card_arrival(voice), 0.82, 0.45)
+    put(3.00, roar(3.4, 0.5), 0.14, 0.2)
+    put(3.00, stomp(1.4, 44, 1.0), 0.3, 0.2)
+    put(3.10, motif(voice, lead[:2], 0.42), 0.3, 0.3)
+    put(4.30, bell(1.1, 2480, (1.0, 2.4, 4.1), rate=3.4), 0.07, 0.16)
+    # Half-time pulse keeps the energy up under the hero section.
+    for i in range(6):
+        put(3.60 + i * 0.60, stomp(0.6, 48, 0.4), 0.14, 0.08)
+        put(3.90 + i * 0.60, clap() * 0.3, 0.05, 0.09)
 
     # 5.00 details
-    place(bus, 5.00, details_reveal(voice), 0.62)
-    place(bus, 6.30, sweep_noise(0.45, 900, 4200) * np.exp(-seconds(0.45) * 6), 0.07)
-    place(bus, 7.30, sweep_noise(0.7, 320, 2200, curve=1.6) * np.linspace(0, 1, int(0.7 * SR)) ** 2, 0.09)
+    put(5.00, details_reveal(voice), 0.6, 0.4)
+    put(5.20, motif(voice, lead, 0.36), 0.26, 0.26)
+    put(6.30, sweep_noise(0.45, 900, 4200) * np.exp(-seconds(0.45) * 6), 0.06, 0.1)
+    put(7.30, sweep_noise(0.7, 320, 2200, curve=1.6) * np.linspace(0, 1, int(0.7 * SR)) ** 2, 0.09, 0.12)
+    put(7.55, roar(2.2, 0.8), 0.08, 0.12)
 
     # 8.00 signature
-    place(bus, 7.84, card_swing(voice) * 0.6, 0.2)
-    place(bus, 8.00, signature_hit(voice), 0.8)
-    place(bus, 8.00, tone_stack(1.9, chord_b, harmonics, 0.7, 0.2, 0.7), 0.34)
-    return finish(bus)
+    put(7.84, card_swing(voice) * 0.6, 0.0, 0.18)
+    put(8.00, signature_hit(voice), 0.78, 0.5)
+    put(8.00, tone_stack(1.9, chord_b, harmonics, 0.7, 0.2, 0.7), 0.32, 0.3)
+    put(8.00, stomp(1.6, 42, 1.0), 0.3, 0.22)
+    put(8.00, roar(2.0, 0.45), 0.1, 0.16)
+
+    # Duck everything else for the half second before the impact so the swing reads.
+    dip = np.ones(n)
+    a, b = int(2.46 * SR), int(2.99 * SR)
+    dip[a:b] = np.minimum(1.0, 0.42 + 0.58 * np.abs(np.linspace(-1, 1, b - a)) ** 2)
+    bus *= dip
+    send *= dip
+
+    stereo = [(swing_at, swing["stereo"], 0.85),
+              (7.84, _swing_parts(voice)["stereo"], 0.3)]
+    return finish(bus + reverb(send, size=1.15) * 0.5, stereo_layers=stereo)
 
 
 def segment_bed(kind):
@@ -280,7 +452,12 @@ def segment_bed(kind):
     else:
         place(bus, 0.62, details_reveal("regular") * 0.55, 0.34)
     place(bus, 0.0, crowd(length) * 0.5, 0.022)
-    return finish(bus, fade=0.5)
+    place(bus, 0.1, roar(min(2.4, length), 0.7), 0.07)
+    place(bus, 0.55, stomp(0.9, 46, 0.8), 0.22)
+    place(bus, 0.85, clap() * 0.5, 0.1)
+    send = np.zeros(len(bus))
+    place(send, 0.0, bus.copy(), 0.4)
+    return finish(bus + reverb(send, size=1.0) * 0.45, fade=0.5)
 
 
 def main():
