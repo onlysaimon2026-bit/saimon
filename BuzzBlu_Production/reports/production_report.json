@@ -7,31 +7,37 @@
   "icons": 4,
   "regulars": 36,
   "team_leaders": 4,
+  "card_overrides": [
+   "14_rizvi_hasan"
+  ],
   "extraction_problems": []
  },
+ "film": {
+  "segments": 67,
+  "seconds": 589.27,
+  "runtime": "9m 49.3s",
+  "order": "leaders, icon round, then the positions from the strikers back to the goalkeepers"
+ },
  "deliverables": {
-  "individual_clips": 65,
-  "combined": {
-   "master": {
-    "file": "output/combined/BuzzBlu_Full_Reveal.mp4",
-    "bytes": 616142268,
-    "seconds": 542.0
-   },
-   "share": {
-    "file": "output/combined/BuzzBlu_Full_Reveal_share.mp4",
-    "bytes": 217770145
-   }
-  }
+  "master": {
+   "file": "output/combined/BuzzBlu_Full_Reveal.mp4",
+   "bytes": 661473995
+  },
+  "single_file_copy": {
+   "file": "output/combined/BuzzBlu_Master_1080p.mp4",
+   "bytes": 420768548
+  },
+  "individual_clips": 67
  },
  "spec": {
   "resolution": "1920x1080",
   "fps": 30,
-  "video": "h264 crf 17",
-  "audio": "aac 256k, loudness -14 LUFS, true peak -1.5 dBFS"
+  "video": "h264",
+  "audio": "aac, -14.5 LUFS, true peak -1.5 dBFS"
  },
  "quality": {
-  "segments_passed": 65,
-  "segments_total": 65,
+  "segments_passed": 67,
+  "segments_total": 67,
   "combined_ok": true,
   "problems": []
  },
@@ -39,6 +45,15 @@
   {
    "index": 1,
    "at": 0.0,
+   "seconds": 40.2667,
+   "kind": "intro",
+   "style": "icon",
+   "id": "intro",
+   "name": ""
+  },
+  {
+   "index": 2,
+   "at": 40.27,
    "seconds": 4.0,
    "kind": "divider",
    "style": "leader",
@@ -46,8 +61,8 @@
    "name": "MEET THE FOUR LEADERS"
   },
   {
-   "index": 2,
-   "at": 4.0,
+   "index": 3,
+   "at": 44.27,
    "seconds": 10.0,
    "kind": "manager",
    "style": "leader",
@@ -55,8 +70,8 @@
    "name": "SAYEM HAWLADER"
   },
   {
-   "index": 3,
-   "at": 14.0,
+   "index": 4,
+   "at": 54.27,
    "seconds": 10.0,
    "kind": "manager",
    "style": "leader",
@@ -64,8 +79,8 @@
    "name": "TASHFEE SAHIL"
   },
   {
-   "index": 4,
-   "at": 24.0,
+   "index": 5,
+   "at": 64.27,
    "seconds": 10.0,
    "kind": "manager",
    "style": "leader",
@@ -73,8 +88,8 @@
    "name": "MIHADUL RAHMAN RAKIB"
   },
   {
-   "index": 5,
-   "at": 34.0,
+   "index": 6,
+   "at": 74.27,
    "seconds": 10.0,
    "kind": "manager",
    "style": "leader",
@@ -82,8 +97,8 @@
    "name": "MOSTAKIM KHAN"
   },
   {
-   "index": 6,
-   "at": 44.0,
+   "index": 7,
+   "at": 84.27,
    "seconds": 4.0,
    "kind": "divider",
    "style": "icon",
@@ -91,8 +106,8 @@
    "name": "ICON PLAYER AUCTION"
   },
   {
-   "index": 7,
-   "at": 48.0,
+   "index": 8,
+   "at": 88.27,
    "seconds": 6.0,
    "kind": "lineup",
    "style": "icon",
@@ -100,8 +115,8 @@
    "name": "THE FOUR ICONS"
   },
   {
-   "index": 8,
-   "at": 54.0,
+   "index": 9,
+   "at": 94.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "icon",
@@ -109,8 +124,8 @@
    "name": "MAHADI HASAN"
   },
   {
-   "index": 9,
-   "at": 64.0,
+   "index": 10,
+   "at": 104.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "icon",
@@ -118,8 +133,8 @@
    "name": "SAIDUL"
   },
   {
-   "index": 10,
-   "at": 74.0,
+   "index": 11,
+   "at": 114.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "icon",
@@ -127,8 +142,8 @@
    "name": "SHAHIN ALOM"
   },
   {
-   "index": 11,
-   "at": 84.0,
+   "index": 12,
+   "at": 124.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "icon",
@@ -136,8 +151,8 @@
    "name": "MD RANA"
   },
   {
-   "index": 12,
-   "at": 94.0,
+   "index": 13,
+   "at": 134.27,
    "seconds": 4.0,
    "kind": "divider",
    "style": "regular",
@@ -145,440 +160,8 @@
    "name": "THE REGULAR AUCTION BEGINS"
   },
   {
-   "index": 13,
-   "at": 98.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_goalkeeper",
-   "name": "GOALKEEPER"
-  },
-  {
    "index": 14,
-   "at": 102.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "05_rakib",
-   "name": "RAKIB"
-  },
-  {
-   "index": 15,
-   "at": 112.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "06_rabbi_lolo_vai",
-   "name": "RABBI (LOLO VAI)"
-  },
-  {
-   "index": 16,
-   "at": 122.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "07_robayat",
-   "name": "ROBAYAT"
-  },
-  {
-   "index": 17,
-   "at": 132.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "08_fahim_shikder",
-   "name": "FAHIM SHIKDER"
-  },
-  {
-   "index": 18,
-   "at": 142.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "09_mostak",
-   "name": "MOSTAK"
-  },
-  {
-   "index": 19,
-   "at": 152.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_goalkeeper",
-   "name": "GOALKEEPER"
-  },
-  {
-   "index": 20,
-   "at": 158.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_defender",
-   "name": "DEFENDER"
-  },
-  {
-   "index": 21,
-   "at": 162.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "10_md_amdadul_haque",
-   "name": "MD AMDADUL HAQUE"
-  },
-  {
-   "index": 22,
-   "at": 172.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "11_ahnaf_tazwar",
-   "name": "AHNAF TAZWAR"
-  },
-  {
-   "index": 23,
-   "at": 182.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "12_muien",
-   "name": "MUIEN"
-  },
-  {
-   "index": 24,
-   "at": 192.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_defender",
-   "name": "DEFENDER"
-  },
-  {
-   "index": 25,
-   "at": 198.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_midfielder",
-   "name": "MIDFIELDER"
-  },
-  {
-   "index": 26,
-   "at": 202.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_defensive_midfielder",
-   "name": "DEFENSIVE MIDFIELDER"
-  },
-  {
-   "index": 27,
-   "at": 206.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "13_mahtab",
-   "name": "MAHTAB"
-  },
-  {
-   "index": 28,
-   "at": 216.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "14_rizvi_hasan",
-   "name": "RIZVI HASAN"
-  },
-  {
-   "index": 29,
-   "at": 226.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "15_apurbo",
-   "name": "APURBO"
-  },
-  {
-   "index": 30,
-   "at": 236.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "16_gm_fabian_ahamed",
-   "name": "GM FABIAN AHAMED"
-  },
-  {
-   "index": 31,
-   "at": 246.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "17_shajibul_islam",
-   "name": "SHAJIBUL ISLAM"
-  },
-  {
-   "index": 32,
-   "at": 256.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "18_sajjad_afif",
-   "name": "SAJJAD AFIF"
-  },
-  {
-   "index": 33,
-   "at": 266.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_defensive_midfielder",
-   "name": "DEFENSIVE MIDFIELDER"
-  },
-  {
-   "index": 34,
-   "at": 272.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_centre_midfielder",
-   "name": "CENTRE MIDFIELDER"
-  },
-  {
-   "index": 35,
-   "at": 276.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "19_rusad",
-   "name": "RUSAD"
-  },
-  {
-   "index": 36,
-   "at": 286.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "20_irfan",
-   "name": "IRFAN"
-  },
-  {
-   "index": 37,
-   "at": 296.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "21_tahsan",
-   "name": "TAHSAN"
-  },
-  {
-   "index": 38,
-   "at": 306.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "22_t_h_siyam",
-   "name": "T.H SIYAM"
-  },
-  {
-   "index": 39,
-   "at": 316.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "23_monirul_islam_monir",
-   "name": "MONIRUL ISLAM MONIR"
-  },
-  {
-   "index": 40,
-   "at": 326.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "24_toufiq",
-   "name": "TOUFIQ"
-  },
-  {
-   "index": 41,
-   "at": 336.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "25_rayhan_rafi",
-   "name": "RAYHAN RAFI"
-  },
-  {
-   "index": 42,
-   "at": 346.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "26_riazul_islam",
-   "name": "RIAZUL ISLAM"
-  },
-  {
-   "index": 43,
-   "at": 356.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "27_md_saddam_hossain",
-   "name": "MD SADDAM HOSSAIN"
-  },
-  {
-   "index": 44,
-   "at": 366.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_centre_midfielder",
-   "name": "CENTRE MIDFIELDER"
-  },
-  {
-   "index": 45,
-   "at": 372.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_attacking_midfielder",
-   "name": "ATTACKING MIDFIELDER"
-  },
-  {
-   "index": 46,
-   "at": 376.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "28_sohel_rana",
-   "name": "SOHEL RANA"
-  },
-  {
-   "index": 47,
-   "at": 386.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "29_ahsan_sharif",
-   "name": "AHSAN SHARIF"
-  },
-  {
-   "index": 48,
-   "at": 396.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "30_al_fardin_bhuiyan",
-   "name": "AL-FARDIN BHUIYAN"
-  },
-  {
-   "index": 49,
-   "at": 406.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "31_rafiu",
-   "name": "RAFIU"
-  },
-  {
-   "index": 50,
-   "at": 416.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_attacking_midfielder",
-   "name": "ATTACKING MIDFIELDER"
-  },
-  {
-   "index": 51,
-   "at": 422.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_left_wing",
-   "name": "LEFT WING"
-  },
-  {
-   "index": 52,
-   "at": 426.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "32_mashuk",
-   "name": "MASHUK"
-  },
-  {
-   "index": 53,
-   "at": 436.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "33_saimon",
-   "name": "SAIMON"
-  },
-  {
-   "index": 54,
-   "at": 446.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "34_joy",
-   "name": "JOY"
-  },
-  {
-   "index": 55,
-   "at": 456.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "35_abu_bakar",
-   "name": "ABU BAKAR"
-  },
-  {
-   "index": 56,
-   "at": 466.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "36_yeasin_salman_jidan",
-   "name": "YEASIN SALMAN JIDAN"
-  },
-  {
-   "index": 57,
-   "at": 476.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_left_wing",
-   "name": "LEFT WING"
-  },
-  {
-   "index": 58,
-   "at": 482.0,
-   "seconds": 4.0,
-   "kind": "category",
-   "style": "regular",
-   "id": "cat_right_wing",
-   "name": "RIGHT WING"
-  },
-  {
-   "index": 59,
-   "at": 486.0,
-   "seconds": 10.0,
-   "kind": "player",
-   "style": "regular",
-   "id": "37_mohammad_raihan",
-   "name": "MOHAMMAD RAIHAN"
-  },
-  {
-   "index": 60,
-   "at": 496.0,
-   "seconds": 6.0,
-   "kind": "lineup",
-   "style": "regular",
-   "id": "line_right_wing",
-   "name": "RIGHT WING"
-  },
-  {
-   "index": 61,
-   "at": 502.0,
+   "at": 138.27,
    "seconds": 4.0,
    "kind": "category",
    "style": "regular",
@@ -586,8 +169,8 @@
    "name": "STRIKER"
   },
   {
-   "index": 62,
-   "at": 506.0,
+   "index": 15,
+   "at": 142.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "regular",
@@ -595,8 +178,8 @@
    "name": "RAHAT"
   },
   {
-   "index": 63,
-   "at": 516.0,
+   "index": 16,
+   "at": 152.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "regular",
@@ -604,8 +187,8 @@
    "name": "SIAM"
   },
   {
-   "index": 64,
-   "at": 526.0,
+   "index": 17,
+   "at": 162.27,
    "seconds": 10.0,
    "kind": "player",
    "style": "regular",
@@ -613,13 +196,454 @@
    "name": "ZAHID"
   },
   {
-   "index": 65,
-   "at": 536.0,
+   "index": 18,
+   "at": 172.27,
    "seconds": 6.0,
    "kind": "lineup",
    "style": "regular",
    "id": "line_striker",
    "name": "STRIKER"
+  },
+  {
+   "index": 19,
+   "at": 178.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_right_wing",
+   "name": "RIGHT WING"
+  },
+  {
+   "index": 20,
+   "at": 182.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "37_mohammad_raihan",
+   "name": "MOHAMMAD RAIHAN"
+  },
+  {
+   "index": 21,
+   "at": 192.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_right_wing",
+   "name": "RIGHT WING"
+  },
+  {
+   "index": 22,
+   "at": 198.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_left_wing",
+   "name": "LEFT WING"
+  },
+  {
+   "index": 23,
+   "at": 202.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "32_mashuk",
+   "name": "MASHUK"
+  },
+  {
+   "index": 24,
+   "at": 212.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "33_saimon",
+   "name": "SAIMON"
+  },
+  {
+   "index": 25,
+   "at": 222.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "34_joy",
+   "name": "JOY"
+  },
+  {
+   "index": 26,
+   "at": 232.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "35_abu_bakar",
+   "name": "ABU BAKAR"
+  },
+  {
+   "index": 27,
+   "at": 242.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "36_yeasin_salman_jidan",
+   "name": "YEASIN SALMAN JIDAN"
+  },
+  {
+   "index": 28,
+   "at": 252.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_left_wing",
+   "name": "LEFT WING"
+  },
+  {
+   "index": 29,
+   "at": 258.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_midfielder",
+   "name": "MIDFIELDER"
+  },
+  {
+   "index": 30,
+   "at": 262.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_attacking_midfielder",
+   "name": "ATTACKING MIDFIELDER"
+  },
+  {
+   "index": 31,
+   "at": 266.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "28_sohel_rana",
+   "name": "SOHEL RANA"
+  },
+  {
+   "index": 32,
+   "at": 276.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "29_ahsan_sharif",
+   "name": "AHSAN SHARIF"
+  },
+  {
+   "index": 33,
+   "at": 286.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "30_al_fardin_bhuiyan",
+   "name": "AL-FARDIN BHUIYAN"
+  },
+  {
+   "index": 34,
+   "at": 296.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "31_rafiu",
+   "name": "RAFIU"
+  },
+  {
+   "index": 35,
+   "at": 306.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_attacking_midfielder",
+   "name": "ATTACKING MIDFIELDER"
+  },
+  {
+   "index": 36,
+   "at": 312.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_centre_midfielder",
+   "name": "CENTRE MIDFIELDER"
+  },
+  {
+   "index": 37,
+   "at": 316.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "19_rusad",
+   "name": "RUSAD"
+  },
+  {
+   "index": 38,
+   "at": 326.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "20_irfan",
+   "name": "IRFAN"
+  },
+  {
+   "index": 39,
+   "at": 336.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "21_tahsan",
+   "name": "TAHSAN"
+  },
+  {
+   "index": 40,
+   "at": 346.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "22_t_h_siyam",
+   "name": "T.H SIYAM"
+  },
+  {
+   "index": 41,
+   "at": 356.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "23_monirul_islam_monir",
+   "name": "MONIRUL ISLAM MONIR"
+  },
+  {
+   "index": 42,
+   "at": 366.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "24_toufiq",
+   "name": "TOUFIQ"
+  },
+  {
+   "index": 43,
+   "at": 376.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "25_rayhan_rafi",
+   "name": "RAYHAN RAFI"
+  },
+  {
+   "index": 44,
+   "at": 386.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "26_riazul_islam",
+   "name": "RIAZUL ISLAM"
+  },
+  {
+   "index": 45,
+   "at": 396.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "27_md_saddam_hossain",
+   "name": "MD SADDAM HOSSAIN"
+  },
+  {
+   "index": 46,
+   "at": 406.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_centre_midfielder",
+   "name": "CENTRE MIDFIELDER"
+  },
+  {
+   "index": 47,
+   "at": 412.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_defensive_midfielder",
+   "name": "DEFENSIVE MIDFIELDER"
+  },
+  {
+   "index": 48,
+   "at": 416.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "13_mahtab",
+   "name": "MAHTAB"
+  },
+  {
+   "index": 49,
+   "at": 426.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "14_rizvi_hasan",
+   "name": "RIZVI HASAN"
+  },
+  {
+   "index": 50,
+   "at": 436.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "15_apurbo",
+   "name": "APURBO"
+  },
+  {
+   "index": 51,
+   "at": 446.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "16_gm_fabian_ahamed",
+   "name": "GM FABIAN AHAMED"
+  },
+  {
+   "index": 52,
+   "at": 456.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "17_shajibul_islam",
+   "name": "SHAJIBUL ISLAM"
+  },
+  {
+   "index": 53,
+   "at": 466.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "18_sajjad_afif",
+   "name": "SAJJAD AFIF"
+  },
+  {
+   "index": 54,
+   "at": 476.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_defensive_midfielder",
+   "name": "DEFENSIVE MIDFIELDER"
+  },
+  {
+   "index": 55,
+   "at": 482.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_defender",
+   "name": "DEFENDER"
+  },
+  {
+   "index": 56,
+   "at": 486.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "10_md_amdadul_haque",
+   "name": "MD AMDADUL HAQUE"
+  },
+  {
+   "index": 57,
+   "at": 496.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "11_ahnaf_tazwar",
+   "name": "AHNAF TAZWAR"
+  },
+  {
+   "index": 58,
+   "at": 506.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "12_muien",
+   "name": "MUIEN"
+  },
+  {
+   "index": 59,
+   "at": 516.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_defender",
+   "name": "DEFENDER"
+  },
+  {
+   "index": 60,
+   "at": 522.27,
+   "seconds": 4.0,
+   "kind": "category",
+   "style": "regular",
+   "id": "cat_goalkeeper",
+   "name": "GOALKEEPER"
+  },
+  {
+   "index": 61,
+   "at": 526.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "05_rakib",
+   "name": "RAKIB"
+  },
+  {
+   "index": 62,
+   "at": 536.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "06_rabbi_lolo_vai",
+   "name": "RABBI (LOLO VAI)"
+  },
+  {
+   "index": 63,
+   "at": 546.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "07_robayat",
+   "name": "ROBAYAT"
+  },
+  {
+   "index": 64,
+   "at": 556.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "08_fahim_shikder",
+   "name": "FAHIM SHIKDER"
+  },
+  {
+   "index": 65,
+   "at": 566.27,
+   "seconds": 10.0,
+   "kind": "player",
+   "style": "regular",
+   "id": "09_mostak",
+   "name": "MOSTAK"
+  },
+  {
+   "index": 66,
+   "at": 576.27,
+   "seconds": 6.0,
+   "kind": "lineup",
+   "style": "regular",
+   "id": "line_goalkeeper",
+   "name": "GOALKEEPER"
+  },
+  {
+   "index": 67,
+   "at": 582.27,
+   "seconds": 7.0,
+   "kind": "divider",
+   "style": "leader",
+   "id": "div_closing",
+   "name": "FIRST ROUND COMPLETE."
   }
  ]
 }
