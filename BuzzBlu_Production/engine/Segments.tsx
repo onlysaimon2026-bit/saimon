@@ -1,5 +1,6 @@
 import { AbsoluteFill, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Football } from "./components/Football";
+import { LogoMark } from "./components/LogoMark";
 import { Stage } from "./components/Stage";
 import { DISPLAY, UI } from "./fonts";
 import { GREEN, Style, THEMES } from "./theme";
@@ -35,8 +36,8 @@ export const Divider: React.FC<DividerProps> = ({ title, subtitle, style }) => {
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
       <Stage theme={theme} cameraZ={interpolate(t, [0, 4], [-120, 40])} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column", opacity: enter }}>
-        <div style={{ marginBottom: width * 0.016, filter: `drop-shadow(0 0 22px ${theme.glow})`, opacity: enter }}>
-          <Football size={width * 0.05} spin={frame * 7} theme={theme} />
+        <div style={{ marginBottom: width * 0.018, opacity: enter }}>
+          <LogoMark theme={theme} frame={frame} scale={1.25} />
         </div>
         {title.map((row, i) => {
           const s = spring({ frame: frame - 6 - i * 5, fps, config: { damping: 15, stiffness: 140 } });
@@ -106,11 +107,8 @@ export const CategoryCard: React.FC<CategoryProps> = ({ title, count, style }) =
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
       <Stage theme={theme} cameraZ={interpolate(t, [0, 4], [-80, 50])} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column", opacity: enter }}>
-        <div style={{ display: "flex", alignItems: "center", gap: width * 0.014, marginBottom: width * 0.012 }}>
-          <Football size={width * 0.036} spin={frame * 9} theme={theme} />
-          <span style={{ fontFamily: UI, fontWeight: 700, fontSize: width * 0.016, letterSpacing: width * 0.008, color: theme.metal }}>
-            POSITION CATEGORY
-          </span>
+        <div style={{ marginBottom: width * 0.016 }}>
+          <LogoMark theme={theme} frame={frame} />
         </div>
         <div style={{ display: "flex" }}>
           {letters.map((ch, i) => {
@@ -205,8 +203,8 @@ export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, 
             marginBottom: height * (rows.length > 1 ? 0.022 : 0.035),
           }}
         >
-          <Football size={width * 0.034} spin={frame * 9} theme={theme} />
-          <span style={{ fontFamily: DISPLAY, fontSize: width * 0.05, color: "#FFFFFF", textShadow: `0 0 50px ${theme.glow}` }}>
+          <LogoMark theme={theme} frame={frame} />
+          <span style={{ fontFamily: DISPLAY, fontSize: width * 0.05, color: theme.metal, textShadow: `0 0 50px ${theme.glow}` }}>
             {title}
           </span>
         </div>
