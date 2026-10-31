@@ -132,8 +132,16 @@ def category_announcements(voice, out_dir):
 def main():
     from piper import PiperVoice
 
+
+
     model = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "assets" / "voice" / "announcer.onnx")
     voice = PiperVoice.load(str(model), config_path=str(model) + ".json")
+    # The model jitters each phoneme's length, so two runs of the same words come out
+    # slightly different lengths and the picture is cut to those lengths. Holding the
+    # phoneme widths steady cuts that drift from a fifth of a second to a few
+    # milliseconds, and reads as a steadier announcer, which suits this. It is not
+    # bit-exact, so the running order is always rebuilt after the voice (see CLAUDE.md).
+    voice.config.noise_w_scale = 0.0
 
     takes = []
     for display, spoken, scale, gap in LINES:

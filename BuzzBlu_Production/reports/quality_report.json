@@ -11,10 +11,10 @@
    "id": "intro",
    "name": "",
    "style": "icon",
-   "expected_seconds": 40.8667,
-   "ok": false,
-   "duration": 40.8,
-   "bytes": 40401665,
+   "expected_seconds": 40.7333,
+   "ok": true,
+   "duration": 40.733,
+   "bytes": 40776438,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -22,9 +22,9 @@
    "acodec": "aac",
    "luma": [
     10.6,
-    30.2,
+    31.0,
     19.9,
-    13.4,
+    13.5,
     20.8
    ]
   },
@@ -1501,10 +1501,10 @@
  },
  "combined": {
   "file": "BuzzBlu_Full_Reveal.mp4",
-  "expected_seconds": 582.8667,
+  "expected_seconds": 582.7333,
   "ok": true,
-  "duration": 582.854,
-  "bytes": 656626888,
+  "duration": 582.773,
+  "bytes": 657002624,
   "width": 1920,
   "height": 1080,
   "fps": 30.0,
@@ -1512,14 +1512,12 @@
   "acodec": "aac",
   "luma": [
    10.6,
-   30.2,
+   31.0,
    19.9,
-   13.4,
+   13.5,
    20.8
   ]
  },
- "problems": [
-  "intro.mp4: 40.800s not 40.8667s"
- ],
- "passed": false
+ "problems": [],
+ "passed": true
 }

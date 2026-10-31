@@ -1,82 +1,82 @@
 {
- "total_seconds": 582.7333,
+ "total_seconds": 589.2667,
  "segments": [
   {
    "index": 1,
    "kind": "intro",
-   "seconds": 40.7333,
+   "seconds": 40.2667,
    "id": "intro",
    "style": "icon",
    "lines": [
     {
      "text": "THE STAGE IS SET.",
      "at": 1.4,
-     "seconds": 1.802
+     "seconds": 1.791
     },
     {
      "text": "THE LIGHTS ARE ON.",
-     "at": 3.652,
-     "seconds": 1.591
+     "at": 3.641,
+     "seconds": 1.617
     },
     {
      "text": "40 PLAYERS. COUNTLESS AMBITIONS.",
-     "at": 5.842,
-     "seconds": 2.943
+     "at": 5.858,
+     "seconds": 2.993
     },
     {
      "text": "HELLO, LEADERS!",
-     "at": 9.586,
-     "seconds": 1.438
+     "at": 9.651,
+     "seconds": 1.345
     },
     {
      "text": "WELCOME TO THE BUZZBLU AUCTION.",
-     "at": 11.423,
-     "seconds": 2.399
+     "at": 11.396,
+     "seconds": 2.357
     },
     {
      "text": "THINK SMART. STRATEGIZE.",
-     "at": 14.573,
-     "seconds": 2.353
+     "at": 14.504,
+     "seconds": 2.206
     },
     {
      "text": "MAKE YOUR MOVES.",
-     "at": 17.276,
-     "seconds": 1.405
+     "at": 17.06,
+     "seconds": 1.407
     },
     {
      "text": "BUILD YOUR TEAM.",
-     "at": 19.031,
-     "seconds": 1.315
+     "at": 18.817,
+     "seconds": 1.329
     },
     {
      "text": "THIS IS NOT JUST A GAME.",
-     "at": 21.196,
-     "seconds": 2.267
+     "at": 20.996,
+     "seconds": 2.2
     },
     {
      "text": "THIS IS YOUR MOMENT.",
-     "at": 24.063,
+     "at": 23.796,
      "seconds": 1.855
     },
     {
      "text": "SUPPORTERS, THE CHOICE IS YOURS.",
-     "at": 26.868,
-     "seconds": 2.65
+     "at": 26.601,
+     "seconds": 2.556
     },
     {
      "text": "CHOOSE YOUR TEAM.",
-     "at": 29.918,
-     "seconds": 1.377
+     "at": 29.557,
+     "seconds": 1.326
     },
     {
      "text": "THIS IS BUZZBLU 2026.",
-     "at": 32.195,
-     "seconds": 3.156
+     "at": 31.783,
+     "seconds": 3.101
     },
     {
      "text": "LET THE BATTLE BEGIN.",
-     "at": 36.351,
-     "seconds": 1.799
+     "at": 35.884,
+     "seconds": 1.787
     }
    ],
    "cards": [
@@ -1302,6 +1302,20 @@
     "FAHIM SHIKDER",
     "MOSTAK"
    ]
+  },
+  {
+   "index": 67,
+   "kind": "divider",
+   "seconds": 7.0,
+   "id": "div_closing",
+   "style": "leader",
+   "bed": "seg_closing",
+   "page": 68,
+   "title": [
+    "FIRST ROUND",
+    "COMPLETE."
+   ],
+   "subtitle": "GOOD LUCK, TEAM MANAGERS!"
   }
  ]
 }
