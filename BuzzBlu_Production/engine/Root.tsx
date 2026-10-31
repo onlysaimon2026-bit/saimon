@@ -1,4 +1,5 @@
 import { Composition } from "remotion";
+import { Intro, IntroProps } from "./Intro";
 import { Reveal, RevealProps } from "./Reveal";
 import { CategoryCard, CategoryProps, Divider, DividerProps, IconLineup, LineupProps } from "./Segments";
 import { FPS } from "./theme";
@@ -7,6 +8,15 @@ import { FPS } from "./theme";
 // chapter slides. Nothing about a specific player is baked into the engine.
 export const RevealRoot: React.FC = () => (
   <>
+    <Composition
+      id="Intro"
+      component={Intro}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      durationInFrames={FPS * 36}
+      defaultProps={{ lines: [], cards: [], cardSizes: [], leaders: [] } satisfies IntroProps}
+    />
     <Composition
       id="Reveal"
       component={Reveal}

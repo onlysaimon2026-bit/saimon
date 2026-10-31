@@ -78,6 +78,11 @@ const PLAN = {
       },
     };
   },
+  intro: (s) => ({
+    composition: "Intro",
+    bed: "seg_intro",
+    props: { lines: s.lines, cards: s.cards, cardSizes: s.card_sizes, leaders: s.leaders },
+  }),
   divider: (s) => ({
     composition: "Divider",
     bed: "seg_divider",

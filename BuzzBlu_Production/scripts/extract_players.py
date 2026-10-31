@@ -13,6 +13,7 @@ Usage: python scripts/extract_players.py
 import json
 import pathlib
 import re
+import shutil
 import sys
 
 import pymupdf
@@ -93,7 +94,7 @@ def main():
     for old in list(photos.glob("*.png")) + list(cards.glob("*.png")):
         old.unlink()
 
-    players, problems = [], []
+    players, problems, overrides = [], [], []
     for index, page in enumerate(doc):
         rec = read_slide(page)
         if rec is None:
@@ -108,6 +109,12 @@ def main():
             continue
         photo = photos / f"{stem}.png"
         pix.save(photo)
+        # A corrected card supplied by the tournament replaces the one in the PDF.
+        # Only artwork is overridden here; names and prices still come from the slide.
+        override = ROOT / "assets" / "card_overrides" / f"{stem}.png"
+        if override.exists():
+            shutil.copyfile(override, photo)
+            overrides.append(stem)
         # Page render at 2x, kept so the extraction can be checked against the slide.
         page.get_pixmap(dpi=144).save(cards / f"{stem}_slide.png")
 
@@ -135,7 +142,7 @@ def main():
     (ROOT / "reports" / "extraction_report.json").write_text(json.dumps(
         {"pdf": PDF.name, "pages": doc.page_count, "players": len(players),
          "icons": len(icons), "regulars": len(players) - len(icons),
-         "problems": problems}, indent=1))
+         "card_overrides": overrides, "problems": problems}, indent=1))
 
     for p in players:
         print(f"{p['sequence']:02d} p{p['page']:02d} {'ICON' if p['is_icon'] else '    '} "

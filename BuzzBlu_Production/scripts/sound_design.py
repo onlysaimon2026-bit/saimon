@@ -464,6 +464,93 @@ def segment_bed(kind, count=4):
     return finish(bus + reverb(send, size=1.0) * 0.45, fade=0.5)
 
 
+def intro_bed():
+    """Score for the spoken opening, cut to the line timings in data/intro_lines.json,
+    with the voiceover mixed on top and the music ducked under every word."""
+    root = pathlib.Path(__file__).resolve().parent.parent
+    info = json.loads((root / "data" / "intro_lines.json").read_text())
+    at = [l["at"] for l in info["lines"]]
+    length = info["seconds"]
+    n = int(length * SR)
+    bus = np.zeros(n)
+    send = np.zeros(n)
+
+    def put(start, sig, dry=1.0, wet=0.0):
+        place(bus, start, sig, dry)
+        if wet:
+            place(send, start, sig, wet)
+
+    # A drone under the whole thing, opening out as the stakes rise.
+    put(0.0, tone_stack(length, (26, 33, 38), (1.0, 0.3, 0.14, 0.06), 0.7, 2.2, 2.5), 0.3, 0.2)
+    put(0.6, crowd(length - 0.6), 0.03, 0.02)
+
+    put(at[0] - 0.25, sub_drop(2.4, 90, 30, 1.6), 0.4, 0.2)
+    put(at[1] - 0.2, impact(2.2, 58, 0.8), 0.45, 0.35)       # the lights
+    put(at[1] - 0.2, roar(2.6, 0.7), 0.1, 0.12)
+
+    # The wall of forty cards sweeping past, then a pulse that carries the middle.
+    put(at[2] - 0.3, card_swing("icon"), 0.4, 0.3)
+    put(at[2], impact(2.4, 50, 0.9), 0.5, 0.35)
+    put(at[2], sub_drop(2.2, 120, 28, 1.5), 0.45, 0.1)
+    for i in range(10):
+        t0 = at[2] + 0.2 + i * 0.6
+        if t0 > at[8] - 0.5:
+            break
+        put(t0, stomp(0.7, 48, 0.5), 0.2, 0.1)
+        put(t0 + 0.3, clap() * 0.35, 0.07, 0.1)
+
+    for i in range(4):                                        # the four leaders
+        put(at[3] + i * 0.55, card_swing("leader") * 0.45, 0.16, 0.14)
+    put(at[4], bell(2.0, 1180, (1.0, 2.2, 3.7, 5.9), bright=1.3, rate=0.9), 0.2, 0.2)
+
+    for i in range(8):                                        # the tactics board
+        put(at[5] + 0.25 + i * 0.22, bell(0.5, 2400 + i * 180, (1.0, 2.4), rate=6.0), 0.07, 0.08)
+    put(at[6], impact(1.2, 70, 0.5), 0.2, 0.18)
+    put(at[7], impact(1.4, 62, 0.6), 0.24, 0.2)
+
+    # Everything falls away for "this is not just a game", then returns.
+    hush = np.ones(n)
+    a, b = int((at[8] - 0.35) * SR), int((at[9] + 0.5) * SR)
+    hush[a:b] = np.linspace(0.3, 0.3, b - a)
+    hush[a : a + int(0.3 * SR)] = np.linspace(1, 0.3, int(0.3 * SR))
+    hush[b - int(0.5 * SR) : b] = np.linspace(0.3, 1, int(0.5 * SR))
+    put(at[9] + 0.1, sweep_noise(1.6, 180, 1800, curve=1.8) * np.linspace(0, 1, int(1.6 * SR)) ** 2, 0.14, 0.14)
+
+    for i in range(4):                                        # the four teams
+        put(at[10] + 0.25 + i * 0.52, impact(1.1, 74 + i * 10, 0.55), 0.22, 0.2)
+        put(at[10] + 0.25 + i * 0.52, bell(1.0, 1500 * 2 ** (i / 12), (1.0, 2.37), rate=3.2), 0.1, 0.12)
+
+    put(at[12] - 0.3, sweep_noise(1.5, 220, 2600, curve=1.8) * np.linspace(0, 1, int(1.5 * SR)) ** 2, 0.2, 0.2)        # into the lockup
+    put(at[12], signature_hit("icon"), 0.55, 0.4)
+    put(at[12], tone_stack(3.2, (33, 40, 45, 52), (1.0, 0.6, 0.38, 0.2), 0.85, 0.2, 1.2), 0.35, 0.3)
+
+    put(at[13] - 0.75, sweep_noise(0.85, 300, 4200, curve=1.9) * np.linspace(0, 1, int(0.85 * SR)) ** 2, 0.3, 0.25)     # "let the battle begin"
+    put(at[13] - 0.1, card_swing("icon"), 0.3, 0.25)
+    put(at[13] + 0.25, signature_hit("leader"), 1.0, 0.55)
+    put(at[13] + 0.25, sub_drop(2.6, 150, 22, 1.1), 0.8, 0.15)
+    put(at[13] + 0.25, roar(3.0, 0.6), 0.2, 0.2)
+    put(at[13] + 0.25, tone_stack(2.8, (31, 38, 43, 50, 55), (1.0, 0.66, 0.44, 0.26), 0.9, 0.12, 1.4), 0.4, 0.35)
+
+    bus *= hush
+    send *= hush
+    music = bus + reverb(send, size=1.3) * 0.5
+
+    # Mix the announcement on top, ducking the score wherever a word lands.
+    with wave.open(str(root / "public" / "audio" / "intro_vo.wav")) as w:
+        vo = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32).reshape(-1, 2) / 32768
+    vo = vo[:n] if len(vo) >= n else np.pad(vo, ((0, n - len(vo)), (0, 0)))
+    level = one_pole(np.abs(vo).max(axis=1), 6)
+    duck = np.clip(1.0 - level * 3.2, 0.34, 1.0)
+    music *= duck
+
+    stereo = np.stack([music, np.roll(music, int(0.009 * SR))], axis=1) * 0.85 + vo * 0.95
+    k = int(0.5 * SR)
+    stereo[-k:] *= np.linspace(1, 0, k)[:, None] ** 1.5
+    stereo[: int(0.02 * SR)] *= np.linspace(0, 1, int(0.02 * SR))[:, None]
+    stereo = np.tanh(stereo * 0.85) / np.tanh(0.85)
+    return stereo / (np.max(np.abs(stereo)) + 1e-9) * 0.89
+
+
 def main():
     out = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "public/audio")
     out.mkdir(parents=True, exist_ok=True)
@@ -474,6 +561,8 @@ def main():
                      json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "segments.json").read_text())["segments"]
                      if s["kind"] == "lineup"})
     beds |= {f"seg_lineup_{c}": segment_bed("lineup", c) for c in counts}
+    if (pathlib.Path(__file__).resolve().parent.parent / "data" / "intro_lines.json").exists():
+        beds["seg_intro"] = intro_bed()
     for name, data in beds.items():
         path = out / f"{name}.wav"
         with wave.open(str(path), "wb") as w:

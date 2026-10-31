@@ -4,5 +4,8 @@
  "players": 40,
  "icons": 4,
  "regulars": 36,
+ "card_overrides": [
+  "14_rizvi_hasan"
+ ],
  "problems": []
 }

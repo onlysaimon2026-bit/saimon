@@ -1,8 +1,329 @@
 {
- "total_seconds": 542.0,
+ "total_seconds": 577.83,
  "segments": [
   {
    "index": 1,
+   "kind": "intro",
+   "seconds": 35.83,
+   "id": "intro",
+   "style": "icon",
+   "lines": [
+    {
+     "text": "THE STAGE IS SET.",
+     "at": 1.4,
+     "seconds": 1.507
+    },
+    {
+     "text": "THE LIGHTS ARE ON.",
+     "at": 3.257,
+     "seconds": 1.266
+    },
+    {
+     "text": "40 PLAYERS. COUNTLESS AMBITIONS.",
+     "at": 5.073,
+     "seconds": 2.969
+    },
+    {
+     "text": "HELLO, LEADERS!",
+     "at": 8.792,
+     "seconds": 1.282
+    },
+    {
+     "text": "WELCOME TO THE BUZZBLU AUCTION.",
+     "at": 10.424,
+     "seconds": 2.189
+    },
+    {
+     "text": "THINK SMART. STRATEGIZE.",
+     "at": 13.313,
+     "seconds": 2.154
+    },
+    {
+     "text": "MAKE YOUR MOVES.",
+     "at": 15.767,
+     "seconds": 1.238
+    },
+    {
+     "text": "BUILD YOUR TEAM.",
+     "at": 17.305,
+     "seconds": 1.069
+    },
+    {
+     "text": "THIS IS NOT JUST A GAME.",
+     "at": 19.124,
+     "seconds": 1.651
+    },
+    {
+     "text": "THIS IS YOUR MOMENT.",
+     "at": 21.225,
+     "seconds": 1.376
+    },
+    {
+     "text": "SUPPORTERS, THE CHOICE IS YOURS.",
+     "at": 23.401,
+     "seconds": 2.456
+    },
+    {
+     "text": "CHOOSE YOUR TEAM.",
+     "at": 26.207,
+     "seconds": 1.114
+    },
+    {
+     "text": "THIS IS BUZZBLU 2026.",
+     "at": 28.121,
+     "seconds": 2.863
+    },
+    {
+     "text": "LET THE BATTLE BEGIN.",
+     "at": 31.884,
+     "seconds": 1.345
+    }
+   ],
+   "cards": [
+    "01_mahadi_hasan",
+    "02_saidul",
+    "03_shahin_alom",
+    "04_md_rana",
+    "05_rakib",
+    "06_rabbi_lolo_vai",
+    "07_robayat",
+    "08_fahim_shikder",
+    "09_mostak",
+    "10_md_amdadul_haque",
+    "11_ahnaf_tazwar",
+    "12_muien",
+    "13_mahtab",
+    "14_rizvi_hasan",
+    "15_apurbo",
+    "16_gm_fabian_ahamed",
+    "17_shajibul_islam",
+    "18_sajjad_afif",
+    "19_rusad",
+    "20_irfan",
+    "21_tahsan",
+    "22_t_h_siyam",
+    "23_monirul_islam_monir",
+    "24_toufiq",
+    "25_rayhan_rafi",
+    "26_riazul_islam",
+    "27_md_saddam_hossain",
+    "28_sohel_rana",
+    "29_ahsan_sharif",
+    "30_al_fardin_bhuiyan",
+    "31_rafiu",
+    "32_mashuk",
+    "33_saimon",
+    "34_joy",
+    "35_abu_bakar",
+    "36_yeasin_salman_jidan",
+    "37_mohammad_raihan",
+    "38_rahat",
+    "39_siam",
+    "40_zahid"
+   ],
+   "card_sizes": [
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     962,
+     1371
+    ],
+    [
+     966,
+     1381
+    ],
+    [
+     966,
+     1371
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     948,
+     1659
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1535
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1254,
+     1254
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ]
+   ],
+   "leaders": [
+    {
+     "card": "L01_sayem_hawlader",
+     "size": [
+      1024,
+      1536
+     ],
+     "name": "SAYEM HAWLADER",
+     "team": "TEAM LION"
+    },
+    {
+     "card": "L02_tashfee_sahil",
+     "size": [
+      1024,
+      1536
+     ],
+     "name": "TASHFEE SAHIL",
+     "team": "MERENGUES FC"
+    },
+    {
+     "card": "L03_mihadul_rahman_rakib",
+     "size": [
+      1024,
+      1536
+     ],
+     "name": "MIHADUL RAHMAN RAKIB",
+     "team": "NIGHT WOLVES"
+    },
+    {
+     "card": "L04_mostakim_khan",
+     "size": [
+      1122,
+      1402
+     ],
+     "name": "MOSTAKIM KHAN",
+     "team": "THUNDER HAWKS"
+    }
+   ]
+  },
+  {
+   "index": 2,
    "kind": "divider",
    "seconds": 4.0,
    "id": "div_leaders",
@@ -15,7 +336,7 @@
    "page": 4
   },
   {
-   "index": 2,
+   "index": 3,
    "kind": "manager",
    "seconds": 10.0,
    "id": "L01_sayem_hawlader",
@@ -32,7 +353,7 @@
    ]
   },
   {
-   "index": 3,
+   "index": 4,
    "kind": "manager",
    "seconds": 10.0,
    "id": "L02_tashfee_sahil",
@@ -49,7 +370,7 @@
    ]
   },
   {
-   "index": 4,
+   "index": 5,
    "kind": "manager",
    "seconds": 10.0,
    "id": "L03_mihadul_rahman_rakib",
@@ -66,7 +387,7 @@
    ]
   },
   {
-   "index": 5,
+   "index": 6,
    "kind": "manager",
    "seconds": 10.0,
    "id": "L04_mostakim_khan",
@@ -83,7 +404,7 @@
    ]
   },
   {
-   "index": 6,
+   "index": 7,
    "kind": "divider",
    "seconds": 4.0,
    "id": "div_icons",
@@ -96,7 +417,7 @@
    "page": 16
   },
   {
-   "index": 7,
+   "index": 8,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "icon_lineup",
@@ -135,7 +456,7 @@
    ]
   },
   {
-   "index": 8,
+   "index": 9,
    "kind": "player",
    "seconds": 10.0,
    "id": "01_mahadi_hasan",
@@ -145,7 +466,7 @@
    "sequence": 1
   },
   {
-   "index": 9,
+   "index": 10,
    "kind": "player",
    "seconds": 10.0,
    "id": "02_saidul",
@@ -155,7 +476,7 @@
    "sequence": 2
   },
   {
-   "index": 10,
+   "index": 11,
    "kind": "player",
    "seconds": 10.0,
    "id": "03_shahin_alom",
@@ -165,7 +486,7 @@
    "sequence": 3
   },
   {
-   "index": 11,
+   "index": 12,
    "kind": "player",
    "seconds": 10.0,
    "id": "04_md_rana",
@@ -175,7 +496,7 @@
    "sequence": 4
   },
   {
-   "index": 12,
+   "index": 13,
    "kind": "divider",
    "seconds": 4.0,
    "id": "div_regulars",
@@ -188,7 +509,7 @@
    "page": 22
   },
   {
-   "index": 13,
+   "index": 14,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_goalkeeper",
@@ -199,7 +520,7 @@
    "names": "RAKIB • RABBI (LOLO VAI) • ROBAYAT • FAHIM SHIKDER • MOSTAK"
   },
   {
-   "index": 14,
+   "index": 15,
    "kind": "player",
    "seconds": 10.0,
    "id": "05_rakib",
@@ -209,7 +530,7 @@
    "sequence": 5
   },
   {
-   "index": 15,
+   "index": 16,
    "kind": "player",
    "seconds": 10.0,
    "id": "06_rabbi_lolo_vai",
@@ -219,7 +540,7 @@
    "sequence": 6
   },
   {
-   "index": 16,
+   "index": 17,
    "kind": "player",
    "seconds": 10.0,
    "id": "07_robayat",
@@ -229,7 +550,7 @@
    "sequence": 7
   },
   {
-   "index": 17,
+   "index": 18,
    "kind": "player",
    "seconds": 10.0,
    "id": "08_fahim_shikder",
@@ -239,7 +560,7 @@
    "sequence": 8
   },
   {
-   "index": 18,
+   "index": 19,
    "kind": "player",
    "seconds": 10.0,
    "id": "09_mostak",
@@ -249,7 +570,7 @@
    "sequence": 9
   },
   {
-   "index": 19,
+   "index": 20,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_goalkeeper",
@@ -294,7 +615,7 @@
    ]
   },
   {
-   "index": 20,
+   "index": 21,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_defender",
@@ -305,7 +626,7 @@
    "names": "MD AMDADUL HAQUE • AHNAF TAZWAR • MUIEN"
   },
   {
-   "index": 21,
+   "index": 22,
    "kind": "player",
    "seconds": 10.0,
    "id": "10_md_amdadul_haque",
@@ -315,7 +636,7 @@
    "sequence": 10
   },
   {
-   "index": 22,
+   "index": 23,
    "kind": "player",
    "seconds": 10.0,
    "id": "11_ahnaf_tazwar",
@@ -325,7 +646,7 @@
    "sequence": 11
   },
   {
-   "index": 23,
+   "index": 24,
    "kind": "player",
    "seconds": 10.0,
    "id": "12_muien",
@@ -335,7 +656,7 @@
    "sequence": 12
   },
   {
-   "index": 24,
+   "index": 25,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_defender",
@@ -368,7 +689,7 @@
    ]
   },
   {
-   "index": 25,
+   "index": 26,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_midfielder",
@@ -379,7 +700,7 @@
    "names": "DEFENSIVE MIDFIELDER / CENTRE MIDFIELDER / ATTACKING MIDFIELDER"
   },
   {
-   "index": 26,
+   "index": 27,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_defensive_midfielder",
@@ -390,7 +711,7 @@
    "names": "MAHTAB • RIZVI HASAN • APURBO • SHAJIBUL ISLAM • SAJJAD AFIF • GM FABIAN AHAMED"
   },
   {
-   "index": 27,
+   "index": 28,
    "kind": "player",
    "seconds": 10.0,
    "id": "13_mahtab",
@@ -400,7 +721,7 @@
    "sequence": 13
   },
   {
-   "index": 28,
+   "index": 29,
    "kind": "player",
    "seconds": 10.0,
    "id": "14_rizvi_hasan",
@@ -410,7 +731,7 @@
    "sequence": 14
   },
   {
-   "index": 29,
+   "index": 30,
    "kind": "player",
    "seconds": 10.0,
    "id": "15_apurbo",
@@ -420,7 +741,7 @@
    "sequence": 15
   },
   {
-   "index": 30,
+   "index": 31,
    "kind": "player",
    "seconds": 10.0,
    "id": "16_gm_fabian_ahamed",
@@ -430,7 +751,7 @@
    "sequence": 16
   },
   {
-   "index": 31,
+   "index": 32,
    "kind": "player",
    "seconds": 10.0,
    "id": "17_shajibul_islam",
@@ -440,7 +761,7 @@
    "sequence": 17
   },
   {
-   "index": 32,
+   "index": 33,
    "kind": "player",
    "seconds": 10.0,
    "id": "18_sajjad_afif",
@@ -450,7 +771,7 @@
    "sequence": 18
   },
   {
-   "index": 33,
+   "index": 34,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_defensive_midfielder",
@@ -501,7 +822,7 @@
    ]
   },
   {
-   "index": 34,
+   "index": 35,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_centre_midfielder",
@@ -512,7 +833,7 @@
    "names": "RUSAD • TAHSAN • T.H SIYAM • TOUFIQ • RAYHAN RAFI • RIAZUL ISLAM • MD SADDAM HOSSAIN • MONIRUL ISLAM MONIR • IRFAN"
   },
   {
-   "index": 35,
+   "index": 36,
    "kind": "player",
    "seconds": 10.0,
    "id": "19_rusad",
@@ -522,7 +843,7 @@
    "sequence": 19
   },
   {
-   "index": 36,
+   "index": 37,
    "kind": "player",
    "seconds": 10.0,
    "id": "20_irfan",
@@ -532,7 +853,7 @@
    "sequence": 20
   },
   {
-   "index": 37,
+   "index": 38,
    "kind": "player",
    "seconds": 10.0,
    "id": "21_tahsan",
@@ -542,7 +863,7 @@
    "sequence": 21
   },
   {
-   "index": 38,
+   "index": 39,
    "kind": "player",
    "seconds": 10.0,
    "id": "22_t_h_siyam",
@@ -552,7 +873,7 @@
    "sequence": 22
   },
   {
-   "index": 39,
+   "index": 40,
    "kind": "player",
    "seconds": 10.0,
    "id": "23_monirul_islam_monir",
@@ -562,7 +883,7 @@
    "sequence": 23
   },
   {
-   "index": 40,
+   "index": 41,
    "kind": "player",
    "seconds": 10.0,
    "id": "24_toufiq",
@@ -572,7 +893,7 @@
    "sequence": 24
   },
   {
-   "index": 41,
+   "index": 42,
    "kind": "player",
    "seconds": 10.0,
    "id": "25_rayhan_rafi",
@@ -582,7 +903,7 @@
    "sequence": 25
   },
   {
-   "index": 42,
+   "index": 43,
    "kind": "player",
    "seconds": 10.0,
    "id": "26_riazul_islam",
@@ -592,7 +913,7 @@
    "sequence": 26
   },
   {
-   "index": 43,
+   "index": 44,
    "kind": "player",
    "seconds": 10.0,
    "id": "27_md_saddam_hossain",
@@ -602,7 +923,7 @@
    "sequence": 27
   },
   {
-   "index": 44,
+   "index": 45,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_centre_midfielder",
@@ -671,7 +992,7 @@
    ]
   },
   {
-   "index": 45,
+   "index": 46,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_attacking_midfielder",
@@ -682,7 +1003,7 @@
    "names": "SOHEL RANA • AHSAN SHARIF • AL-FARDIN BHUIYAN • RAFIU"
   },
   {
-   "index": 46,
+   "index": 47,
    "kind": "player",
    "seconds": 10.0,
    "id": "28_sohel_rana",
@@ -692,7 +1013,7 @@
    "sequence": 28
   },
   {
-   "index": 47,
+   "index": 48,
    "kind": "player",
    "seconds": 10.0,
    "id": "29_ahsan_sharif",
@@ -702,7 +1023,7 @@
    "sequence": 29
   },
   {
-   "index": 48,
+   "index": 49,
    "kind": "player",
    "seconds": 10.0,
    "id": "30_al_fardin_bhuiyan",
@@ -712,7 +1033,7 @@
    "sequence": 30
   },
   {
-   "index": 49,
+   "index": 50,
    "kind": "player",
    "seconds": 10.0,
    "id": "31_rafiu",
@@ -722,7 +1043,7 @@
    "sequence": 31
   },
   {
-   "index": 50,
+   "index": 51,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_attacking_midfielder",
@@ -761,7 +1082,7 @@
    ]
   },
   {
-   "index": 51,
+   "index": 52,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_left_wing",
@@ -772,7 +1093,7 @@
    "names": "MASHUK • SAIMON • JOY • YEASIN SALMAN JIDAN • ABU BAKAR"
   },
   {
-   "index": 52,
+   "index": 53,
    "kind": "player",
    "seconds": 10.0,
    "id": "32_mashuk",
@@ -782,7 +1103,7 @@
    "sequence": 32
   },
   {
-   "index": 53,
+   "index": 54,
    "kind": "player",
    "seconds": 10.0,
    "id": "33_saimon",
@@ -792,7 +1113,7 @@
    "sequence": 33
   },
   {
-   "index": 54,
+   "index": 55,
    "kind": "player",
    "seconds": 10.0,
    "id": "34_joy",
@@ -802,7 +1123,7 @@
    "sequence": 34
   },
   {
-   "index": 55,
+   "index": 56,
    "kind": "player",
    "seconds": 10.0,
    "id": "35_abu_bakar",
@@ -812,7 +1133,7 @@
    "sequence": 35
   },
   {
-   "index": 56,
+   "index": 57,
    "kind": "player",
    "seconds": 10.0,
    "id": "36_yeasin_salman_jidan",
@@ -822,7 +1143,7 @@
    "sequence": 36
   },
   {
-   "index": 57,
+   "index": 58,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_left_wing",
@@ -867,7 +1188,7 @@
    ]
   },
   {
-   "index": 58,
+   "index": 59,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_right_wing",
@@ -878,7 +1199,7 @@
    "names": "MOHAMMAD RAIHAN"
   },
   {
-   "index": 59,
+   "index": 60,
    "kind": "player",
    "seconds": 10.0,
    "id": "37_mohammad_raihan",
@@ -888,7 +1209,7 @@
    "sequence": 37
   },
   {
-   "index": 60,
+   "index": 61,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_right_wing",
@@ -909,7 +1230,7 @@
    ]
   },
   {
-   "index": 61,
+   "index": 62,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_striker",
@@ -920,7 +1241,7 @@
    "names": "RAHAT • SIAM • ZAHID"
   },
   {
-   "index": 62,
+   "index": 63,
    "kind": "player",
    "seconds": 10.0,
    "id": "38_rahat",
@@ -930,7 +1251,7 @@
    "sequence": 38
   },
   {
-   "index": 63,
+   "index": 64,
    "kind": "player",
    "seconds": 10.0,
    "id": "39_siam",
@@ -940,7 +1261,7 @@
    "sequence": 39
   },
   {
-   "index": 64,
+   "index": 65,
    "kind": "player",
    "seconds": 10.0,
    "id": "40_zahid",
@@ -950,7 +1271,7 @@
    "sequence": 40
   },
   {
-   "index": 65,
+   "index": 66,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_striker",

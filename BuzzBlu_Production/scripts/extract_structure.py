@@ -105,6 +105,16 @@ def main():
     def add(kind, seconds, **fields):
         segments.append({"index": len(segments) + 1, "kind": kind, "seconds": seconds, **fields})
 
+    # The spoken opening, if it has been generated, runs before anything else.
+    intro_file = ROOT / "data" / "intro_lines.json"
+    if intro_file.exists():
+        intro = json.loads(intro_file.read_text())
+        add("intro", round(intro["seconds"], 2), id="intro", style="icon",
+            lines=intro["lines"],
+            cards=[stem(p) for p in players], card_sizes=[p["photo_size"] for p in players],
+            leaders=[{"card": stem(m), "size": m["photo_size"], "name": m["name"], "team": m["team"]}
+                     for m in managers])
+
     add("divider", DIVIDER_SECONDS, id="div_leaders", style="leader", **dividers["leaders"])
     for m in managers:
         add("manager", 10.0, id=stem(m), style="leader", page=m["page"], name=m["name"],

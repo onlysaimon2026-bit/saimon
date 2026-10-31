@@ -25,11 +25,12 @@ PY=../.venv/bin/python
 $PY scripts/extract_players.py          # 40 players + their card artwork from the PDF
 $PY scripts/extract_structure.py        # 4 team leaders + the film's running order
 cp assets/player_photos/*.png public/cards/
+$PY scripts/voiceover.py                # the spoken opening
 $PY scripts/sound_design.py public/audio
 $PY scripts/make_textures.py public/textures
 
 CONCURRENCY=3 node render_segments.mjs  # every segment, about 90 s each
-$PY scripts/quality_check.py            # must report 57/57 passed
+$PY scripts/quality_check.py            # must report 66/66 passed
 node combine.mjs                        # the full film
 $PY scripts/quality_check.py --combined
 ```
@@ -44,6 +45,10 @@ what you want.
 
 | I want to change | Edit | Then run |
 |---|---|---|
+| The spoken opening's words | `LINES` in `scripts/voiceover.py` | that script, then `sound_design.py`, then `node render_segments.mjs --only intro --force` |
+| How loud the background music is | nothing — set `MUSIC_LEVEL` | `MUSIC_LEVEL=0.12 node combine.mjs` |
+| The background music itself | `scripts/film_music.py` | `node combine.mjs` |
+| A corrected card for one player | drop the PNG in `assets/card_overrides/<id>.png` | `extract_players.py`, copy cards, then re-render that player and their category line-up |
 | A sound, or the whole mix | `scripts/sound_design.py` | `… sound_design.py public/audio`, then `node render_segments.mjs --force` (audio is muxed, so this is quick) |
 | Colours of a tier | `engine/theme.ts` (`THEMES`) | `node render_segments.mjs --force` |
 | When something happens in the 10 s | `engine/theme.ts` (`ACT`) **and** the matching times in `scripts/sound_design.py` | both of the above |
