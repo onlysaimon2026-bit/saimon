@@ -90,7 +90,7 @@ const PLAN = {
   }),
   lineup: (s) => ({
     composition: "IconLineup",
-    bed: "seg_lineup",
+    bed: `seg_lineup_${s.cards.length}`,
     props: {
       title: s.title,
       cards: s.cards,

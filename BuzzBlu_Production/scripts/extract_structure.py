@@ -128,9 +128,15 @@ def main():
             style="regular", page=page, title=cat["title"], count=cat["count"], names=cat["names"])
         # A category owns the players that follow it, up to the next category slide.
         nxt = next((q for q in CATEGORY_PAGES if q > page), 10 ** 6)
-        for p in (q for q in regulars if page < q["page"] < nxt):
+        group = [q for q in regulars if page < q["page"] < nxt]
+        for p in group:
             add("player", 10.0, id=stem(p), style="regular", page=p["page"],
                 category=cat["title"], sequence=p["sequence"])
+        # The category closes with every one of its cards together in one frame.
+        if group:
+            add("lineup", LINEUP_SECONDS, id=f"line_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
+                style="regular", page=page, title=cat["title"], cards=[stem(q) for q in group],
+                card_sizes=[q["photo_size"] for q in group], names=[q["name"] for q in group])
 
     total = sum(s["seconds"] for s in segments)
     placed = {s["sequence"] for s in segments if s["kind"] == "player"}

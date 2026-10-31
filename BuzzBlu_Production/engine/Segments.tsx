@@ -166,12 +166,30 @@ export const CategoryCard: React.FC<CategoryProps> = ({ title, count, style }) =
 
 export type LineupProps = { title: string; cards: string[]; sizes: [number, number][]; names: string[]; style: Style };
 
-// The four icon players shown together once, before they are auctioned one by one.
+// Every card of a group shown together in one frame: the four icons before their
+// auction, and each position category once its players have been seen one by one.
+// The layout adapts to the group size, wrapping to two rows past five cards so a
+// nine-player category still reads.
 export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, style }) => {
   const theme = THEMES[style];
   const { frame, fps, t, width, height, exit } = useChapter();
   const titleP = spring({ frame: frame - 2, fps, config: { damping: 17 } });
-  const cardH = height * 0.52;
+
+  const rows = cards.length > 5
+    ? [cards.slice(0, Math.ceil(cards.length / 2)), cards.slice(Math.ceil(cards.length / 2))]
+    : [cards.map((c) => c)];
+  const indexOf = (row: number, i: number) => (row === 0 ? i : rows[0].length + i);
+
+  // Fit the widest row across the frame, then cap the height so two rows still fit.
+  const gap = width * (cards.length > 6 ? 0.009 : 0.018);
+  const widest = Math.max(...rows.map((r) =>
+    r.reduce((sum, _, i) => sum + sizes[indexOf(rows.indexOf(r), i)][0] / sizes[indexOf(rows.indexOf(r), i)][1], 0)));
+  const perRow = Math.max(...rows.map((r) => r.length));
+  const byWidth = (width * 0.92 - gap * (perRow - 1)) / widest;
+  const cardH = Math.min(byWidth, height * (rows.length > 1 ? 0.33 : 0.54));
+  // All of them are in frame within about two and a half seconds, however many there are.
+  const step = Math.min(0.5, 2.0 / cards.length);
+  const nameSize = Math.max(width * 0.009, Math.min(width * 0.0155, cardH * 0.055));
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
@@ -184,7 +202,7 @@ export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, 
             gap: width * 0.012,
             opacity: titleP,
             transform: `translateY(${(1 - titleP) * -24}px)`,
-            marginBottom: height * 0.035,
+            marginBottom: height * (rows.length > 1 ? 0.022 : 0.035),
           }}
         >
           <Football size={width * 0.034} spin={frame * 9} theme={theme} />
@@ -192,40 +210,50 @@ export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, 
             {title}
           </span>
         </div>
-        <div style={{ display: "flex", gap: width * 0.018, alignItems: "flex-end", perspective: width }}>
-          {cards.map((card, i) => {
-            const s = spring({ frame: frame - Math.round((1.5 + i * 0.5) * fps), fps, config: { damping: 14, stiffness: 120 } });
-            const aspect = sizes[i][0] / sizes[i][1];
-            return (
-              <div key={card} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: height * 0.018 }}>
-                <div
-                  style={{
-                    width: cardH * aspect,
-                    height: cardH,
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    opacity: s,
-                    transform: `translateY(${(1 - s) * 60}px) rotateY(${(1 - s) * -70}deg) scale(${0.8 + 0.2 * s})`,
-                    boxShadow: `0 0 0 2px ${theme.metal}, 0 0 46px ${theme.glow}, 0 26px 60px rgba(0,0,0,0.7)`,
-                  }}
-                >
-                  <Img src={staticFile(`cards/${card}.png`)} style={{ width: "100%", height: "100%", objectFit: "fill", display: "block" }} />
-                </div>
-                <span
-                  style={{
-                    fontFamily: UI,
-                    fontWeight: 700,
-                    fontSize: width * 0.0155,
-                    letterSpacing: width * 0.002,
-                    color: theme.metal,
-                    opacity: Math.max(0, s * 1.4 - 0.5),
-                  }}
-                >
-                  {`0${i + 1}  ${names[i]}`}
-                </span>
-              </div>
-            );
-          })}
+        <div style={{ display: "flex", flexDirection: "column", gap: height * 0.03, alignItems: "center" }}>
+          {rows.map((row, r) => (
+            <div key={r} style={{ display: "flex", gap, alignItems: "flex-end", perspective: width }}>
+              {row.map((card, i) => {
+                const n = indexOf(r, i);
+                const s = spring({
+                  frame: frame - Math.round((1.2 + n * step) * fps),
+                  fps,
+                  config: { damping: 14, stiffness: 130 },
+                });
+                const aspect = sizes[n][0] / sizes[n][1];
+                return (
+                  <div key={card} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: height * 0.012 }}>
+                    <div
+                      style={{
+                        width: cardH * aspect,
+                        height: cardH,
+                        borderRadius: 10,
+                        overflow: "hidden",
+                        opacity: s,
+                        transform: `translateY(${(1 - s) * 60}px) rotateY(${(1 - s) * -70}deg) scale(${0.8 + 0.2 * s})`,
+                        boxShadow: `0 0 0 2px ${theme.metal}, 0 0 40px ${theme.glow}, 0 22px 50px rgba(0,0,0,0.7)`,
+                      }}
+                    >
+                      <Img src={staticFile(`cards/${card}.png`)} style={{ width: "100%", height: "100%", objectFit: "fill", display: "block" }} />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: UI,
+                        fontWeight: 700,
+                        fontSize: nameSize,
+                        letterSpacing: nameSize * 0.08,
+                        color: theme.metal,
+                        opacity: Math.max(0, s * 1.4 - 0.5),
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {`${String(n + 1).padStart(2, "0")}  ${names[n]}`}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </AbsoluteFill>
       <Fade opacity={exit} />

@@ -21,6 +21,7 @@ modern one.
 
 Usage: python scripts/sound_design.py <out_dir>
 """
+import json
 import pathlib
 import sys
 import wave
@@ -434,7 +435,7 @@ def reveal_bed(voice):
     return finish(bus + reverb(send, size=1.15) * 0.5, stereo_layers=stereo)
 
 
-def segment_bed(kind):
+def segment_bed(kind, count=4):
     """Short beds for the chapter slides, so every slide change has its own sound."""
     length = 6.0 if kind == "lineup" else 4.0
     bus = np.zeros(int(length * SR))
@@ -443,12 +444,15 @@ def segment_bed(kind):
     place(bus, 0.0, tone_stack(length - 0.3, (36, 43, 48, 55), (1.0, 0.45, 0.24, 0.12), 0.6, 0.5, 1.0), 0.3)
     place(bus, 0.55, logo_sting("icon") * 0.35, 0.3)
     if kind == "lineup":
-        # Four cards arrive one after another.
-        for i in range(4):
-            place(bus, 1.5 + i * 0.5, card_swing("icon") * 0.5, 0.18)
-            place(bus, 1.72 + i * 0.5, impact(1.0, 70 + i * 14, 0.5), 0.22)
-            place(bus, 1.74 + i * 0.5, bell(1.0, 1560 * 2 ** (i / 12), (1.0, 2.37, 3.6), rate=3.0), 0.14)
-        place(bus, 4.1, signature_hit("icon") * 0.55, 0.4)
+        # One arrival per card, on the same stagger the picture uses.
+        step = min(0.5, 2.0 / max(count, 1))
+        level = 0.24 / max(1.0, count / 4) ** 0.4
+        for i in range(count):
+            at = 1.2 + i * step
+            place(bus, at - 0.22, card_swing("icon") * 0.5, level * 0.8)
+            place(bus, at, impact(1.0, 70 + (i % 5) * 14, 0.5), level)
+            place(bus, at, bell(1.0, 1560 * 2 ** ((i % 7) / 12), (1.0, 2.37, 3.6), rate=3.0), level * 0.6)
+        place(bus, 1.2 + count * step + 0.5, signature_hit("icon") * 0.55, 0.4)
     else:
         place(bus, 0.62, details_reveal("regular") * 0.55, 0.34)
     place(bus, 0.0, crowd(length) * 0.5, 0.022)
@@ -464,7 +468,12 @@ def main():
     out = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "public/audio")
     out.mkdir(parents=True, exist_ok=True)
     beds = {f"reveal_{v}": reveal_bed(v) for v in ("leader", "icon", "regular")}
-    beds |= {f"seg_{k}": segment_bed(k) for k in ("divider", "category", "lineup")}
+    beds |= {f"seg_{k}": segment_bed(k) for k in ("divider", "category")}
+    # A lineup bed for every group size that appears in the running order.
+    counts = sorted({len(s["cards"]) for s in
+                     json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "segments.json").read_text())["segments"]
+                     if s["kind"] == "lineup"})
+    beds |= {f"seg_lineup_{c}": segment_bed("lineup", c) for c in counts}
     for name, data in beds.items():
         path = out / f"{name}.wav"
         with wave.open(str(path), "wb") as w:
