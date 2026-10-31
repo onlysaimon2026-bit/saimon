@@ -11,10 +11,10 @@
    "id": "intro",
    "name": "",
    "style": "icon",
-   "expected_seconds": 40.7333,
+   "expected_seconds": 40.2667,
    "ok": true,
-   "duration": 40.733,
-   "bytes": 40776438,
+   "duration": 40.267,
+   "bytes": 40466052,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -23,9 +23,9 @@
    "luma": [
     10.6,
     31.0,
-    19.9,
+    20.7,
     13.5,
-    20.8
+    20.7
    ]
   },
   {
@@ -1489,11 +1489,36 @@
     34.5,
     42.4
    ]
+  },
+  {
+   "index": 67,
+   "kind": "divider",
+   "id": "div_closing",
+   "name": [
+    "FIRST ROUND",
+    "COMPLETE."
+   ],
+   "style": "leader",
+   "expected_seconds": 7.0,
+   "ok": true,
+   "duration": 7.0,
+   "bytes": 4803635,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    21.7,
+    31.0,
+    30.9,
+    30.7
+   ]
   }
  ],
  "counts": {
   "category": 9,
-  "divider": 3,
+  "divider": 4,
   "intro": 1,
   "lineup": 9,
   "manager": 4,
@@ -1501,10 +1526,10 @@
  },
  "combined": {
   "file": "BuzzBlu_Full_Reveal.mp4",
-  "expected_seconds": 582.7333,
+  "expected_seconds": 589.2667,
   "ok": true,
-  "duration": 582.773,
-  "bytes": 657002624,
+  "duration": 589.317,
+  "bytes": 661491251,
   "width": 1920,
   "height": 1080,
   "fps": 30.0,
@@ -1513,9 +1538,9 @@
   "luma": [
    10.6,
    31.0,
-   19.9,
+   20.7,
    13.5,
-   20.8
+   20.7
   ]
  },
  "problems": [],

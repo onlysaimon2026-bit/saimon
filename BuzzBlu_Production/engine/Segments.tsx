@@ -19,7 +19,7 @@ const useChapter = () => {
     extrapolateRight: "clamp",
     easing: Easing.in(Easing.cubic),
   });
-  return { frame, fps, t, width, height, enter, exit, durationInFrames };
+  return { frame, fps, t, width, height, enter, exit, durationInFrames, seconds: durationInFrames / fps };
 };
 
 const Fade: React.FC<{ opacity: number }> = ({ opacity }) => (
@@ -31,10 +31,10 @@ export type DividerProps = { title: string[]; subtitle: string; style: Style };
 // Round and chapter headings: "MEET THE FOUR LEADERS", "ICON PLAYER AUCTION".
 export const Divider: React.FC<DividerProps> = ({ title, subtitle, style }) => {
   const theme = THEMES[style];
-  const { frame, fps, t, width, enter, exit } = useChapter();
+  const { frame, fps, t, width, enter, exit, seconds } = useChapter();
   return (
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
-      <Stage theme={theme} cameraZ={interpolate(t, [0, 4], [-120, 40])} />
+      <Stage theme={theme} cameraZ={interpolate(t, [0, seconds], [-120, 60])} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column", opacity: enter }}>
         <div style={{ marginBottom: width * 0.018, opacity: enter }}>
           <LogoMark theme={theme} frame={frame} scale={1.25} />
@@ -98,14 +98,14 @@ export type CategoryProps = { title: string; count: string; style: Style };
 // Position headings: the category name, then how many players are coming.
 export const CategoryCard: React.FC<CategoryProps> = ({ title, count, style }) => {
   const theme = THEMES[style];
-  const { frame, fps, t, width, enter, exit } = useChapter();
+  const { frame, fps, t, width, enter, exit, seconds } = useChapter();
   const letters = title.split("");
   const size = Math.min(width * 0.1, (width * 0.86) / Math.max(letters.length, 1) / 0.56);
   const countP = spring({ frame: frame - 14, fps, config: { damping: 17 } });
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
-      <Stage theme={theme} cameraZ={interpolate(t, [0, 4], [-80, 50])} />
+      <Stage theme={theme} cameraZ={interpolate(t, [0, seconds], [-80, 50])} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column", opacity: enter }}>
         <div style={{ marginBottom: width * 0.016 }}>
           <LogoMark theme={theme} frame={frame} />
@@ -170,7 +170,7 @@ export type LineupProps = { title: string; cards: string[]; sizes: [number, numb
 // nine-player category still reads.
 export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, style }) => {
   const theme = THEMES[style];
-  const { frame, fps, t, width, height, exit } = useChapter();
+  const { frame, fps, t, width, height, exit, seconds } = useChapter();
   const titleP = spring({ frame: frame - 2, fps, config: { damping: 17 } });
 
   const rows = cards.length > 5
@@ -191,7 +191,7 @@ export const IconLineup: React.FC<LineupProps> = ({ title, cards, sizes, names, 
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#04070d" }}>
-      <Stage theme={theme} cameraZ={interpolate(t, [0, 6], [-100, 70])} />
+      <Stage theme={theme} cameraZ={interpolate(t, [0, seconds], [-100, 70])} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
         <div
           style={{
