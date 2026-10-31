@@ -44,8 +44,8 @@ execFileSync("ffmpeg", ["-v", "error", "-y", "-i", joined, "-i", music, "-filter
   "[0:a]asplit=2[film][key];" +
   `[1:a]volume=${process.env.MUSIC_LEVEL ?? "0.17"}[bed];` +
   "[bed][key]sidechaincompress=threshold=0.02:ratio=9:attack=12:release=420:makeup=1[duck];" +
-  "[film][duck]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.92," +
-  "loudnorm=I=-14:TP=-1.5:LRA=11[a]",
+  "[film][duck]amix=inputs=2:duration=first:normalize=0," +
+  "loudnorm=I=-14:TP=-1.5:LRA=11,alimiter=limit=0.84:level=disabled[a]",
   "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
   "-movflags", "+faststart", out], { stdio: "inherit" });
 fs.unlinkSync(joined);

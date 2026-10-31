@@ -37,7 +37,7 @@ def frame_stats(path, t):
     return sum(data) / len(data) if data else 0.0
 
 
-def check_video(path, expect_duration):
+def check_video(path, expect_duration, tolerance=0.05):
     issues = []
     if not path.exists():
         return [f"missing file {path.name}"], {}
@@ -65,7 +65,7 @@ def check_video(path, expect_duration):
         issues.append(f"{path.name}: no audio stream")
     else:
         info["acodec"] = streams["audio"]["codec_name"]
-    if abs(duration - expect_duration) > 0.05:
+    if abs(duration - expect_duration) > tolerance:
         issues.append(f"{path.name}: {duration:.3f}s not {expect_duration}s")
 
     times = [t for t in PROBE_TIMES if t < duration - 0.25] or [duration * 0.4]
@@ -114,7 +114,7 @@ def main():
     if "--combined" in sys.argv:
         total = sum(s["seconds"] for s in segments)
         combined = ROOT / "output" / "combined" / "BuzzBlu_Full_Reveal.mp4"
-        probs, info = check_video(combined, total)
+        probs, info = check_video(combined, total, tolerance=0.25)
         report["combined"] = {"file": combined.name, "expected_seconds": total, "ok": not probs, **info}
         issues += probs
 

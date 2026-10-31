@@ -1,10 +1,10 @@
 {
- "total_seconds": 582.87,
+ "total_seconds": 582.8667,
  "segments": [
   {
    "index": 1,
    "kind": "intro",
-   "seconds": 40.87,
+   "seconds": 40.8667,
    "id": "intro",
    "style": "icon",
    "lines": [

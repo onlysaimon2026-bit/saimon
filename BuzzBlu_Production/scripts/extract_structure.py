@@ -109,7 +109,8 @@ def main():
     intro_file = ROOT / "data" / "intro_lines.json"
     if intro_file.exists():
         intro = json.loads(intro_file.read_text())
-        add("intro", round(intro["seconds"], 2), id="intro", style="icon",
+        # Snap to whole frames at 30 fps so the joined film lands on an exact length.
+        add("intro", round(round(intro["seconds"] * 30) / 30, 4), id="intro", style="icon",
             lines=intro["lines"],
             cards=[stem(p) for p in players], card_sizes=[p["photo_size"] for p in players],
             leaders=[{"card": stem(m), "size": m["photo_size"], "name": m["name"], "team": m["team"]}
