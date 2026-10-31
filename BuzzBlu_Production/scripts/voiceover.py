@@ -98,6 +98,17 @@ def write_wav(path, stereo):
         w.writeframes((stereo * 32767).astype(np.int16).tobytes())
 
 
+def closing_announcement(voice, out_dir):
+    """The sign-off under the closing card, read slower than the position calls."""
+    voice.config.length_scale = 1.42
+    a = announcer(synth(voice, "Good luck, team managers."))
+    wet = reverb(a * 0.34, size=1.35, damp=3400)
+    mix = a + wet * 0.5
+    mix /= np.max(np.abs(mix)) + 1e-9
+    write_wav(out_dir / "vo_closing.wav", np.stack([mix * 0.92, np.roll(mix * 0.92, int(0.004 * SR))], axis=1))
+    return len(a) / SR
+
+
 def category_announcements(voice, out_dir):
     """One short read per position, for the category cards."""
     import re
@@ -156,6 +167,7 @@ def main():
 
     for slug, seconds, title in category_announcements(voice, ROOT / "public" / "audio"):
         print(f"  vo_cat_{slug:<22} {seconds:4.2f}s  {title}")
+    print(f"  vo_closing{'':<20} {closing_announcement(voice, ROOT / 'public' / 'audio'):4.2f}s  GOOD LUCK, TEAM MANAGERS!")
 
 
 if __name__ == "__main__":

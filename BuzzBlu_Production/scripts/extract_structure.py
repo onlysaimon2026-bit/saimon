@@ -33,11 +33,13 @@ DIVIDER_PAGES = {4: "leaders", 16: "icons", 22: "regulars"}
 CATEGORY_PAGES = [23, 29, 33, 34, 41, 51, 56, 62, 64]
 CATEGORY_ORDER = [64, 62, 56, 33, 51, 41, 34, 29, 23]
 LINEUP_PAGE = 17
+CLOSING_PAGE = 68
 
 # Durations in seconds for the non-player segments.
 DIVIDER_SECONDS = 4.0
 CATEGORY_SECONDS = 4.0
 LINEUP_SECONDS = 6.0
+CLOSING_SECONDS = 7.0
 
 
 def at_size(sp, size, tol=0.3):
@@ -80,6 +82,18 @@ def read_divider(page):
     rest = sorted([s for s in body if s["size"] < 40], key=lambda s: s["bbox"][1])
     return {"title": [tidy(s["text"]) for s in big],
             "subtitle": tidy(rest[0]["text"]) if rest else ""}
+
+
+def read_closing(page):
+    """The closing slide sets its sign-off larger than the body copy, so the subtitle is
+    the biggest of the small lines rather than the first one."""
+    sp = spans(page)
+    body = [x for x in sp if x["bbox"][1] > 70 and x["size"] >= 22]
+    big = sorted([x for x in body if x["size"] >= 40], key=lambda x: x["bbox"][1])
+    small = [x for x in body if x["size"] < 40]
+    top = max((x["size"] for x in small), default=0)
+    sign_off = next((x["text"] for x in small if abs(x["size"] - top) < 0.3), "")
+    return {"title": [tidy(x["text"]) for x in big], "subtitle": tidy(sign_off)}
 
 
 def read_category(page):
@@ -153,6 +167,9 @@ def main():
             add("lineup", LINEUP_SECONDS, id=f"line_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
                 style="regular", page=page, title=cat["title"], cards=[stem(q) for q in group],
                 card_sizes=[q["photo_size"] for q in group], names=[q["name"] for q in group])
+
+    add("divider", CLOSING_SECONDS, id="div_closing", style="leader", bed="seg_closing",
+        page=CLOSING_PAGE, **read_closing(doc[CLOSING_PAGE - 1]))
 
     total = sum(s["seconds"] for s in segments)
     placed = {s["sequence"] for s in segments if s["kind"] == "player"}

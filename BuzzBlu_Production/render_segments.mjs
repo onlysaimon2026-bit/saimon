@@ -85,7 +85,7 @@ const PLAN = {
   }),
   divider: (s) => ({
     composition: "Divider",
-    bed: "seg_divider",
+    bed: s.bed ?? "seg_divider",
     props: { title: s.title, subtitle: s.subtitle, style: s.style },
   }),
   category: (s) => ({

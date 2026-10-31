@@ -437,9 +437,9 @@ def reveal_bed(voice):
 
 def segment_bed(kind, count=4, vo_path=None):
     """Short beds for the chapter slides, so every slide change has its own sound."""
-    length = 6.0 if kind == "lineup" else 4.0
+    length = {"lineup": 6.0, "closing": 7.0}.get(kind, 4.0)
     bus = np.zeros(int(length * SR))
-    bright = {"divider": 1.0, "category": 0.85, "lineup": 1.15}[kind]
+    bright = {"divider": 1.0, "category": 0.85, "lineup": 1.15, "closing": 1.2}[kind]
     place(bus, 0.0, transition(bright), 0.85)
     place(bus, 0.0, tone_stack(length - 0.3, (36, 43, 48, 55), (1.0, 0.45, 0.24, 0.12), 0.6, 0.5, 1.0), 0.3)
     place(bus, 0.55, logo_sting("icon") * 0.35, 0.3)
@@ -462,7 +462,7 @@ def segment_bed(kind, count=4, vo_path=None):
         with wave.open(str(vo_path)) as w:
             vo_raw = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32).reshape(-1, 2) / 32768
         vo = np.zeros((len(bus), 2))
-        start = int(0.8 * SR)                      # lands as the title finishes building
+        start = int((1.1 if kind == "closing" else 0.8) * SR)  # lands as the title settles
         take = vo_raw[: len(bus) - start]
         vo[start : start + len(take)] = take
         level = one_pole(np.abs(vo).max(axis=1), 6)
@@ -571,6 +571,9 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     beds = {f"reveal_{v}": reveal_bed(v) for v in ("leader", "icon", "regular")}
     beds["seg_divider"] = segment_bed("divider")
+    closing_vo = out / "vo_closing.wav"
+    if closing_vo.exists():
+        beds["seg_closing"] = segment_bed("closing", vo_path=closing_vo)
     # One category bed per position, each carrying its own announcement.
     for vo in sorted(out.glob("vo_cat_*.wav")):
         beds[f"seg_category_{vo.stem[len('vo_cat_'):]}"] = segment_bed("category", vo_path=vo)
