@@ -90,7 +90,7 @@ const PLAN = {
   }),
   category: (s) => ({
     composition: "CategoryCard",
-    bed: "seg_category",
+    bed: `seg_category_${s.id.replace(/^cat_/, "")}`,
     props: { title: s.title, count: s.count, style: s.style },
   }),
   lineup: (s) => ({

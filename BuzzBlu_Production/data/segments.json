@@ -512,90 +512,60 @@
    "index": 14,
    "kind": "category",
    "seconds": 4.0,
-   "id": "cat_goalkeeper",
+   "id": "cat_striker",
    "style": "regular",
-   "page": 23,
-   "title": "GOALKEEPER",
-   "count": "05 PLAYERS",
-   "names": "RAKIB • RABBI (LOLO VAI) • ROBAYAT • FAHIM SHIKDER • MOSTAK"
+   "page": 64,
+   "title": "STRIKER",
+   "count": "03 PLAYERS",
+   "names": "RAHAT • SIAM • ZAHID"
   },
   {
    "index": 15,
    "kind": "player",
    "seconds": 10.0,
-   "id": "05_rakib",
+   "id": "38_rahat",
    "style": "regular",
-   "page": 24,
-   "category": "GOALKEEPER",
-   "sequence": 5
+   "page": 65,
+   "category": "STRIKER",
+   "sequence": 38
   },
   {
    "index": 16,
    "kind": "player",
    "seconds": 10.0,
-   "id": "06_rabbi_lolo_vai",
+   "id": "39_siam",
    "style": "regular",
-   "page": 25,
-   "category": "GOALKEEPER",
-   "sequence": 6
+   "page": 66,
+   "category": "STRIKER",
+   "sequence": 39
   },
   {
    "index": 17,
    "kind": "player",
    "seconds": 10.0,
-   "id": "07_robayat",
+   "id": "40_zahid",
    "style": "regular",
-   "page": 26,
-   "category": "GOALKEEPER",
-   "sequence": 7
+   "page": 67,
+   "category": "STRIKER",
+   "sequence": 40
   },
   {
    "index": 18,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "08_fahim_shikder",
-   "style": "regular",
-   "page": 27,
-   "category": "GOALKEEPER",
-   "sequence": 8
-  },
-  {
-   "index": 19,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "09_mostak",
-   "style": "regular",
-   "page": 28,
-   "category": "GOALKEEPER",
-   "sequence": 9
-  },
-  {
-   "index": 20,
    "kind": "lineup",
    "seconds": 6.0,
-   "id": "line_goalkeeper",
+   "id": "line_striker",
    "style": "regular",
-   "page": 23,
-   "title": "GOALKEEPER",
+   "page": 64,
+   "title": "STRIKER",
    "cards": [
-    "05_rakib",
-    "06_rabbi_lolo_vai",
-    "07_robayat",
-    "08_fahim_shikder",
-    "09_mostak"
+    "38_rahat",
+    "39_siam",
+    "40_zahid"
    ],
    "card_sizes": [
     [
-     962,
-     1371
-    ],
-    [
-     966,
-     1381
-    ],
-    [
-     966,
-     1371
+     1024,
+     1536
     ],
     [
      1024,
@@ -607,66 +577,128 @@
     ]
    ],
    "names": [
-    "RAKIB",
-    "RABBI (LOLO VAI)",
-    "ROBAYAT",
-    "FAHIM SHIKDER",
-    "MOSTAK"
+    "RAHAT",
+    "SIAM",
+    "ZAHID"
    ]
   },
   {
-   "index": 21,
+   "index": 19,
    "kind": "category",
    "seconds": 4.0,
-   "id": "cat_defender",
+   "id": "cat_right_wing",
    "style": "regular",
-   "page": 29,
-   "title": "DEFENDER",
-   "count": "03 PLAYERS",
-   "names": "MD AMDADUL HAQUE • AHNAF TAZWAR • MUIEN"
+   "page": 62,
+   "title": "RIGHT WING",
+   "count": "01 PLAYERS",
+   "names": "MOHAMMAD RAIHAN"
+  },
+  {
+   "index": 20,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "37_mohammad_raihan",
+   "style": "regular",
+   "page": 63,
+   "category": "RIGHT WING",
+   "sequence": 37
+  },
+  {
+   "index": 21,
+   "kind": "lineup",
+   "seconds": 6.0,
+   "id": "line_right_wing",
+   "style": "regular",
+   "page": 62,
+   "title": "RIGHT WING",
+   "cards": [
+    "37_mohammad_raihan"
+   ],
+   "card_sizes": [
+    [
+     1024,
+     1536
+    ]
+   ],
+   "names": [
+    "MOHAMMAD RAIHAN"
+   ]
   },
   {
    "index": 22,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "10_md_amdadul_haque",
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_left_wing",
    "style": "regular",
-   "page": 30,
-   "category": "DEFENDER",
-   "sequence": 10
+   "page": 56,
+   "title": "LEFT WING",
+   "count": "05 PLAYERS",
+   "names": "MASHUK • SAIMON • JOY • YEASIN SALMAN JIDAN • ABU BAKAR"
   },
   {
    "index": 23,
    "kind": "player",
    "seconds": 10.0,
-   "id": "11_ahnaf_tazwar",
+   "id": "32_mashuk",
    "style": "regular",
-   "page": 31,
-   "category": "DEFENDER",
-   "sequence": 11
+   "page": 57,
+   "category": "LEFT WING",
+   "sequence": 32
   },
   {
    "index": 24,
    "kind": "player",
    "seconds": 10.0,
-   "id": "12_muien",
+   "id": "33_saimon",
    "style": "regular",
-   "page": 32,
-   "category": "DEFENDER",
-   "sequence": 12
+   "page": 58,
+   "category": "LEFT WING",
+   "sequence": 33
   },
   {
    "index": 25,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "34_joy",
+   "style": "regular",
+   "page": 59,
+   "category": "LEFT WING",
+   "sequence": 34
+  },
+  {
+   "index": 26,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "35_abu_bakar",
+   "style": "regular",
+   "page": 60,
+   "category": "LEFT WING",
+   "sequence": 35
+  },
+  {
+   "index": 27,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "36_yeasin_salman_jidan",
+   "style": "regular",
+   "page": 61,
+   "category": "LEFT WING",
+   "sequence": 36
+  },
+  {
+   "index": 28,
    "kind": "lineup",
    "seconds": 6.0,
-   "id": "line_defender",
+   "id": "line_left_wing",
    "style": "regular",
-   "page": 29,
-   "title": "DEFENDER",
+   "page": 56,
+   "title": "LEFT WING",
    "cards": [
-    "10_md_amdadul_haque",
-    "11_ahnaf_tazwar",
-    "12_muien"
+    "32_mashuk",
+    "33_saimon",
+    "34_joy",
+    "35_abu_bakar",
+    "36_yeasin_salman_jidan"
    ],
    "card_sizes": [
     [
@@ -674,8 +706,16 @@
      1536
     ],
     [
-     948,
-     1659
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
     ],
     [
      1024,
@@ -683,13 +723,15 @@
     ]
    ],
    "names": [
-    "MD AMDADUL HAQUE",
-    "AHNAF TAZWAR",
-    "MUIEN"
+    "MASHUK",
+    "SAIMON",
+    "JOY",
+    "ABU BAKAR",
+    "YEASIN SALMAN JIDAN"
    ]
   },
   {
-   "index": 26,
+   "index": 29,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_midfielder",
@@ -700,129 +742,97 @@
    "names": "DEFENSIVE MIDFIELDER / CENTRE MIDFIELDER / ATTACKING MIDFIELDER"
   },
   {
-   "index": 27,
+   "index": 30,
    "kind": "category",
    "seconds": 4.0,
-   "id": "cat_defensive_midfielder",
+   "id": "cat_attacking_midfielder",
    "style": "regular",
-   "page": 34,
-   "title": "DEFENSIVE MIDFIELDER",
-   "count": "06 PLAYERS",
-   "names": "MAHTAB • RIZVI HASAN • APURBO • SHAJIBUL ISLAM • SAJJAD AFIF • GM FABIAN AHAMED"
-  },
-  {
-   "index": 28,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "13_mahtab",
-   "style": "regular",
-   "page": 35,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 13
-  },
-  {
-   "index": 29,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "14_rizvi_hasan",
-   "style": "regular",
-   "page": 36,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 14
-  },
-  {
-   "index": 30,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "15_apurbo",
-   "style": "regular",
-   "page": 37,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 15
+   "page": 51,
+   "title": "ATTACKING MIDFIELDER",
+   "count": "04 PLAYERS",
+   "names": "SOHEL RANA • AHSAN SHARIF • AL-FARDIN BHUIYAN • RAFIU"
   },
   {
    "index": 31,
    "kind": "player",
    "seconds": 10.0,
-   "id": "16_gm_fabian_ahamed",
+   "id": "28_sohel_rana",
    "style": "regular",
-   "page": 38,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 16
+   "page": 52,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 28
   },
   {
    "index": 32,
    "kind": "player",
    "seconds": 10.0,
-   "id": "17_shajibul_islam",
+   "id": "29_ahsan_sharif",
    "style": "regular",
-   "page": 39,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 17
+   "page": 53,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 29
   },
   {
    "index": 33,
    "kind": "player",
    "seconds": 10.0,
-   "id": "18_sajjad_afif",
+   "id": "30_al_fardin_bhuiyan",
    "style": "regular",
-   "page": 40,
-   "category": "DEFENSIVE MIDFIELDER",
-   "sequence": 18
+   "page": 54,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 30
   },
   {
    "index": 34,
-   "kind": "lineup",
-   "seconds": 6.0,
-   "id": "line_defensive_midfielder",
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "31_rafiu",
    "style": "regular",
-   "page": 34,
-   "title": "DEFENSIVE MIDFIELDER",
-   "cards": [
-    "13_mahtab",
-    "14_rizvi_hasan",
-    "15_apurbo",
-    "16_gm_fabian_ahamed",
-    "17_shajibul_islam",
-    "18_sajjad_afif"
-   ],
-   "card_sizes": [
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1535
-    ]
-   ],
-   "names": [
-    "MAHTAB",
-    "RIZVI HASAN",
-    "APURBO",
-    "GM FABIAN AHAMED",
-    "SHAJIBUL ISLAM",
-    "SAJJAD AFIF"
-   ]
+   "page": 55,
+   "category": "ATTACKING MIDFIELDER",
+   "sequence": 31
   },
   {
    "index": 35,
+   "kind": "lineup",
+   "seconds": 6.0,
+   "id": "line_attacking_midfielder",
+   "style": "regular",
+   "page": 51,
+   "title": "ATTACKING MIDFIELDER",
+   "cards": [
+    "28_sohel_rana",
+    "29_ahsan_sharif",
+    "30_al_fardin_bhuiyan",
+    "31_rafiu"
+   ],
+   "card_sizes": [
+    [
+     1254,
+     1254
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ]
+   ],
+   "names": [
+    "SOHEL RANA",
+    "AHSAN SHARIF",
+    "AL-FARDIN BHUIYAN",
+    "RAFIU"
+   ]
+  },
+  {
+   "index": 36,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_centre_midfielder",
@@ -833,7 +843,7 @@
    "names": "RUSAD • TAHSAN • T.H SIYAM • TOUFIQ • RAYHAN RAFI • RIAZUL ISLAM • MD SADDAM HOSSAIN • MONIRUL ISLAM MONIR • IRFAN"
   },
   {
-   "index": 36,
+   "index": 37,
    "kind": "player",
    "seconds": 10.0,
    "id": "19_rusad",
@@ -843,7 +853,7 @@
    "sequence": 19
   },
   {
-   "index": 37,
+   "index": 38,
    "kind": "player",
    "seconds": 10.0,
    "id": "20_irfan",
@@ -853,7 +863,7 @@
    "sequence": 20
   },
   {
-   "index": 38,
+   "index": 39,
    "kind": "player",
    "seconds": 10.0,
    "id": "21_tahsan",
@@ -863,7 +873,7 @@
    "sequence": 21
   },
   {
-   "index": 39,
+   "index": 40,
    "kind": "player",
    "seconds": 10.0,
    "id": "22_t_h_siyam",
@@ -873,7 +883,7 @@
    "sequence": 22
   },
   {
-   "index": 40,
+   "index": 41,
    "kind": "player",
    "seconds": 10.0,
    "id": "23_monirul_islam_monir",
@@ -883,7 +893,7 @@
    "sequence": 23
   },
   {
-   "index": 41,
+   "index": 42,
    "kind": "player",
    "seconds": 10.0,
    "id": "24_toufiq",
@@ -893,7 +903,7 @@
    "sequence": 24
   },
   {
-   "index": 42,
+   "index": 43,
    "kind": "player",
    "seconds": 10.0,
    "id": "25_rayhan_rafi",
@@ -903,7 +913,7 @@
    "sequence": 25
   },
   {
-   "index": 43,
+   "index": 44,
    "kind": "player",
    "seconds": 10.0,
    "id": "26_riazul_islam",
@@ -913,7 +923,7 @@
    "sequence": 26
   },
   {
-   "index": 44,
+   "index": 45,
    "kind": "player",
    "seconds": 10.0,
    "id": "27_md_saddam_hossain",
@@ -923,7 +933,7 @@
    "sequence": 27
   },
   {
-   "index": 45,
+   "index": 46,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_centre_midfielder",
@@ -992,301 +1002,289 @@
    ]
   },
   {
-   "index": 46,
+   "index": 47,
    "kind": "category",
    "seconds": 4.0,
-   "id": "cat_attacking_midfielder",
+   "id": "cat_defensive_midfielder",
    "style": "regular",
-   "page": 51,
-   "title": "ATTACKING MIDFIELDER",
-   "count": "04 PLAYERS",
-   "names": "SOHEL RANA • AHSAN SHARIF • AL-FARDIN BHUIYAN • RAFIU"
-  },
-  {
-   "index": 47,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "28_sohel_rana",
-   "style": "regular",
-   "page": 52,
-   "category": "ATTACKING MIDFIELDER",
-   "sequence": 28
+   "page": 34,
+   "title": "DEFENSIVE MIDFIELDER",
+   "count": "06 PLAYERS",
+   "names": "MAHTAB • RIZVI HASAN • APURBO • SHAJIBUL ISLAM • SAJJAD AFIF • GM FABIAN AHAMED"
   },
   {
    "index": 48,
    "kind": "player",
    "seconds": 10.0,
-   "id": "29_ahsan_sharif",
+   "id": "13_mahtab",
    "style": "regular",
-   "page": 53,
-   "category": "ATTACKING MIDFIELDER",
-   "sequence": 29
+   "page": 35,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 13
   },
   {
    "index": 49,
    "kind": "player",
    "seconds": 10.0,
-   "id": "30_al_fardin_bhuiyan",
+   "id": "14_rizvi_hasan",
    "style": "regular",
-   "page": 54,
-   "category": "ATTACKING MIDFIELDER",
-   "sequence": 30
+   "page": 36,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 14
   },
   {
    "index": 50,
    "kind": "player",
    "seconds": 10.0,
-   "id": "31_rafiu",
+   "id": "15_apurbo",
    "style": "regular",
-   "page": 55,
-   "category": "ATTACKING MIDFIELDER",
-   "sequence": 31
+   "page": 37,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 15
   },
   {
    "index": 51,
-   "kind": "lineup",
-   "seconds": 6.0,
-   "id": "line_attacking_midfielder",
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "16_gm_fabian_ahamed",
    "style": "regular",
-   "page": 51,
-   "title": "ATTACKING MIDFIELDER",
-   "cards": [
-    "28_sohel_rana",
-    "29_ahsan_sharif",
-    "30_al_fardin_bhuiyan",
-    "31_rafiu"
-   ],
-   "card_sizes": [
-    [
-     1254,
-     1254
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ]
-   ],
-   "names": [
-    "SOHEL RANA",
-    "AHSAN SHARIF",
-    "AL-FARDIN BHUIYAN",
-    "RAFIU"
-   ]
+   "page": 38,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 16
   },
   {
    "index": 52,
-   "kind": "category",
-   "seconds": 4.0,
-   "id": "cat_left_wing",
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "17_shajibul_islam",
    "style": "regular",
-   "page": 56,
-   "title": "LEFT WING",
-   "count": "05 PLAYERS",
-   "names": "MASHUK • SAIMON • JOY • YEASIN SALMAN JIDAN • ABU BAKAR"
+   "page": 39,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 17
   },
   {
    "index": 53,
    "kind": "player",
    "seconds": 10.0,
-   "id": "32_mashuk",
+   "id": "18_sajjad_afif",
    "style": "regular",
-   "page": 57,
-   "category": "LEFT WING",
-   "sequence": 32
+   "page": 40,
+   "category": "DEFENSIVE MIDFIELDER",
+   "sequence": 18
   },
   {
    "index": 54,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "33_saimon",
+   "kind": "lineup",
+   "seconds": 6.0,
+   "id": "line_defensive_midfielder",
    "style": "regular",
-   "page": 58,
-   "category": "LEFT WING",
-   "sequence": 33
+   "page": 34,
+   "title": "DEFENSIVE MIDFIELDER",
+   "cards": [
+    "13_mahtab",
+    "14_rizvi_hasan",
+    "15_apurbo",
+    "16_gm_fabian_ahamed",
+    "17_shajibul_islam",
+    "18_sajjad_afif"
+   ],
+   "card_sizes": [
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1536
+    ],
+    [
+     1024,
+     1535
+    ]
+   ],
+   "names": [
+    "MAHTAB",
+    "RIZVI HASAN",
+    "APURBO",
+    "GM FABIAN AHAMED",
+    "SHAJIBUL ISLAM",
+    "SAJJAD AFIF"
+   ]
   },
   {
    "index": 55,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "34_joy",
+   "kind": "category",
+   "seconds": 4.0,
+   "id": "cat_defender",
    "style": "regular",
-   "page": 59,
-   "category": "LEFT WING",
-   "sequence": 34
+   "page": 29,
+   "title": "DEFENDER",
+   "count": "03 PLAYERS",
+   "names": "MD AMDADUL HAQUE • AHNAF TAZWAR • MUIEN"
   },
   {
    "index": 56,
    "kind": "player",
    "seconds": 10.0,
-   "id": "35_abu_bakar",
+   "id": "10_md_amdadul_haque",
    "style": "regular",
-   "page": 60,
-   "category": "LEFT WING",
-   "sequence": 35
+   "page": 30,
+   "category": "DEFENDER",
+   "sequence": 10
   },
   {
    "index": 57,
    "kind": "player",
    "seconds": 10.0,
-   "id": "36_yeasin_salman_jidan",
+   "id": "11_ahnaf_tazwar",
    "style": "regular",
-   "page": 61,
-   "category": "LEFT WING",
-   "sequence": 36
+   "page": 31,
+   "category": "DEFENDER",
+   "sequence": 11
   },
   {
    "index": 58,
-   "kind": "lineup",
-   "seconds": 6.0,
-   "id": "line_left_wing",
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "12_muien",
    "style": "regular",
-   "page": 56,
-   "title": "LEFT WING",
-   "cards": [
-    "32_mashuk",
-    "33_saimon",
-    "34_joy",
-    "35_abu_bakar",
-    "36_yeasin_salman_jidan"
-   ],
-   "card_sizes": [
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ],
-    [
-     1024,
-     1536
-    ]
-   ],
-   "names": [
-    "MASHUK",
-    "SAIMON",
-    "JOY",
-    "ABU BAKAR",
-    "YEASIN SALMAN JIDAN"
-   ]
+   "page": 32,
+   "category": "DEFENDER",
+   "sequence": 12
   },
   {
    "index": 59,
-   "kind": "category",
-   "seconds": 4.0,
-   "id": "cat_right_wing",
-   "style": "regular",
-   "page": 62,
-   "title": "RIGHT WING",
-   "count": "01 PLAYERS",
-   "names": "MOHAMMAD RAIHAN"
-  },
-  {
-   "index": 60,
-   "kind": "player",
-   "seconds": 10.0,
-   "id": "37_mohammad_raihan",
-   "style": "regular",
-   "page": 63,
-   "category": "RIGHT WING",
-   "sequence": 37
-  },
-  {
-   "index": 61,
    "kind": "lineup",
    "seconds": 6.0,
-   "id": "line_right_wing",
+   "id": "line_defender",
    "style": "regular",
-   "page": 62,
-   "title": "RIGHT WING",
+   "page": 29,
+   "title": "DEFENDER",
    "cards": [
-    "37_mohammad_raihan"
+    "10_md_amdadul_haque",
+    "11_ahnaf_tazwar",
+    "12_muien"
    ],
    "card_sizes": [
+    [
+     1024,
+     1536
+    ],
+    [
+     948,
+     1659
+    ],
     [
      1024,
      1536
     ]
    ],
    "names": [
-    "MOHAMMAD RAIHAN"
+    "MD AMDADUL HAQUE",
+    "AHNAF TAZWAR",
+    "MUIEN"
    ]
   },
   {
-   "index": 62,
+   "index": 60,
    "kind": "category",
    "seconds": 4.0,
-   "id": "cat_striker",
+   "id": "cat_goalkeeper",
    "style": "regular",
-   "page": 64,
-   "title": "STRIKER",
-   "count": "03 PLAYERS",
-   "names": "RAHAT • SIAM • ZAHID"
+   "page": 23,
+   "title": "GOALKEEPER",
+   "count": "05 PLAYERS",
+   "names": "RAKIB • RABBI (LOLO VAI) • ROBAYAT • FAHIM SHIKDER • MOSTAK"
+  },
+  {
+   "index": 61,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "05_rakib",
+   "style": "regular",
+   "page": 24,
+   "category": "GOALKEEPER",
+   "sequence": 5
+  },
+  {
+   "index": 62,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "06_rabbi_lolo_vai",
+   "style": "regular",
+   "page": 25,
+   "category": "GOALKEEPER",
+   "sequence": 6
   },
   {
    "index": 63,
    "kind": "player",
    "seconds": 10.0,
-   "id": "38_rahat",
+   "id": "07_robayat",
    "style": "regular",
-   "page": 65,
-   "category": "STRIKER",
-   "sequence": 38
+   "page": 26,
+   "category": "GOALKEEPER",
+   "sequence": 7
   },
   {
    "index": 64,
    "kind": "player",
    "seconds": 10.0,
-   "id": "39_siam",
+   "id": "08_fahim_shikder",
    "style": "regular",
-   "page": 66,
-   "category": "STRIKER",
-   "sequence": 39
+   "page": 27,
+   "category": "GOALKEEPER",
+   "sequence": 8
   },
   {
    "index": 65,
    "kind": "player",
    "seconds": 10.0,
-   "id": "40_zahid",
+   "id": "09_mostak",
    "style": "regular",
-   "page": 67,
-   "category": "STRIKER",
-   "sequence": 40
+   "page": 28,
+   "category": "GOALKEEPER",
+   "sequence": 9
   },
   {
    "index": 66,
    "kind": "lineup",
    "seconds": 6.0,
-   "id": "line_striker",
+   "id": "line_goalkeeper",
    "style": "regular",
-   "page": 64,
-   "title": "STRIKER",
+   "page": 23,
+   "title": "GOALKEEPER",
    "cards": [
-    "38_rahat",
-    "39_siam",
-    "40_zahid"
+    "05_rakib",
+    "06_rabbi_lolo_vai",
+    "07_robayat",
+    "08_fahim_shikder",
+    "09_mostak"
    ],
    "card_sizes": [
     [
-     1024,
-     1536
+     962,
+     1371
+    ],
+    [
+     966,
+     1381
+    ],
+    [
+     966,
+     1371
     ],
     [
      1024,
@@ -1298,9 +1296,11 @@
     ]
    ],
    "names": [
-    "RAHAT",
-    "SIAM",
-    "ZAHID"
+    "RAKIB",
+    "RABBI (LOLO VAI)",
+    "ROBAYAT",
+    "FAHIM SHIKDER",
+    "MOSTAK"
    ]
   }
  ]

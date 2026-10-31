@@ -11,7 +11,7 @@ price, team or statistic that is not printed on a slide.
 | 1. Players | `python scripts/extract_players.py` | `data/players.json`, `assets/player_photos/`, `reports/extraction_report.json` |
 | 2. Leaders + running order | `python scripts/extract_structure.py` | `data/managers.json`, `data/segments.json` |
 | 3. Stage cards | `cp assets/player_photos/*.png public/cards/` | `public/cards/` |
-| 4. Voiceover | `python scripts/voiceover.py` | `public/audio/intro_vo.wav`, `data/intro_lines.json` |
+| 4. Voiceover | `python scripts/voiceover.py` | `public/audio/intro_vo.wav`, `public/audio/vo_cat_*.wav`, `data/intro_lines.json` |
 | 5. Sound design | `python scripts/sound_design.py public/audio` | `public/audio/*.wav` |
 | 6. Textures | `python scripts/make_textures.py public/textures` | `public/textures/*.png` |
 | 7. Render | `node render_segments.mjs [--only ID] [--kind K] [--from N --to M] [--force]` | `output/individual/*.mp4` |
@@ -30,15 +30,19 @@ order with its kind, style and length. `combine.mjs` reads it, so changing the o
 a duration there is all that is needed to re-cut the film.
 
 ```
-intro    spoken announcement        ~36 s
+intro    spoken announcement        ~41 s
 divider  MEET THE FOUR LEADERS        4 s
 manager  × 4                         10 s each
 divider  ICON PLAYER AUCTION          4 s
 lineup   THE FOUR ICONS               6 s
 player   × 4 icons                   10 s each
 divider  THE REGULAR AUCTION BEGINS   4 s
-category + its players, × 9 categories
+category + its players + its line-up, × 9 categories
 ```
+
+Positions run from the strikers back to the goalkeepers. `CATEGORY_PAGES` in
+`extract_structure.py` is the PDF's own order and decides which players belong to which
+category; `CATEGORY_ORDER` is the order the film plays them in.
 
 ## Engine
 
@@ -52,7 +56,9 @@ sixty hand-built ones.
 - `engine/components/Card.tsx` — the card's path through the shot. It is shown at a
   constant height with its width taken from the source image's aspect ratio, so no card
   is ever cropped or stretched.
-- `engine/components/Football.tsx` — the spinning ball in the logo lockup.
+- `engine/components/Football.tsx` — the ball. Its twelve black pentagons sit at the
+  vertices of an icosahedron and are rotated in 3D, projected and drawn in depth order,
+  so it reads as a sphere turning rather than a pattern sliding across a disc.
 - `scripts/sound_design.py` — the beds. Each one is pinned to the same act boundaries as
   the picture, so moving a beat means changing both files.
 
@@ -64,6 +70,13 @@ announcer. It writes the exact timing of every line to `data/intro_lines.json`, 
 both the intro score and the `Intro` composition read, so the type always lands on the
 word being spoken. Change the words in `LINES` at the top of that script and re-run it,
 then `sound_design.py`, then render the intro.
+
+The same voice names each position as its card comes up: `category_announcements` reads
+the titles from the PDF and writes `vo_cat_<slug>.wav`, which `sound_design.py` folds
+into `seg_category_<slug>.wav` with the music ducked under the words.
+
+The full "BUZZBLU — FOOTBALL TOURNAMENT • PLAYER AUCTION 2026" lockup belongs to the
+film's opening and appears once. Every later lockup names the category instead.
 
 ## Music
 

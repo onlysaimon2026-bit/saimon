@@ -18,6 +18,9 @@ import wave
 import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import pymupdf
+
+from extract_structure import CATEGORY_ORDER, read_category
 from sound_design import SR, one_pole, place, reverb
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -45,6 +48,8 @@ LINES = [
 ]
 
 LEAD_IN = 1.4          # darkness before the first word
+# The same announcer names each position as its card comes up.
+CATEGORY_SCALE = 1.26
 
 
 def synth(voice, text):
@@ -84,6 +89,35 @@ def announcer(a):
     return voice / (np.max(np.abs(voice)) + 1e-9)
 
 
+def write_wav(path, stereo):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes((stereo * 32767).astype(np.int16).tobytes())
+
+
+def category_announcements(voice, out_dir):
+    """One short read per position, for the category cards."""
+    import re
+
+    doc = pymupdf.open(ROOT / "source" / "BuzzBlu_Auction_2026.pdf")
+    voice.config.length_scale = CATEGORY_SCALE
+    made = []
+    for page in CATEGORY_ORDER:
+        title = read_category(doc[page - 1])["title"]
+        slug = re.sub(r"[^a-z0-9]+", "_", title.lower()).strip("_")
+        a = announcer(synth(voice, title.title() + "."))
+        wet = reverb(a * 0.3, size=1.25, damp=3600)
+        mix = a + wet * 0.45
+        mix /= np.max(np.abs(mix)) + 1e-9
+        mix *= 0.92
+        write_wav(out_dir / f"vo_cat_{slug}.wav", np.stack([mix, np.roll(mix, int(0.004 * SR))], axis=1))
+        made.append((slug, len(a) / SR, title))
+    return made
+
+
 def main():
     from piper import PiperVoice
 
@@ -112,18 +146,16 @@ def main():
     stereo = np.stack([mix, np.roll(mix, int(0.004 * SR))], axis=1)
 
     out = ROOT / "public" / "audio" / "intro_vo.wav"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    with wave.open(str(out), "wb") as w:
-        w.setnchannels(2)
-        w.setsampwidth(2)
-        w.setframerate(SR)
-        w.writeframes((stereo * 32767).astype(np.int16).tobytes())
+    write_wav(out, stereo)
 
     (ROOT / "data" / "intro_lines.json").write_text(json.dumps(
         {"seconds": round(total, 3), "lead_in": LEAD_IN, "lines": timeline}, indent=1))
     for line in timeline:
         print(f"{line['at']:6.2f}  {line['seconds']:4.2f}s  {60 * len(line['text'].split()) / line['seconds']:4.0f} wpm  {line['text']}")
     print(f"\n{out}  {total:.2f}s")
+
+    for slug, seconds, title in category_announcements(voice, ROOT / "public" / "audio"):
+        print(f"  vo_cat_{slug:<22} {seconds:4.2f}s  {title}")
 
 
 if __name__ == "__main__":

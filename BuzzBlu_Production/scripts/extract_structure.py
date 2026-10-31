@@ -26,7 +26,12 @@ PDF = ROOT / "source" / "BuzzBlu_Auction_2026.pdf"
 MANAGER_PAGES = [5, 6, 7, 8]
 # Chapter slides, in the order the PDF presents them.
 DIVIDER_PAGES = {4: "leaders", 16: "icons", 22: "regulars"}
+# Pages of the position slides. CATEGORY_PAGES is the PDF's own order and still decides
+# which players belong to which category; CATEGORY_ORDER is the order the film plays
+# them in, which runs from the strikers back to the goalkeepers. The midfield umbrella
+# slide (33) keeps its place ahead of the three midfield categories it introduces.
 CATEGORY_PAGES = [23, 29, 33, 34, 41, 51, 56, 62, 64]
+CATEGORY_ORDER = [64, 62, 56, 33, 51, 41, 34, 29, 23]
 LINEUP_PAGE = 17
 
 # Durations in seconds for the non-player segments.
@@ -133,7 +138,7 @@ def main():
 
     add("divider", DIVIDER_SECONDS, id="div_regulars", style="regular", **dividers["regulars"])
     regulars = [p for p in players if not p["is_icon"]]
-    for page in CATEGORY_PAGES:
+    for page in CATEGORY_ORDER:
         cat = categories[page]
         add("category", CATEGORY_SECONDS, id=f"cat_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
             style="regular", page=page, title=cat["title"], count=cat["count"], names=cat["names"])

@@ -3,9 +3,10 @@ import { DISPLAY, UI } from "../fonts";
 import { GREEN, Theme } from "../theme";
 import { Football } from "./Football";
 
-// 8.0-10.0s. The card recedes, the tournament lockup lands on the final impact, and the
-// frame settles to black so the next player's segment can begin cleanly.
-export const Signature: React.FC<{ theme: Theme }> = ({ theme }) => {
+// 8.0-10.0s. The card recedes, the lockup lands on the final impact, and the frame
+// settles to black so the next segment can begin cleanly. The line under the wordmark
+// names this card's category: the full tournament line belongs to the film's opening.
+export const Signature: React.FC<{ theme: Theme; subtitle: string }> = ({ theme, subtitle }) => {
   const frame = useCurrentFrame();
   const { fps, width, durationInFrames } = useVideoConfig();
   const t = frame / fps;
@@ -82,7 +83,7 @@ export const Signature: React.FC<{ theme: Theme }> = ({ theme }) => {
           transform: `translateY(${(1 - tag) * 16}px)`,
         }}
       >
-        FOOTBALL TOURNAMENT • PLAYER AUCTION 2026
+        {subtitle}
       </div>
       <AbsoluteFill style={{ backgroundColor: "#04070d", opacity: fade }} />
     </AbsoluteFill>

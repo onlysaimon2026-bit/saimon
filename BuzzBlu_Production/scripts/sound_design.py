@@ -435,7 +435,7 @@ def reveal_bed(voice):
     return finish(bus + reverb(send, size=1.15) * 0.5, stereo_layers=stereo)
 
 
-def segment_bed(kind, count=4):
+def segment_bed(kind, count=4, vo_path=None):
     """Short beds for the chapter slides, so every slide change has its own sound."""
     length = 6.0 if kind == "lineup" else 4.0
     bus = np.zeros(int(length * SR))
@@ -457,11 +457,26 @@ def segment_bed(kind, count=4):
         place(bus, 0.62, details_reveal("regular") * 0.55, 0.34)
     place(bus, 0.0, crowd(length) * 0.5, 0.022)
     place(bus, 0.1, roar(min(2.4, length), 0.7), 0.07)
+    vo = None
+    if vo_path is not None and vo_path.exists():
+        with wave.open(str(vo_path)) as w:
+            vo_raw = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32).reshape(-1, 2) / 32768
+        vo = np.zeros((len(bus), 2))
+        start = int(0.8 * SR)                      # lands as the title finishes building
+        take = vo_raw[: len(bus) - start]
+        vo[start : start + len(take)] = take
+        level = one_pole(np.abs(vo).max(axis=1), 6)
+        bus *= np.clip(1.0 - level * 3.0, 0.3, 1.0)
     place(bus, 0.55, stomp(0.9, 46, 0.8), 0.22)
     place(bus, 0.85, clap() * 0.5, 0.1)
     send = np.zeros(len(bus))
     place(send, 0.0, bus.copy(), 0.4)
-    return finish(bus + reverb(send, size=1.0) * 0.45, fade=0.5)
+    mixed = finish(bus + reverb(send, size=1.0) * 0.45, fade=0.5)
+    if vo is not None:
+        mixed = mixed * 0.85 + vo * 0.95
+        mixed = np.tanh(mixed * 0.85) / np.tanh(0.85)
+        mixed = mixed / (np.max(np.abs(mixed)) + 1e-9) * 0.89
+    return mixed
 
 
 def intro_bed():
@@ -555,7 +570,10 @@ def main():
     out = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "public/audio")
     out.mkdir(parents=True, exist_ok=True)
     beds = {f"reveal_{v}": reveal_bed(v) for v in ("leader", "icon", "regular")}
-    beds |= {f"seg_{k}": segment_bed(k) for k in ("divider", "category")}
+    beds["seg_divider"] = segment_bed("divider")
+    # One category bed per position, each carrying its own announcement.
+    for vo in sorted(out.glob("vo_cat_*.wav")):
+        beds[f"seg_category_{vo.stem[len('vo_cat_'):]}"] = segment_bed("category", vo_path=vo)
     # A lineup bed for every group size that appears in the running order.
     counts = sorted({len(s["cards"]) for s in
                      json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "segments.json").read_text())["segments"]
