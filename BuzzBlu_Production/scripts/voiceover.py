@@ -22,27 +22,29 @@ from sound_design import SR, one_pole, place, reverb
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# (what the audience reads, what the voice says, pause after it in seconds)
+# (what the audience reads, what the voice says, how slowly, pause after it)
 # The spoken form differs only where the model needs it: a numeral and the brand name.
+# Pace is set line by line rather than once for the whole read: short punchy lines get
+# rattled off at a single setting, and the two lines the film turns on have to land
+# heaviest. The target is roughly 100-125 words a minute, where an announcer sits.
 LINES = [
-    ("THE STAGE IS SET.", "The stage is set.", 0.35),
-    ("THE LIGHTS ARE ON.", "The lights are on.", 0.55),
-    ("40 PLAYERS. COUNTLESS AMBITIONS.", "Forty players. Countless ambitions.", 0.75),
-    ("HELLO, LEADERS!", "Hello, leaders!", 0.35),
-    ("WELCOME TO THE BUZZBLU AUCTION.", "Welcome to the Buzz Blue auction.", 0.7),
-    ("THINK SMART. STRATEGIZE.", "Think smart. Strategize.", 0.3),
-    ("MAKE YOUR MOVES.", "Make your moves.", 0.3),
-    ("BUILD YOUR TEAM.", "Build your team.", 0.75),
-    ("THIS IS NOT JUST A GAME.", "This is not just a game.", 0.45),
-    ("THIS IS YOUR MOMENT.", "This is your moment.", 0.8),
-    ("SUPPORTERS, THE CHOICE IS YOURS.", "Supporters, the choice is yours.", 0.35),
-    ("CHOOSE YOUR TEAM.", "Choose your team.", 0.8),
-    ("THIS IS BUZZBLU 2026.", "This is Buzz Blue, twenty twenty six.", 0.9),
-    ("LET THE BATTLE BEGIN.", "Let the battle begin!", 2.6),
+    ("THE STAGE IS SET.", "The stage is set.", 1.34, 0.45),
+    ("THE LIGHTS ARE ON.", "The lights are on.", 1.46, 0.6),
+    ("40 PLAYERS. COUNTLESS AMBITIONS.", "Forty players. Countless ambitions.", 1.1, 0.8),
+    ("HELLO, LEADERS!", "Hello, leaders!", 1.16, 0.4),
+    ("WELCOME TO THE BUZZBLU AUCTION.", "Welcome to the Buzz Blue auction.", 1.2, 0.75),
+    ("THINK SMART. STRATEGIZE.", "Think smart. Strategize.", 1.12, 0.35),
+    ("MAKE YOUR MOVES.", "Make your moves.", 1.3, 0.35),
+    ("BUILD YOUR TEAM.", "Build your team.", 1.44, 0.85),
+    ("THIS IS NOT JUST A GAME.", "This is not just a game.", 1.55, 0.6),
+    ("THIS IS YOUR MOMENT.", "This is your moment.", 1.5, 0.95),
+    ("SUPPORTERS, THE CHOICE IS YOURS.", "Supporters, the choice is yours.", 1.16, 0.4),
+    ("CHOOSE YOUR TEAM.", "Choose your team.", 1.4, 0.9),
+    ("THIS IS BUZZBLU 2026.", "This is Buzz Blue, twenty twenty six.", 1.16, 1.0),
+    ("LET THE BATTLE BEGIN.", "Let the battle begin!", 1.5, 2.6),
 ]
 
 LEAD_IN = 1.4          # darkness before the first word
-LENGTH_SCALE = 1.08    # a touch slower than default, for weight
 
 
 def synth(voice, text):
@@ -87,9 +89,11 @@ def main():
 
     model = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "assets" / "voice" / "announcer.onnx")
     voice = PiperVoice.load(str(model), config_path=str(model) + ".json")
-    voice.config.length_scale = LENGTH_SCALE
 
-    takes = [(display, synth(voice, spoken), gap) for display, spoken, gap in LINES]
+    takes = []
+    for display, spoken, scale, gap in LINES:
+        voice.config.length_scale = scale
+        takes.append((display, synth(voice, spoken), gap))
     total = LEAD_IN + sum(len(a) / SR + gap for _, a, gap in takes)
 
     bus = np.zeros(int(total * SR))
@@ -118,7 +122,7 @@ def main():
     (ROOT / "data" / "intro_lines.json").write_text(json.dumps(
         {"seconds": round(total, 3), "lead_in": LEAD_IN, "lines": timeline}, indent=1))
     for line in timeline:
-        print(f"{line['at']:6.2f}  {line['seconds']:4.2f}s  {line['text']}")
+        print(f"{line['at']:6.2f}  {line['seconds']:4.2f}s  {60 * len(line['text'].split()) / line['seconds']:4.0f} wpm  {line['text']}")
     print(f"\n{out}  {total:.2f}s")
 
 

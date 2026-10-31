@@ -1,82 +1,82 @@
 {
- "total_seconds": 577.83,
+ "total_seconds": 582.87,
  "segments": [
   {
    "index": 1,
    "kind": "intro",
-   "seconds": 35.83,
+   "seconds": 40.87,
    "id": "intro",
    "style": "icon",
    "lines": [
     {
      "text": "THE STAGE IS SET.",
      "at": 1.4,
-     "seconds": 1.507
+     "seconds": 1.83
     },
     {
      "text": "THE LIGHTS ARE ON.",
-     "at": 3.257,
-     "seconds": 1.266
+     "at": 3.68,
+     "seconds": 1.611
     },
     {
      "text": "40 PLAYERS. COUNTLESS AMBITIONS.",
-     "at": 5.073,
-     "seconds": 2.969
+     "at": 5.891,
+     "seconds": 3.061
     },
     {
      "text": "HELLO, LEADERS!",
-     "at": 8.792,
-     "seconds": 1.282
+     "at": 9.753,
+     "seconds": 1.372
     },
     {
      "text": "WELCOME TO THE BUZZBLU AUCTION.",
-     "at": 10.424,
-     "seconds": 2.189
+     "at": 11.525,
+     "seconds": 2.287
     },
     {
      "text": "THINK SMART. STRATEGIZE.",
-     "at": 13.313,
-     "seconds": 2.154
+     "at": 14.563,
+     "seconds": 2.286
     },
     {
      "text": "MAKE YOUR MOVES.",
-     "at": 15.767,
-     "seconds": 1.238
+     "at": 17.199,
+     "seconds": 1.448
     },
     {
      "text": "BUILD YOUR TEAM.",
-     "at": 17.305,
-     "seconds": 1.069
+     "at": 18.997,
+     "seconds": 1.367
     },
     {
      "text": "THIS IS NOT JUST A GAME.",
-     "at": 19.124,
-     "seconds": 1.651
+     "at": 21.214,
+     "seconds": 2.285
     },
     {
      "text": "THIS IS YOUR MOMENT.",
-     "at": 21.225,
-     "seconds": 1.376
+     "at": 24.099,
+     "seconds": 1.831
     },
     {
      "text": "SUPPORTERS, THE CHOICE IS YOURS.",
-     "at": 23.401,
-     "seconds": 2.456
+     "at": 26.88,
+     "seconds": 2.621
     },
     {
      "text": "CHOOSE YOUR TEAM.",
-     "at": 26.207,
-     "seconds": 1.114
+     "at": 29.9,
+     "seconds": 1.388
     },
     {
      "text": "THIS IS BUZZBLU 2026.",
-     "at": 28.121,
-     "seconds": 2.863
+     "at": 32.188,
+     "seconds": 3.232
     },
     {
      "text": "LET THE BATTLE BEGIN.",
-     "at": 31.884,
-     "seconds": 1.345
+     "at": 36.42,
+     "seconds": 1.845
     }
    ],
    "cards": [
