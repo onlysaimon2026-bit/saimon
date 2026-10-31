@@ -1,0 +1,642 @@
+[
+ {
+  "sequence": 1,
+  "page": 18,
+  "name": "MAHADI HASAN",
+  "position": "ATTACKING MIDFIELDER (AM)",
+  "base_price": "$25",
+  "order": "01/04",
+  "is_icon": true,
+  "image_xref": 31,
+  "photo": "assets/player_photos/01_mahadi_hasan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/01_mahadi_hasan_slide.png"
+ },
+ {
+  "sequence": 2,
+  "page": 19,
+  "name": "SAIDUL",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$20",
+  "order": "02/04",
+  "is_icon": true,
+  "image_xref": 125,
+  "photo": "assets/player_photos/02_saidul.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/02_saidul_slide.png"
+ },
+ {
+  "sequence": 3,
+  "page": 20,
+  "name": "SHAHIN ALOM",
+  "position": "RIGHT WINGER (RW)",
+  "base_price": "$25",
+  "order": "03/04",
+  "is_icon": true,
+  "image_xref": 127,
+  "photo": "assets/player_photos/03_shahin_alom.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/03_shahin_alom_slide.png"
+ },
+ {
+  "sequence": 4,
+  "page": 21,
+  "name": "MD RANA",
+  "position": "RIGHT WINGER (RW)",
+  "base_price": "$20",
+  "order": "04/04",
+  "is_icon": true,
+  "image_xref": 130,
+  "photo": "assets/player_photos/04_md_rana.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/04_md_rana_slide.png"
+ },
+ {
+  "sequence": 5,
+  "page": 24,
+  "name": "RAKIB",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$10",
+  "order": "01/36",
+  "is_icon": false,
+  "image_xref": 157,
+  "photo": "assets/player_photos/05_rakib.png",
+  "photo_size": [
+   962,
+   1371
+  ],
+  "slide": "assets/extracted_cards/05_rakib_slide.png"
+ },
+ {
+  "sequence": 6,
+  "page": 25,
+  "name": "RABBI (LOLO VAI)",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$15",
+  "order": "02/36",
+  "is_icon": false,
+  "image_xref": 161,
+  "photo": "assets/player_photos/06_rabbi_lolo_vai.png",
+  "photo_size": [
+   966,
+   1381
+  ],
+  "slide": "assets/extracted_cards/06_rabbi_lolo_vai_slide.png"
+ },
+ {
+  "sequence": 7,
+  "page": 26,
+  "name": "ROBAYAT",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$15",
+  "order": "03/36",
+  "is_icon": false,
+  "image_xref": 165,
+  "photo": "assets/player_photos/07_robayat.png",
+  "photo_size": [
+   966,
+   1371
+  ],
+  "slide": "assets/extracted_cards/07_robayat_slide.png"
+ },
+ {
+  "sequence": 8,
+  "page": 27,
+  "name": "FAHIM SHIKDER",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$10",
+  "order": "04/36",
+  "is_icon": false,
+  "image_xref": 169,
+  "photo": "assets/player_photos/08_fahim_shikder.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/08_fahim_shikder_slide.png"
+ },
+ {
+  "sequence": 9,
+  "page": 28,
+  "name": "MOSTAK",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$10",
+  "order": "05/36",
+  "is_icon": false,
+  "image_xref": 172,
+  "photo": "assets/player_photos/09_mostak.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/09_mostak_slide.png"
+ },
+ {
+  "sequence": 10,
+  "page": 30,
+  "name": "MD AMDADUL HAQUE",
+  "position": "DEFENDER (FB / CB)",
+  "base_price": "$10",
+  "order": "06/36",
+  "is_icon": false,
+  "image_xref": 177,
+  "photo": "assets/player_photos/10_md_amdadul_haque.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/10_md_amdadul_haque_slide.png"
+ },
+ {
+  "sequence": 11,
+  "page": 31,
+  "name": "AHNAF TAZWAR",
+  "position": "DEFENDER (FB / CB)",
+  "base_price": "$10",
+  "order": "07/36",
+  "is_icon": false,
+  "image_xref": 180,
+  "photo": "assets/player_photos/11_ahnaf_tazwar.png",
+  "photo_size": [
+   948,
+   1659
+  ],
+  "slide": "assets/extracted_cards/11_ahnaf_tazwar_slide.png"
+ },
+ {
+  "sequence": 12,
+  "page": 32,
+  "name": "MUIEN",
+  "position": "DEFENDER (FB / CB)",
+  "base_price": "$10",
+  "order": "08/36",
+  "is_icon": false,
+  "image_xref": 183,
+  "photo": "assets/player_photos/12_muien.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/12_muien_slide.png"
+ },
+ {
+  "sequence": 13,
+  "page": 35,
+  "name": "MAHTAB",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$10",
+  "order": "09/36",
+  "is_icon": false,
+  "image_xref": 190,
+  "photo": "assets/player_photos/13_mahtab.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/13_mahtab_slide.png"
+ },
+ {
+  "sequence": 14,
+  "page": 36,
+  "name": "RIZVI HASAN",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$15",
+  "order": "10/36",
+  "is_icon": false,
+  "image_xref": 193,
+  "photo": "assets/player_photos/14_rizvi_hasan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/14_rizvi_hasan_slide.png"
+ },
+ {
+  "sequence": 15,
+  "page": 37,
+  "name": "APURBO",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$15",
+  "order": "11/36",
+  "is_icon": false,
+  "image_xref": 196,
+  "photo": "assets/player_photos/15_apurbo.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/15_apurbo_slide.png"
+ },
+ {
+  "sequence": 16,
+  "page": 38,
+  "name": "GM FABIAN AHAMED",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$10",
+  "order": "12/36",
+  "is_icon": false,
+  "image_xref": 199,
+  "photo": "assets/player_photos/16_gm_fabian_ahamed.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/16_gm_fabian_ahamed_slide.png"
+ },
+ {
+  "sequence": 17,
+  "page": 39,
+  "name": "SHAJIBUL ISLAM",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$10",
+  "order": "13/36",
+  "is_icon": false,
+  "image_xref": 202,
+  "photo": "assets/player_photos/17_shajibul_islam.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/17_shajibul_islam_slide.png"
+ },
+ {
+  "sequence": 18,
+  "page": 40,
+  "name": "SAJJAD AFIF",
+  "position": "DEFENSIVE MIDFIELDER (DM)",
+  "base_price": "$10",
+  "order": "14/36",
+  "is_icon": false,
+  "image_xref": 205,
+  "photo": "assets/player_photos/18_sajjad_afif.png",
+  "photo_size": [
+   1024,
+   1535
+  ],
+  "slide": "assets/extracted_cards/18_sajjad_afif_slide.png"
+ },
+ {
+  "sequence": 19,
+  "page": 42,
+  "name": "RUSAD",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$15",
+  "order": "15/36",
+  "is_icon": false,
+  "image_xref": 210,
+  "photo": "assets/player_photos/19_rusad.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/19_rusad_slide.png"
+ },
+ {
+  "sequence": 20,
+  "page": 43,
+  "name": "IRFAN",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "16/36",
+  "is_icon": false,
+  "image_xref": 213,
+  "photo": "assets/player_photos/20_irfan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/20_irfan_slide.png"
+ },
+ {
+  "sequence": 21,
+  "page": 44,
+  "name": "TAHSAN",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "17/36",
+  "is_icon": false,
+  "image_xref": 216,
+  "photo": "assets/player_photos/21_tahsan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/21_tahsan_slide.png"
+ },
+ {
+  "sequence": 22,
+  "page": 45,
+  "name": "T.H SIYAM",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$15",
+  "order": "18/36",
+  "is_icon": false,
+  "image_xref": 219,
+  "photo": "assets/player_photos/22_t_h_siyam.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/22_t_h_siyam_slide.png"
+ },
+ {
+  "sequence": 23,
+  "page": 46,
+  "name": "MONIRUL ISLAM MONIR",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "19/36",
+  "is_icon": false,
+  "image_xref": 222,
+  "photo": "assets/player_photos/23_monirul_islam_monir.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/23_monirul_islam_monir_slide.png"
+ },
+ {
+  "sequence": 24,
+  "page": 47,
+  "name": "TOUFIQ",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$15",
+  "order": "20/36",
+  "is_icon": false,
+  "image_xref": 225,
+  "photo": "assets/player_photos/24_toufiq.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/24_toufiq_slide.png"
+ },
+ {
+  "sequence": 25,
+  "page": 48,
+  "name": "RAYHAN RAFI",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "21/36",
+  "is_icon": false,
+  "image_xref": 228,
+  "photo": "assets/player_photos/25_rayhan_rafi.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/25_rayhan_rafi_slide.png"
+ },
+ {
+  "sequence": 26,
+  "page": 49,
+  "name": "RIAZUL ISLAM",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "22/36",
+  "is_icon": false,
+  "image_xref": 231,
+  "photo": "assets/player_photos/26_riazul_islam.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/26_riazul_islam_slide.png"
+ },
+ {
+  "sequence": 27,
+  "page": 50,
+  "name": "MD SADDAM HOSSAIN",
+  "position": "CENTRE MIDFIELDER (CM)",
+  "base_price": "$10",
+  "order": "23/36",
+  "is_icon": false,
+  "image_xref": 234,
+  "photo": "assets/player_photos/27_md_saddam_hossain.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/27_md_saddam_hossain_slide.png"
+ },
+ {
+  "sequence": 28,
+  "page": 52,
+  "name": "SOHEL RANA",
+  "position": "ATTACKING MIDFIELDER (AM)",
+  "base_price": "$10",
+  "order": "24/36",
+  "is_icon": false,
+  "image_xref": 239,
+  "photo": "assets/player_photos/28_sohel_rana.png",
+  "photo_size": [
+   1254,
+   1254
+  ],
+  "slide": "assets/extracted_cards/28_sohel_rana_slide.png"
+ },
+ {
+  "sequence": 29,
+  "page": 53,
+  "name": "AHSAN SHARIF",
+  "position": "ATTACKING MIDFIELDER (AM)",
+  "base_price": "$10",
+  "order": "25/36",
+  "is_icon": false,
+  "image_xref": 242,
+  "photo": "assets/player_photos/29_ahsan_sharif.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/29_ahsan_sharif_slide.png"
+ },
+ {
+  "sequence": 30,
+  "page": 54,
+  "name": "AL-FARDIN BHUIYAN",
+  "position": "ATTACKING MIDFIELDER (AM)",
+  "base_price": "$10",
+  "order": "26/36",
+  "is_icon": false,
+  "image_xref": 245,
+  "photo": "assets/player_photos/30_al_fardin_bhuiyan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/30_al_fardin_bhuiyan_slide.png"
+ },
+ {
+  "sequence": 31,
+  "page": 55,
+  "name": "RAFIU",
+  "position": "ATTACKING MIDFIELDER (AM)",
+  "base_price": "$15",
+  "order": "27/36",
+  "is_icon": false,
+  "image_xref": 248,
+  "photo": "assets/player_photos/31_rafiu.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/31_rafiu_slide.png"
+ },
+ {
+  "sequence": 32,
+  "page": 57,
+  "name": "MASHUK",
+  "position": "LEFT WING (LW)",
+  "base_price": "$15",
+  "order": "28/36",
+  "is_icon": false,
+  "image_xref": 253,
+  "photo": "assets/player_photos/32_mashuk.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/32_mashuk_slide.png"
+ },
+ {
+  "sequence": 33,
+  "page": 58,
+  "name": "SAIMON",
+  "position": "LEFT WING (LW)",
+  "base_price": "$15",
+  "order": "29/36",
+  "is_icon": false,
+  "image_xref": 256,
+  "photo": "assets/player_photos/33_saimon.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/33_saimon_slide.png"
+ },
+ {
+  "sequence": 34,
+  "page": 59,
+  "name": "JOY",
+  "position": "LEFT WING (LW)",
+  "base_price": "$10",
+  "order": "30/36",
+  "is_icon": false,
+  "image_xref": 259,
+  "photo": "assets/player_photos/34_joy.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/34_joy_slide.png"
+ },
+ {
+  "sequence": 35,
+  "page": 60,
+  "name": "ABU BAKAR",
+  "position": "LEFT WING (LW)",
+  "base_price": "$10",
+  "order": "31/36",
+  "is_icon": false,
+  "image_xref": 262,
+  "photo": "assets/player_photos/35_abu_bakar.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/35_abu_bakar_slide.png"
+ },
+ {
+  "sequence": 36,
+  "page": 61,
+  "name": "YEASIN SALMAN JIDAN",
+  "position": "LEFT WING (LW)",
+  "base_price": "$10",
+  "order": "32/36",
+  "is_icon": false,
+  "image_xref": 265,
+  "photo": "assets/player_photos/36_yeasin_salman_jidan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/36_yeasin_salman_jidan_slide.png"
+ },
+ {
+  "sequence": 37,
+  "page": 63,
+  "name": "MOHAMMAD RAIHAN",
+  "position": "RIGHT WING (RW)",
+  "base_price": "$10",
+  "order": "33/36",
+  "is_icon": false,
+  "image_xref": 270,
+  "photo": "assets/player_photos/37_mohammad_raihan.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/37_mohammad_raihan_slide.png"
+ },
+ {
+  "sequence": 38,
+  "page": 65,
+  "name": "RAHAT",
+  "position": "STRIKER (CF)",
+  "base_price": "$15",
+  "order": "34/36",
+  "is_icon": false,
+  "image_xref": 275,
+  "photo": "assets/player_photos/38_rahat.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/38_rahat_slide.png"
+ },
+ {
+  "sequence": 39,
+  "page": 66,
+  "name": "SIAM",
+  "position": "STRIKER (CF)",
+  "base_price": "$15",
+  "order": "35/36",
+  "is_icon": false,
+  "image_xref": 278,
+  "photo": "assets/player_photos/39_siam.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/39_siam_slide.png"
+ },
+ {
+  "sequence": 40,
+  "page": 67,
+  "name": "ZAHID",
+  "position": "STRIKER (CF)",
+  "base_price": "$10",
+  "order": "36/36",
+  "is_icon": false,
+  "image_xref": 281,
+  "photo": "assets/player_photos/40_zahid.png",
+  "photo_size": [
+   1024,
+   1536
+  ],
+  "slide": "assets/extracted_cards/40_zahid_slide.png"
+ }
+]
