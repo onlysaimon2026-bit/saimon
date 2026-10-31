@@ -17,7 +17,7 @@
    "expected_seconds": 4.0,
    "ok": true,
    "duration": 4.0,
-   "bytes": 2818878,
+   "bytes": 2818193,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -38,7 +38,7 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11752802,
+   "bytes": 11749999,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -59,7 +59,21 @@
    "name": "TASHFEE SAHIL",
    "style": "leader",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11595448,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.7,
+    17.6,
+    38.3,
+    38.9,
+    33.5
+   ]
   },
   {
    "index": 4,
@@ -68,7 +82,21 @@
    "name": "MIHADUL RAHMAN RAKIB",
    "style": "leader",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 10720399,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.7,
+    17.6,
+    38.7,
+    40.2,
+    33.5
+   ]
   },
   {
    "index": 5,
@@ -77,7 +105,21 @@
    "name": "MOSTAKIM KHAN",
    "style": "leader",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 10949116,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.7,
+    17.6,
+    44.1,
+    44.6,
+    33.5
+   ]
   },
   {
    "index": 6,
@@ -89,7 +131,19 @@
    ],
    "style": "icon",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2897071,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.6,
+    27.7,
+    26.7
+   ]
   },
   {
    "index": 7,
@@ -100,7 +154,7 @@
    "expected_seconds": 6.0,
    "ok": true,
    "duration": 6.0,
-   "bytes": 6092848,
+   "bytes": 6180753,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -108,8 +162,8 @@
    "acodec": "aac",
    "luma": [
     12.1,
-    34.6,
-    48.4
+    40.8,
+    50.5
    ]
   },
   {
@@ -121,7 +175,7 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 14055276,
+   "bytes": 13716058,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -129,9 +183,9 @@
    "acodec": "aac",
    "luma": [
     18.2,
-    17.0,
-    45.8,
-    46.3,
+    17.1,
+    43.2,
+    44.6,
     32.0
    ]
   },
@@ -142,7 +196,21 @@
    "name": "SAIDUL",
    "style": "icon",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11745758,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.2,
+    17.0,
+    41.9,
+    38.4,
+    32.0
+   ]
   },
   {
    "index": 10,
@@ -151,7 +219,21 @@
    "name": "SHAHIN ALOM",
    "style": "icon",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13510270,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.2,
+    17.0,
+    43.2,
+    43.0,
+    32.0
+   ]
   },
   {
    "index": 11,
@@ -160,7 +242,21 @@
    "name": "MD RANA",
    "style": "icon",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12037254,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.2,
+    17.1,
+    44.6,
+    41.5,
+    32.0
+   ]
   },
   {
    "index": 12,
@@ -172,7 +268,19 @@
    ],
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2825560,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    20.9,
+    29.4,
+    28.3
+   ]
   },
   {
    "index": 13,
@@ -183,7 +291,7 @@
    "expected_seconds": 4.0,
    "ok": true,
    "duration": 4.0,
-   "bytes": 2775077,
+   "bytes": 2782911,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
@@ -202,7 +310,21 @@
    "name": "RAKIB",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 10837896,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    44.5,
+    38.8,
+    31.1
+   ]
   },
   {
    "index": 15,
@@ -211,7 +333,21 @@
    "name": "RABBI (LOLO VAI)",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11255344,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.9,
+    39.7,
+    31.1
+   ]
   },
   {
    "index": 16,
@@ -220,7 +356,21 @@
    "name": "ROBAYAT",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11929255,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    43.0,
+    39.0,
+    31.1
+   ]
   },
   {
    "index": 17,
@@ -229,7 +379,21 @@
    "name": "FAHIM SHIKDER",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11692532,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    39.9,
+    37.6,
+    31.1
+   ]
   },
   {
    "index": 18,
@@ -238,420 +402,1098 @@
    "name": "MOSTAK",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13208975,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    39.2,
+    36.0,
+    31.1
+   ]
   },
   {
    "index": 19,
+   "kind": "lineup",
+   "id": "line_goalkeeper",
+   "name": "GOALKEEPER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 5743927,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    11.2,
+    34.4,
+    42.3
+   ]
+  },
+  {
+   "index": 20,
    "kind": "category",
    "id": "cat_defender",
    "name": "DEFENDER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2757335,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    19.3,
+    27.8,
+    26.8
+   ]
   },
   {
-   "index": 20,
+   "index": 21,
    "kind": "player",
    "id": "10_md_amdadul_haque",
    "name": "MD AMDADUL HAQUE",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12087336,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    43.5,
+    42.4,
+    31.1
+   ]
   },
   {
-   "index": 21,
+   "index": 22,
    "kind": "player",
    "id": "11_ahnaf_tazwar",
    "name": "AHNAF TAZWAR",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12170421,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    37.6,
+    39.2,
+    31.1
+   ]
   },
   {
-   "index": 22,
+   "index": 23,
    "kind": "player",
    "id": "12_muien",
    "name": "MUIEN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12648369,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    41.2,
+    36.6,
+    31.1
+   ]
   },
   {
-   "index": 23,
+   "index": 24,
+   "kind": "lineup",
+   "id": "line_defender",
+   "name": "DEFENDER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 5545051,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    10.7,
+    37.5,
+    38.8
+   ]
+  },
+  {
+   "index": 25,
    "kind": "category",
    "id": "cat_midfielder",
    "name": "MIDFIELDER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2762297,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    21.6,
+    29.9,
+    28.9
+   ]
   },
   {
-   "index": 24,
+   "index": 26,
    "kind": "category",
    "id": "cat_defensive_midfielder",
    "name": "DEFENSIVE MIDFIELDER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2785897,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    19.9,
+    30.7,
+    29.7
+   ]
   },
   {
-   "index": 25,
+   "index": 27,
    "kind": "player",
    "id": "13_mahtab",
    "name": "MAHTAB",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11125821,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.4,
+    39.1,
+    31.1
+   ]
   },
   {
-   "index": 26,
+   "index": 28,
    "kind": "player",
    "id": "14_rizvi_hasan",
    "name": "RIZVI HASAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12678352,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.7,
+    40.4,
+    31.1
+   ]
   },
   {
-   "index": 27,
+   "index": 29,
    "kind": "player",
    "id": "15_apurbo",
    "name": "APURBO",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13568520,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    40.6,
+    37.4,
+    31.1
+   ]
   },
   {
-   "index": 28,
+   "index": 30,
    "kind": "player",
    "id": "16_gm_fabian_ahamed",
    "name": "GM FABIAN AHAMED",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11797249,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    43.1,
+    42.2,
+    31.1
+   ]
   },
   {
-   "index": 29,
+   "index": 31,
    "kind": "player",
    "id": "17_shajibul_islam",
    "name": "SHAJIBUL ISLAM",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12759949,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    40.7,
+    38.8,
+    31.1
+   ]
   },
   {
-   "index": 30,
+   "index": 32,
    "kind": "player",
    "id": "18_sajjad_afif",
    "name": "SAJJAD AFIF",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12461931,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    40.9,
+    39.5,
+    31.1
+   ]
   },
   {
-   "index": 31,
+   "index": 33,
+   "kind": "lineup",
+   "id": "line_defensive_midfielder",
+   "name": "DEFENSIVE MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 5508377,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    13.9,
+    34.3,
+    39.1
+   ]
+  },
+  {
+   "index": 34,
    "kind": "category",
    "id": "cat_centre_midfielder",
    "name": "CENTRE MIDFIELDER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2795413,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    24.0,
+    33.1,
+    32.1
+   ]
   },
   {
-   "index": 32,
+   "index": 35,
    "kind": "player",
    "id": "19_rusad",
    "name": "RUSAD",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11564374,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    44.2,
+    39.2,
+    31.1
+   ]
   },
   {
-   "index": 33,
+   "index": 36,
    "kind": "player",
    "id": "20_irfan",
    "name": "IRFAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11662057,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.7,
+    37.6,
+    31.1
+   ]
   },
   {
-   "index": 34,
+   "index": 37,
    "kind": "player",
    "id": "21_tahsan",
    "name": "TAHSAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12367556,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.2,
+    38.2,
+    31.1
+   ]
   },
   {
-   "index": 35,
+   "index": 38,
    "kind": "player",
    "id": "22_t_h_siyam",
    "name": "T.H SIYAM",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11181285,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    40.5,
+    37.6,
+    31.1
+   ]
   },
   {
-   "index": 36,
+   "index": 39,
    "kind": "player",
    "id": "23_monirul_islam_monir",
    "name": "MONIRUL ISLAM MONIR",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11970465,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.4,
+    39.7,
+    31.1
+   ]
   },
   {
-   "index": 37,
+   "index": 40,
    "kind": "player",
    "id": "24_toufiq",
    "name": "TOUFIQ",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11620990,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.1,
+    37.5,
+    31.1
+   ]
   },
   {
-   "index": 38,
+   "index": 41,
    "kind": "player",
    "id": "25_rayhan_rafi",
    "name": "RAYHAN RAFI",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13509938,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.9,
+    40.9,
+    31.1
+   ]
   },
   {
-   "index": 39,
+   "index": 42,
    "kind": "player",
    "id": "26_riazul_islam",
    "name": "RIAZUL ISLAM",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12888658,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.9,
+    41.1,
+    31.1
+   ]
   },
   {
-   "index": 40,
+   "index": 43,
    "kind": "player",
    "id": "27_md_saddam_hossain",
    "name": "MD SADDAM HOSSAIN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13071831,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.9,
+    41.8,
+    31.1
+   ]
   },
   {
-   "index": 41,
+   "index": 44,
+   "kind": "lineup",
+   "id": "line_centre_midfielder",
+   "name": "CENTRE MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 6069879,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    13.1,
+    38.6,
+    47.8
+   ]
+  },
+  {
+   "index": 45,
    "kind": "category",
    "id": "cat_attacking_midfielder",
    "name": "ATTACKING MIDFIELDER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2792762,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    20.0,
+    30.8,
+    29.8
+   ]
   },
   {
-   "index": 42,
+   "index": 46,
    "kind": "player",
    "id": "28_sohel_rana",
    "name": "SOHEL RANA",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 10953832,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    52.5,
+    47.1,
+    31.1
+   ]
   },
   {
-   "index": 43,
+   "index": 47,
    "kind": "player",
    "id": "29_ahsan_sharif",
    "name": "AHSAN SHARIF",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11827536,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    42.0,
+    41.8,
+    31.1
+   ]
   },
   {
-   "index": 44,
+   "index": 48,
    "kind": "player",
    "id": "30_al_fardin_bhuiyan",
    "name": "AL-FARDIN BHUIYAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11440719,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.9,
+    41.0,
+    31.1
+   ]
   },
   {
-   "index": 45,
+   "index": 49,
    "kind": "player",
    "id": "31_rafiu",
    "name": "RAFIU",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13312130,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.9,
+    16.7,
+    41.4,
+    36.7,
+    31.1
+   ]
   },
   {
-   "index": 46,
+   "index": 50,
+   "kind": "lineup",
+   "id": "line_attacking_midfielder",
+   "name": "ATTACKING MIDFIELDER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 5576656,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    13.9,
+    42.5,
+    50.2
+   ]
+  },
+  {
+   "index": 51,
    "kind": "category",
    "id": "cat_left_wing",
    "name": "LEFT WING",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2766421,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    18.6,
+    27.1,
+    26.1
+   ]
   },
   {
-   "index": 47,
+   "index": 52,
    "kind": "player",
    "id": "32_mashuk",
    "name": "MASHUK",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12121185,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    42.5,
+    38.9,
+    31.1
+   ]
   },
   {
-   "index": 48,
+   "index": 53,
    "kind": "player",
    "id": "33_saimon",
    "name": "SAIMON",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11533490,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    41.4,
+    37.5,
+    31.1
+   ]
   },
   {
-   "index": 49,
+   "index": 54,
    "kind": "player",
    "id": "34_joy",
    "name": "JOY",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 12553576,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    40.7,
+    34.1,
+    31.1
+   ]
   },
   {
-   "index": 50,
+   "index": 55,
    "kind": "player",
    "id": "35_abu_bakar",
    "name": "ABU BAKAR",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11768026,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    42.0,
+    39.6,
+    31.1
+   ]
   },
   {
-   "index": 51,
+   "index": 56,
    "kind": "player",
    "id": "36_yeasin_salman_jidan",
    "name": "YEASIN SALMAN JIDAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13031193,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    40.1,
+    37.4,
+    31.1
+   ]
   },
   {
-   "index": 52,
+   "index": 57,
+   "kind": "lineup",
+   "id": "line_left_wing",
+   "name": "LEFT WING",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 6029996,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    10.5,
+    33.4,
+    42.9
+   ]
+  },
+  {
+   "index": 58,
    "kind": "category",
    "id": "cat_right_wing",
    "name": "RIGHT WING",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2758452,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    20.5,
+    29.0,
+    28.0
+   ]
   },
   {
-   "index": 53,
+   "index": 59,
    "kind": "player",
    "id": "37_mohammad_raihan",
    "name": "MOHAMMAD RAIHAN",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11267892,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    41.6,
+    41.6,
+    31.1
+   ]
   },
   {
-   "index": 54,
+   "index": 60,
+   "kind": "lineup",
+   "id": "line_right_wing",
+   "name": "RIGHT WING",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 4375832,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    11.0,
+    26.6,
+    26.5
+   ]
+  },
+  {
+   "index": 61,
    "kind": "category",
    "id": "cat_striker",
    "name": "STRIKER",
    "style": "regular",
    "expected_seconds": 4.0,
-   "ok": false
+   "ok": true,
+   "duration": 4.0,
+   "bytes": 2784954,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.3,
+    25.9,
+    24.9
+   ]
   },
   {
-   "index": 55,
+   "index": 62,
    "kind": "player",
    "id": "38_rahat",
    "name": "RAHAT",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11531566,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    40.4,
+    35.8,
+    31.1
+   ]
   },
   {
-   "index": 56,
+   "index": 63,
    "kind": "player",
    "id": "39_siam",
    "name": "SIAM",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 11761025,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    42.3,
+    36.6,
+    31.1
+   ]
   },
   {
-   "index": 57,
+   "index": 64,
    "kind": "player",
    "id": "40_zahid",
    "name": "ZAHID",
    "style": "regular",
    "expected_seconds": 10.0,
-   "ok": false
+   "ok": true,
+   "duration": 10.0,
+   "bytes": 13044473,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    17.8,
+    16.7,
+    40.0,
+    35.2,
+    31.1
+   ]
+  },
+  {
+   "index": 65,
+   "kind": "lineup",
+   "id": "line_striker",
+   "name": "STRIKER",
+   "style": "regular",
+   "expected_seconds": 6.0,
+   "ok": true,
+   "duration": 6.0,
+   "bytes": 5471324,
+   "width": 1920,
+   "height": 1080,
+   "fps": 30.0,
+   "vcodec": "h264",
+   "acodec": "aac",
+   "luma": [
+    10.1,
+    36.8,
+    38.1
+   ]
   }
  ],
  "counts": {
   "category": 9,
   "divider": 3,
-  "lineup": 1,
+  "lineup": 9,
   "manager": 4,
   "player": 40
  },
- "problems": [
-  "missing file L02_tashfee_sahil.mp4",
-  "missing file L03_mihadul_rahman_rakib.mp4",
-  "missing file L04_mostakim_khan.mp4",
-  "missing file div_icons.mp4",
-  "missing file 02_saidul.mp4",
-  "missing file 03_shahin_alom.mp4",
-  "missing file 04_md_rana.mp4",
-  "missing file div_regulars.mp4",
-  "missing file 05_rakib.mp4",
-  "missing file 06_rabbi_lolo_vai.mp4",
-  "missing file 07_robayat.mp4",
-  "missing file 08_fahim_shikder.mp4",
-  "missing file 09_mostak.mp4",
-  "missing file cat_defender.mp4",
-  "missing file 10_md_amdadul_haque.mp4",
-  "missing file 11_ahnaf_tazwar.mp4",
-  "missing file 12_muien.mp4",
-  "missing file cat_midfielder.mp4",
-  "missing file cat_defensive_midfielder.mp4",
-  "missing file 13_mahtab.mp4",
-  "missing file 14_rizvi_hasan.mp4",
-  "missing file 15_apurbo.mp4",
-  "missing file 16_gm_fabian_ahamed.mp4",
-  "missing file 17_shajibul_islam.mp4",
-  "missing file 18_sajjad_afif.mp4",
-  "missing file cat_centre_midfielder.mp4",
-  "missing file 19_rusad.mp4",
-  "missing file 20_irfan.mp4",
-  "missing file 21_tahsan.mp4",
-  "missing file 22_t_h_siyam.mp4",
-  "missing file 23_monirul_islam_monir.mp4",
-  "missing file 24_toufiq.mp4",
-  "missing file 25_rayhan_rafi.mp4",
-  "missing file 26_riazul_islam.mp4",
-  "missing file 27_md_saddam_hossain.mp4",
-  "missing file cat_attacking_midfielder.mp4",
-  "missing file 28_sohel_rana.mp4",
-  "missing file 29_ahsan_sharif.mp4",
-  "missing file 30_al_fardin_bhuiyan.mp4",
-  "missing file 31_rafiu.mp4",
-  "missing file cat_left_wing.mp4",
-  "missing file 32_mashuk.mp4",
-  "missing file 33_saimon.mp4",
-  "missing file 34_joy.mp4",
-  "missing file 35_abu_bakar.mp4",
-  "missing file 36_yeasin_salman_jidan.mp4",
-  "missing file cat_right_wing.mp4",
-  "missing file 37_mohammad_raihan.mp4",
-  "missing file cat_striker.mp4",
-  "missing file 38_rahat.mp4",
-  "missing file 39_siam.mp4",
-  "missing file 40_zahid.mp4"
- ],
- "passed": false
+ "combined": {
+  "file": "BuzzBlu_Full_Reveal.mp4",
+  "expected_seconds": 542.0,
+  "ok": true,
+  "duration": 542.021,
+  "bytes": 616142268,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "luma": [
+   19.8,
+   29.1,
+   28.0,
+   17.6,
+   31.7
+  ]
+ },
+ "problems": [],
+ "passed": true
 }
