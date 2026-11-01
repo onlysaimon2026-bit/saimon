@@ -1570,6 +1570,25 @@
   "manager": 4,
   "player": 42
  },
+ "combined": {
+  "file": "BuzzBlu_Full_Reveal.mp4",
+  "expected_seconds": 610.3667,
+  "ok": true,
+  "duration": 610.497,
+  "bytes": 726610679,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "vcodec": "h264",
+  "acodec": "aac",
+  "luma": [
+   10.6,
+   31.0,
+   20.7,
+   13.5,
+   20.7
+  ]
+ },
  "problems": [],
  "passed": true
 }
