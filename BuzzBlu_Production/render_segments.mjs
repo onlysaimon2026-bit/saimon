@@ -136,6 +136,8 @@ console.log(`Bundling engine for ${chosen.length} segment(s)...`);
 const serveUrl = await bundle({ entryPoint: path.join(ROOT, "engine", "index.ts"), publicDir: PUBLIC });
 
 const log = [];
+const bedsUsed = path.join(ROOT, "data", "beds_used.json");
+const beds = fs.existsSync(bedsUsed) ? JSON.parse(fs.readFileSync(bedsUsed, "utf8")) : {};
 for (const [i, segment] of chosen.entries()) {
   const started = Date.now();
   const { composition: compId, bed, props } = PLAN[segment.kind](segment);
@@ -192,8 +194,10 @@ for (const [i, segment] of chosen.entries()) {
     ?? (Array.isArray(props.title) ? props.title.join(" ") : props.title)
     ?? segment.kind;
   console.log(`\n[${i + 1}/${chosen.length}] #${String(segment.index).padStart(2, "0")} ${segment.kind} — ${label} (${secs}s)`);
-  log.push({ index: segment.index, kind: segment.kind, id: segment.id, seconds: segment.seconds, render_seconds: secs });
+  log.push({ index: segment.index, kind: segment.kind, id: segment.id, seconds: segment.seconds, bed, render_seconds: secs });
+  beds[segment.id] = bed;
 }
 
+fs.writeFileSync(bedsUsed, JSON.stringify(beds, null, 1));
 fs.writeFileSync(path.join(LOGS, `render_${Date.now()}.json`), JSON.stringify(log, null, 1));
 console.log(`\nRendered ${log.length} segment(s) into ${path.relative(process.cwd(), OUT)}`);

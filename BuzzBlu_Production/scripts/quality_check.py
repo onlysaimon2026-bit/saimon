@@ -6,6 +6,7 @@ in PDF order exactly once. Writes reports/quality_report.json.
 
 Usage: python scripts/quality_check.py [--combined]
 """
+import array
 import json
 import pathlib
 import subprocess
@@ -76,6 +77,53 @@ def check_video(path, expect_duration, tolerance=0.05):
     if len(set(lums)) == 1:
         issues.append(f"{path.name}: identical frames at every beat (frozen?)")
     return issues, info
+
+
+def envelope(path, seconds):
+    """Coarse loudness-over-time of a file's audio, for comparing one against another."""
+    out = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-vn", "-ac", "1", "-ar", "4000",
+         "-t", f"{seconds:.3f}", "-f", "s16le", "-"], capture_output=True)
+    raw = out.stdout
+    if len(raw) < 8000:
+        return None
+    samples = array.array("h", raw[: len(raw) // 2 * 2])
+    step = 200                                   # 50 ms
+    return [max(abs(v) for v in samples[i : i + step]) or 1
+            for i in range(0, len(samples) - step, step)]
+
+
+def check_audio_matches_bed(segments, beds_dir):
+    """Every clip should carry the sound bed meant for it.
+
+    The bed is muxed on after the picture is rendered, which is quick and easy to get
+    wrong: a renamed bed, a stale file, a segment falling back to the generic one. The
+    clip's loudness shape is compared against the bed it was supposed to get, which
+    catches a wrong or missing bed without needing to listen.
+    """
+    issues = []
+    for seg in segments:
+        bed = seg.get("_bed")
+        clip = ROOT / "output" / "individual" / f"{seg['id']}.mp4"
+        if not bed or not clip.exists():
+            continue
+        bed_path = beds_dir / f"{bed}.wav"
+        if not bed_path.exists():
+            issues.append(f"{seg['id']}: bed {bed}.wav is missing")
+            continue
+        a, b = envelope(clip, seg["seconds"]), envelope(bed_path, seg["seconds"])
+        if not a or not b:
+            continue
+        n = min(len(a), len(b))
+        a, b = a[:n], b[:n]
+        ma, mb = sum(a) / n, sum(b) / n
+        cov = sum((x - ma) * (y - mb) for x, y in zip(a, b))
+        va = sum((x - ma) ** 2 for x in a) ** 0.5
+        vb = sum((y - mb) ** 2 for y in b) ** 0.5
+        r = cov / (va * vb) if va and vb else 0
+        if r < 0.85:
+            issues.append(f"{seg['id']}: audio does not match bed {bed} (shape match {r:.2f})")
+    return issues
 
 
 def check_structure(segments, players, managers):
@@ -151,6 +199,10 @@ def main():
     players = {pathlib.Path(p["photo"]).stem: p for p in json.loads((ROOT / "data" / "players.json").read_text())}
     managers = {pathlib.Path(m["photo"]).stem: m for m in json.loads((ROOT / "data" / "managers.json").read_text())}
     individual = ROOT / "output" / "individual"
+    beds_file = ROOT / "data" / "beds_used.json"
+    beds_used = json.loads(beds_file.read_text()) if beds_file.exists() else {}
+    for seg in segments:
+        seg["_bed"] = beds_used.get(seg["id"])
     results, issues = [], []
 
     for seg in segments:
@@ -163,18 +215,13 @@ def main():
                         "expected_seconds": seg["seconds"], "ok": not probs, **info})
 
     issues += check_structure(segments, list(players.values()), list(managers.values()))
+    if "--audio" in sys.argv:
+        issues += check_audio_matches_bed(segments, ROOT / "public" / "audio")
 
     expected = {f"{s['id']}.mp4" for s in segments}
     extra = sorted({f.name for f in individual.glob("*.mp4")} - expected)
     if extra:
         issues.append(f"unexpected files in output/individual: {extra}")
-
-    # Every player and leader from the PDF must appear exactly once, in order.
-    seq = [s["id"] for s in segments if s["kind"] == "player"]
-    if sorted(seq) != sorted(players):
-        issues.append("the running order does not cover every player exactly once")
-    if sorted(s["id"] for s in segments if s["kind"] == "manager") != sorted(managers):
-        issues.append("the running order does not cover every team leader exactly once")
 
     report = {"spec": SPEC, "segments": results,
               "counts": {k: sum(1 for s in segments if s["kind"] == k)
