@@ -31,7 +31,7 @@ export const BrandIntro: React.FC<{ theme: Theme; subtitle: string }> = ({ theme
   const letters = "BUZZBLU".split("");
   const blade = interpolate(t, [0.32, 1.0], [-1.2, 1.4], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const line = interpolate(t, [0.55, 1.05], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.exp) });
-  const sub = spring({ frame: frame - 20, fps, config: { damping: 18 } });
+  const sub = spring({ frame: frame - 10, fps, config: { damping: 18 } });
 
   return (
     <AbsoluteFill

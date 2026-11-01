@@ -9,12 +9,12 @@ export const Hero: React.FC<{ subject: Subject; theme: Theme }> = ({ subject, th
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
-  if (t < 4.75 || t > 8.05) return null;
+  if (t < 4.75 || t > 9.75) return null;
 
   const leader = subject.style === "leader";
   const show = (at: number, damping = 16) =>
     spring({ frame: frame - Math.round(at * fps), fps, config: { damping, stiffness: 150 } });
-  const out = interpolate(t, [7.72, 8.0], [0, 1], {
+  const out = interpolate(t, [9.12, 9.55], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.in(Easing.cubic),

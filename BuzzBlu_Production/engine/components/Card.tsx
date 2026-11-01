@@ -13,7 +13,10 @@ export const cardPose = (frame: number, fps: number): CardPose => {
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.33, 0, 0.18, 1),
   });
-  const toSign = interpolate(t, [7.80, 8.32], [0, 1], {
+  // The card used to clear the frame at 8 s to make room for a closing lockup. That
+  // lockup is gone — the logo belongs to the head of the card only — so the card holds
+  // on its hero mark and recedes into the final fade instead of leaving an empty stage.
+  const toSign = interpolate(t, [9.10, 9.70], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.4, 0, 0.2, 1),
