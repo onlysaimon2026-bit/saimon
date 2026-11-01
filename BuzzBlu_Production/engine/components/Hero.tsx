@@ -25,7 +25,14 @@ export const Hero: React.FC<{ subject: Subject; theme: Theme }> = ({ subject, th
   const detailP = show(5.65);
   const priceP = show(6.05, 13);
   const orderP = show(6.45);
-  const words = subject.name.split(" ");
+  // A nickname in brackets reads as one unit, so "MAMUN (ZORO LUFFY)" breaks after the
+  // name rather than in the middle of the brackets.
+  const words = subject.name.split(" ").reduce<string[]>((lines, word) => {
+    const open = lines.length > 0 && lines[lines.length - 1].includes("(") && !lines[lines.length - 1].includes(")");
+    if (open) lines[lines.length - 1] += ` ${word}`;
+    else lines.push(word);
+    return lines;
+  }, []);
   // Long names step down a size so they always fit beside the card.
   const nameSize = width * (subject.name.length > 17 ? 0.052 : subject.name.length > 12 ? 0.064 : 0.078);
   const detailSize = leader ? width * 0.042 : width * 0.026;
@@ -108,6 +115,7 @@ export const Hero: React.FC<{ subject: Subject; theme: Theme }> = ({ subject, th
                 {subject.price}
               </div>
             </div>
+            {subject.order && (
             <div
               style={{
                 opacity: orderP,
@@ -126,6 +134,7 @@ export const Hero: React.FC<{ subject: Subject; theme: Theme }> = ({ subject, th
             >
               {subject.order.replace("/", " / ")}
             </div>
+            )}
           </div>
         )}
 

@@ -1,5 +1,5 @@
 {
- "total_seconds": 590.3667,
+ "total_seconds": 610.3667,
  "segments": [
   {
    "index": 1,
@@ -1131,7 +1131,7 @@
    "style": "regular",
    "page": 29,
    "title": "DEFENDER",
-   "count": "03 PLAYERS",
+   "count": "04 PLAYERS",
    "names": "MD AMDADUL HAQUE • AHNAF TAZWAR • MUIEN"
   },
   {
@@ -1166,6 +1166,25 @@
   },
   {
    "index": 59,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "extra_mamun_zoro_luffy",
+   "style": "regular",
+   "page": 0,
+   "category": "DEFENDER",
+   "extra": {
+    "name": "MAMUN (ZORO LUFFY)",
+    "position": "CENTRE BACK (CB)",
+    "base_price": "$10",
+    "order": "",
+    "photo_size": [
+     1024,
+     1536
+    ]
+   }
+  },
+  {
+   "index": 60,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_defender",
@@ -1175,7 +1194,8 @@
    "cards": [
     "10_md_amdadul_haque",
     "11_ahnaf_tazwar",
-    "12_muien"
+    "12_muien",
+    "extra_mamun_zoro_luffy"
    ],
    "card_sizes": [
     [
@@ -1189,27 +1209,32 @@
     [
      1024,
      1536
+    ],
+    [
+     1024,
+     1536
     ]
    ],
    "names": [
     "MD AMDADUL HAQUE",
     "AHNAF TAZWAR",
-    "MUIEN"
+    "MUIEN",
+    "MAMUN (ZORO LUFFY)"
    ]
   },
   {
-   "index": 60,
+   "index": 61,
    "kind": "category",
    "seconds": 4.0,
    "id": "cat_goalkeeper",
    "style": "regular",
    "page": 23,
    "title": "GOALKEEPER",
-   "count": "05 PLAYERS",
+   "count": "06 PLAYERS",
    "names": "RAKIB • RABBI (LOLO VAI) • ROBAYAT • FAHIM SHIKDER • MOSTAK"
   },
   {
-   "index": 61,
+   "index": 62,
    "kind": "player",
    "seconds": 10.0,
    "id": "05_rakib",
@@ -1219,7 +1244,7 @@
    "sequence": 5
   },
   {
-   "index": 62,
+   "index": 63,
    "kind": "player",
    "seconds": 10.0,
    "id": "06_rabbi_lolo_vai",
@@ -1229,7 +1254,7 @@
    "sequence": 6
   },
   {
-   "index": 63,
+   "index": 64,
    "kind": "player",
    "seconds": 10.0,
    "id": "07_robayat",
@@ -1239,7 +1264,7 @@
    "sequence": 7
   },
   {
-   "index": 64,
+   "index": 65,
    "kind": "player",
    "seconds": 10.0,
    "id": "08_fahim_shikder",
@@ -1249,7 +1274,7 @@
    "sequence": 8
   },
   {
-   "index": 65,
+   "index": 66,
    "kind": "player",
    "seconds": 10.0,
    "id": "09_mostak",
@@ -1259,7 +1284,26 @@
    "sequence": 9
   },
   {
-   "index": 66,
+   "index": 67,
+   "kind": "player",
+   "seconds": 10.0,
+   "id": "extra_safat",
+   "style": "regular",
+   "page": 0,
+   "category": "GOALKEEPER",
+   "extra": {
+    "name": "SAFAT",
+    "position": "GOALKEEPER (GK)",
+    "base_price": "$10",
+    "order": "",
+    "photo_size": [
+     1024,
+     1536
+    ]
+   }
+  },
+  {
+   "index": 68,
    "kind": "lineup",
    "seconds": 6.0,
    "id": "line_goalkeeper",
@@ -1271,7 +1315,8 @@
     "06_rabbi_lolo_vai",
     "07_robayat",
     "08_fahim_shikder",
-    "09_mostak"
+    "09_mostak",
+    "extra_safat"
    ],
    "card_sizes": [
     [
@@ -1293,6 +1338,10 @@
     [
      1024,
      1536
+    ],
+    [
+     1024,
+     1536
     ]
    ],
    "names": [
@@ -1300,11 +1349,12 @@
     "RABBI (LOLO VAI)",
     "ROBAYAT",
     "FAHIM SHIKDER",
-    "MOSTAK"
+    "MOSTAK",
+    "SAFAT"
    ]
   },
   {
-   "index": 67,
+   "index": 69,
    "kind": "divider",
    "seconds": 7.0,
    "id": "div_closing",

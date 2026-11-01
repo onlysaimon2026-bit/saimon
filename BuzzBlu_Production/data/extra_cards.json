@@ -1,1 +1,20 @@
-[]
+[
+ {
+  "id": "extra_mamun_zoro_luffy",
+  "image": "assets/extra_cards/mamun_zoro_luffy.png",
+  "name": "MAMUN (ZORO LUFFY)",
+  "position": "CENTRE BACK (CB)",
+  "base_price": "$10",
+  "order": "",
+  "category": "DEFENDER"
+ },
+ {
+  "id": "extra_safat",
+  "image": "assets/extra_cards/safat.png",
+  "name": "SAFAT",
+  "position": "GOALKEEPER (GK)",
+  "base_price": "$10",
+  "order": "",
+  "category": "GOALKEEPER"
+ }
+]
