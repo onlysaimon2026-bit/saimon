@@ -78,6 +78,73 @@ def check_video(path, expect_duration, tolerance=0.05):
     return issues, info
 
 
+def check_structure(segments, players, managers):
+    """Read the running order itself, before a single frame is opened.
+
+    Most of what can go wrong with a film assembled from parts is structural: a card
+    that never plays, a card that plays twice, a position whose closing line-up is
+    missing one of its own players, a heading whose count disagrees with the group
+    behind it, or a segment pointing at a sound bed that was never built.
+    """
+    issues = []
+
+    ids = [s["id"] for s in segments]
+    for dupe in sorted({i for i in ids if ids.count(i) > 1}):
+        issues.append(f"segment {dupe} appears {ids.count(dupe)} times in the running order")
+
+    expected_cards = {pathlib.Path(p["photo"]).stem for p in players}
+    expected_cards |= {pathlib.Path(m["photo"]).stem for m in managers}
+    extras = {s["id"] for s in segments if s["kind"] == "player" and "extra" in s}
+    played = {s["id"] for s in segments if s["kind"] in ("player", "manager")}
+    for missing in sorted((expected_cards | extras) - played):
+        issues.append(f"{missing} never plays")
+    for unknown in sorted(played - (expected_cards | extras)):
+        issues.append(f"{unknown} plays but has no card")
+
+    # Each position's closing line-up must hold exactly the players just shown.
+    for i, seg in enumerate(segments):
+        if seg["kind"] != "lineup" or seg["id"] == "icon_lineup":
+            continue
+        preceding = []
+        for earlier in reversed(segments[:i]):
+            if earlier["kind"] == "player":
+                preceding.append(earlier["id"])
+            elif earlier["kind"] == "category":
+                break
+        shown = set(preceding)
+        listed = set(seg["cards"])
+        for gone in sorted(shown - listed):
+            issues.append(f"{seg['id']}: {gone} was shown but is missing from the line-up")
+        for extra in sorted(listed - shown):
+            issues.append(f"{seg['id']}: {extra} is in the line-up but was never shown")
+        if len(seg["cards"]) != len(set(seg["cards"])):
+            issues.append(f"{seg['id']}: a card is listed twice")
+        if len(seg["cards"]) != len(seg["names"]):
+            issues.append(f"{seg['id']}: {len(seg['cards'])} cards but {len(seg['names'])} names")
+
+    # A heading's count must match the group that follows it.
+    for i, seg in enumerate(segments):
+        if seg["kind"] != "category":
+            continue
+        group = 0
+        for later in segments[i + 1 :]:
+            if later["kind"] == "player":
+                group += 1
+            elif later["kind"] in ("category", "divider"):
+                break
+        printed = seg["count"].split()[0]
+        if group and printed.isdigit() and int(printed) != group:
+            issues.append(f"{seg['id']}: heading says {seg['count']} but {group} players follow")
+
+    audio = ROOT / "public" / "audio"
+    for seg in segments:
+        if seg.get("bed") and not (audio / f"{seg['bed']}.wav").exists():
+            issues.append(f"{seg['id']}: sound bed {seg['bed']}.wav is missing")
+    if not (ROOT / "scripts" / "film_music.py").exists():
+        issues.append("the music bed generator is missing")
+    return issues
+
+
 def main():
     data = json.loads((ROOT / "data" / "segments.json").read_text())
     segments = data["segments"]
@@ -94,6 +161,8 @@ def main():
         results.append({"index": seg["index"], "kind": seg["kind"], "id": seg["id"],
                         "name": subject.get("name", seg.get("title", "")), "style": seg["style"],
                         "expected_seconds": seg["seconds"], "ok": not probs, **info})
+
+    issues += check_structure(segments, list(players.values()), list(managers.values()))
 
     expected = {f"{s['id']}.mp4" for s in segments}
     extra = sorted({f.name for f in individual.glob("*.mp4")} - expected)
