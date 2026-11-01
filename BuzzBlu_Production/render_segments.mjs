@@ -40,7 +40,7 @@ const managers = new Map(read("managers.json").map((m) => [path.basename(m.photo
 // Which composition, props and sound bed each kind of segment uses.
 const PLAN = {
   player: (s) => {
-    const p = players.get(s.id);
+    const p = players.get(s.id) ?? { ...s.extra, is_icon: false };
     return {
       composition: "Reveal",
       bed: p.is_icon ? "reveal_icon" : "reveal_regular",

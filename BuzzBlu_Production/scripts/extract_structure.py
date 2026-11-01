@@ -12,10 +12,12 @@ Usage: python scripts/extract_structure.py
 import json
 import pathlib
 import re
+import shutil
 
 import sys
 
 import pymupdf
+from PIL import Image
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from extract_players import player_image, spans
@@ -82,6 +84,36 @@ def read_divider(page):
     rest = sorted([s for s in body if s["size"] < 40], key=lambda s: s["bbox"][1])
     return {"title": [tidy(s["text"]) for s in big],
             "subtitle": tidy(rest[0]["text"]) if rest else ""}
+
+
+def load_extras():
+    """Cards added after the PDF was made.
+
+    Each entry in data/extra_cards.json names an image in assets/extra_cards/ and the
+    fields that would have been printed on its slide. They are folded into the category
+    they belong to, so the running order, that category's count and its line-up all pick
+    them up without anything else changing.
+
+    {"id": "extra_rafid", "image": "assets/extra_cards/rafid.png", "name": "RAFID",
+     "position": "LEFT WING  (LW)", "base_price": "$ 10", "order": "37 / 36",
+     "category": "LEFT WING"}
+    """
+    path = ROOT / "data" / "extra_cards.json"
+    if not path.exists():
+        return []
+    extras = json.loads(path.read_text())
+    for e in extras:
+        src = ROOT / e["image"]
+        if not src.exists():
+            raise SystemExit(f"extra card image not found: {src}")
+        for target in (ROOT / "assets" / "player_photos", ROOT / "public" / "cards"):
+            target.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, target / f"{e['id']}.png")
+        with Image.open(src) as im:
+            e["photo_size"] = list(im.size)
+        e.setdefault("base_price", "")
+        e.setdefault("order", "")
+    return extras
 
 
 def read_closing(page):
@@ -152,27 +184,38 @@ def main():
 
     add("divider", DIVIDER_SECONDS, id="div_regulars", style="regular", **dividers["regulars"])
     regulars = [p for p in players if not p["is_icon"]]
+    extras = load_extras()
     for page in CATEGORY_ORDER:
         cat = categories[page]
-        add("category", CATEGORY_SECONDS, id=f"cat_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
-            style="regular", page=page, title=cat["title"], count=cat["count"], names=cat["names"])
-        # A category owns the players that follow it, up to the next category slide.
+        # A category owns the players that follow it, up to the next category slide,
+        # plus any cards added later for that position.
         nxt = next((q for q in CATEGORY_PAGES if q > page), 10 ** 6)
         group = [q for q in regulars if page < q["page"] < nxt]
+        group += [e for e in extras if e["category"].upper() == cat["title"].upper()]
+        # The count is taken from the group so it stays right when a card is added.
+        count = f"{len(group):02d} PLAYERS" if group else cat["count"]
+        add("category", CATEGORY_SECONDS, id=f"cat_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
+            style="regular", page=page, title=cat["title"], count=count, names=cat["names"])
         for p in group:
-            add("player", 10.0, id=stem(p), style="regular", page=p["page"],
-                category=cat["title"], sequence=p["sequence"])
+            if "sequence" in p:
+                add("player", 10.0, id=stem(p), style="regular", page=p["page"],
+                    category=cat["title"], sequence=p["sequence"])
+            else:
+                # An added card carries its own details; there is no slide to read them from.
+                add("player", 10.0, id=p["id"], style="regular", page=0, category=cat["title"],
+                    extra={k: p[k] for k in ("name", "position", "base_price", "order", "photo_size")})
         # The category closes with every one of its cards together in one frame.
         if group:
             add("lineup", LINEUP_SECONDS, id=f"line_{re.sub(r'[^a-z0-9]+', '_', cat['title'].lower())}",
-                style="regular", page=page, title=cat["title"], cards=[stem(q) for q in group],
+                style="regular", page=page, title=cat["title"],
+                cards=[stem(q) if "photo" in q else q["id"] for q in group],
                 card_sizes=[q["photo_size"] for q in group], names=[q["name"] for q in group])
 
     add("divider", CLOSING_SECONDS, id="div_closing", style="leader", bed="seg_closing",
         page=CLOSING_PAGE, **read_closing(doc[CLOSING_PAGE - 1]))
 
     total = sum(s["seconds"] for s in segments)
-    placed = {s["sequence"] for s in segments if s["kind"] == "player"}
+    placed = {s["sequence"] for s in segments if s["kind"] == "player" and "sequence" in s}
     problems = []
     if placed != {p["sequence"] for p in players}:
         problems.append("some players are missing from the running order")

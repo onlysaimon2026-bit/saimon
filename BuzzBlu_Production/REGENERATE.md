@@ -39,6 +39,8 @@ $PY scripts/quality_check.py --combined
 Results land in `output/individual/` (one MP4 per card) and
 `output/combined/BuzzBlu_Full_Reveal.mp4`.
 
+Adding a card that was not in the PDF is written up separately in ADD_CARDS.md.
+
 ## Changing one thing
 
 `render_segments.mjs` skips clips that already exist, so after a change you only rebuild
