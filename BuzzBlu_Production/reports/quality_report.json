@@ -61,18 +61,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11704528,
+   "bytes": 12455049,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.6,
+    18.8,
     17.6,
     38.2,
     39.8,
-    33.2
+    44.7
    ]
   },
   {
@@ -84,18 +84,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11552520,
+   "bytes": 12287884,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.6,
+    18.8,
     17.6,
     38.3,
     38.9,
-    33.2
+    43.8
    ]
   },
   {
@@ -107,18 +107,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 10676689,
+   "bytes": 11152637,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.6,
+    18.8,
     17.6,
     38.7,
     40.2,
-    33.2
+    45.0
    ]
   },
   {
@@ -130,18 +130,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 10912557,
+   "bytes": 11424943,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.6,
+    18.8,
     17.6,
     44.1,
     44.7,
-    33.2
+    48.8
    ]
   },
   {
@@ -198,18 +198,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13688036,
+   "bytes": 14812400,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.1,
-    17.1,
+    18.2,
+    17.0,
     43.2,
     44.6,
-    31.8
+    49.1
    ]
   },
   {
@@ -221,18 +221,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11718017,
+   "bytes": 12327837,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.1,
-    17.0,
+    18.2,
+    17.1,
     42.0,
     38.4,
-    31.8
+    43.1
    ]
   },
   {
@@ -244,18 +244,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13484902,
+   "bytes": 14549830,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.1,
-    17.1,
+    18.2,
+    17.0,
     43.2,
     43.0,
-    31.8
+    47.6
    ]
   },
   {
@@ -267,18 +267,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12009395,
+   "bytes": 12693515,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    18.1,
-    17.1,
+    18.2,
+    17.0,
     44.6,
     41.5,
-    31.8
+    46.1
    ]
   },
   {
@@ -335,18 +335,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13114316,
+   "bytes": 14157101,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     41.8,
     36.4,
-    30.8
+    41.0
    ]
   },
   {
@@ -358,18 +358,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11163240,
+   "bytes": 11798325,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     42.9,
     39.8,
-    30.8
+    44.3
    ]
   },
   {
@@ -381,18 +381,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11884640,
+   "bytes": 12638104,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     43.0,
     39.0,
-    30.8
+    43.4
    ]
   },
   {
@@ -404,18 +404,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11646359,
+   "bytes": 12325963,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     39.9,
     37.6,
-    30.8
+    42.2
    ]
   },
   {
@@ -427,18 +427,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13157054,
+   "bytes": 14219545,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     39.2,
     36.0,
-    30.8
+    40.8
    ]
   },
   {
@@ -450,18 +450,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12522234,
+   "bytes": 13487623,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     40.5,
     35.5,
-    30.8
+    40.2
    ]
   },
   {
@@ -515,18 +515,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12043359,
+   "bytes": 12853155,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     43.5,
-    42.4,
-    30.8
+    42.3,
+    46.8
    ]
   },
   {
@@ -538,18 +538,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12132143,
+   "bytes": 12985204,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     37.6,
     39.2,
-    30.8
+    44.1
    ]
   },
   {
@@ -561,18 +561,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12606534,
+   "bytes": 13554002,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     41.2,
     36.6,
-    30.8
+    41.2
    ]
   },
   {
@@ -584,18 +584,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12776659,
+   "bytes": 13784937,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     41.1,
     38.1,
-    30.8
+    42.7
    ]
   },
   {
@@ -670,18 +670,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11085923,
+   "bytes": 11624072,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     42.4,
     39.1,
-    30.8
+    43.7
    ]
   },
   {
@@ -693,18 +693,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12681754,
+   "bytes": 13624850,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     41.3,
     40.1,
-    30.8
+    44.6
    ]
   },
   {
@@ -716,18 +716,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13510922,
+   "bytes": 14647195,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     40.3,
     37.2,
-    30.8
+    41.8
    ]
   },
   {
@@ -739,18 +739,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11767601,
+   "bytes": 12432821,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     43.1,
     42.2,
-    30.8
+    46.6
    ]
   },
   {
@@ -762,18 +762,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12718021,
+   "bytes": 13672765,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     40.7,
     38.8,
-    30.8
+    43.3
    ]
   },
   {
@@ -785,18 +785,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12432138,
+   "bytes": 13320803,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     40.9,
     39.5,
-    30.8
+    44.0
    ]
   },
   {
@@ -850,18 +850,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11528645,
+   "bytes": 12189380,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     44.2,
     39.2,
-    30.8
+    43.6
    ]
   },
   {
@@ -873,18 +873,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11633547,
+   "bytes": 12326428,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     42.7,
     37.6,
-    30.8
+    42.2
    ]
   },
   {
@@ -896,18 +896,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12335274,
+   "bytes": 13188465,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     42.2,
     38.2,
-    30.8
+    42.8
    ]
   },
   {
@@ -919,18 +919,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11158586,
+   "bytes": 11713332,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     40.5,
     37.6,
-    30.8
+    42.3
    ]
   },
   {
@@ -942,18 +942,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11943365,
+   "bytes": 12682079,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     42.4,
     39.7,
-    30.8
+    44.2
    ]
   },
   {
@@ -965,18 +965,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11718570,
+   "bytes": 12412035,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     42.1,
-    37.6,
-    30.8
+    37.5,
+    42.1
    ]
   },
   {
@@ -988,18 +988,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13476046,
+   "bytes": 14630921,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     41.9,
     40.9,
-    30.8
+    45.4
    ]
   },
   {
@@ -1011,18 +1011,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12860444,
+   "bytes": 13862679,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     41.9,
     41.1,
-    30.8
+    45.6
    ]
   },
   {
@@ -1034,18 +1034,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13038147,
+   "bytes": 14042809,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.0,
     16.7,
     41.9,
     41.8,
-    30.8
+    46.3
    ]
   },
   {
@@ -1099,18 +1099,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 10928598,
+   "bytes": 11411108,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     52.5,
     47.1,
-    30.8
+    50.3
    ]
   },
   {
@@ -1122,18 +1122,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11799010,
+   "bytes": 12506183,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     42.0,
     41.8,
-    30.8
+    46.2
    ]
   },
   {
@@ -1145,18 +1145,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11409574,
+   "bytes": 12023162,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     41.9,
     41.0,
-    30.8
+    45.5
    ]
   },
   {
@@ -1168,18 +1168,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 13274358,
+   "bytes": 14356922,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.8,
+    18.1,
     16.7,
     41.4,
     36.7,
-    30.8
+    41.3
    ]
   },
   {
@@ -1233,18 +1233,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12100529,
+   "bytes": 12918402,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     42.5,
     38.9,
-    30.8
+    43.4
    ]
   },
   {
@@ -1256,18 +1256,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11374402,
+   "bytes": 12148478,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     41.4,
-    26.2,
-    30.8
+    37.5,
+    42.1
    ]
   },
   {
@@ -1279,18 +1279,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12523059,
+   "bytes": 13434175,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     40.7,
     34.1,
-    30.8
+    38.8
    ]
   },
   {
@@ -1302,18 +1302,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11724070,
+   "bytes": 12447411,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     42.0,
-    39.6,
-    30.8
+    39.7,
+    44.2
    ]
   },
   {
@@ -1325,18 +1325,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12971948,
+   "bytes": 14026621,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     40.1,
-    37.4,
-    30.8
+    37.3,
+    42.0
    ]
   },
   {
@@ -1390,18 +1390,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11237328,
+   "bytes": 11790776,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.9,
     16.7,
     41.6,
     41.6,
-    30.8
+    46.0
    ]
   },
   {
@@ -1455,18 +1455,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11500813,
+   "bytes": 12158196,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     40.4,
-    35.8,
-    30.8
+    35.7,
+    40.4
    ]
   },
   {
@@ -1478,18 +1478,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 11734345,
+   "bytes": 12452129,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     42.3,
     36.6,
-    30.8
+    41.2
    ]
   },
   {
@@ -1501,18 +1501,18 @@
    "expected_seconds": 10.0,
    "ok": true,
    "duration": 10.0,
-   "bytes": 12991188,
+   "bytes": 14058739,
    "width": 1920,
    "height": 1080,
    "fps": 30.0,
    "vcodec": "h264",
    "acodec": "aac",
    "luma": [
-    17.7,
+    17.8,
     16.7,
     40.0,
     35.2,
-    30.8
+    39.9
    ]
   },
   {
@@ -1569,25 +1569,6 @@
   "lineup": 9,
   "manager": 4,
   "player": 42
- },
- "combined": {
-  "file": "BuzzBlu_Full_Reveal.mp4",
-  "expected_seconds": 610.3667,
-  "ok": true,
-  "duration": 610.497,
-  "bytes": 689253420,
-  "width": 1920,
-  "height": 1080,
-  "fps": 30.0,
-  "vcodec": "h264",
-  "acodec": "aac",
-  "luma": [
-   10.6,
-   31.0,
-   20.7,
-   13.5,
-   20.7
-  ]
  },
  "problems": [],
  "passed": true
