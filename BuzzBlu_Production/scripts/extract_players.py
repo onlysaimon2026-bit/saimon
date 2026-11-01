@@ -94,7 +94,9 @@ def main():
     for old in list(photos.glob("*.png")) + list(cards.glob("*.png")):
         old.unlink()
 
-    players, problems, overrides = [], [], []
+    corrections_file = ROOT / "data" / "card_corrections.json"
+    corrections = json.loads(corrections_file.read_text()) if corrections_file.exists() else {}
+    players, problems, overrides, corrected = [], [], [], []
     for index, page in enumerate(doc):
         rec = read_slide(page)
         if rec is None:
@@ -109,12 +111,19 @@ def main():
             continue
         photo = photos / f"{stem}.png"
         pix.save(photo)
-        # A corrected card supplied by the tournament replaces the one in the PDF.
-        # Only artwork is overridden here; names and prices still come from the slide.
+        # A reissued card replaces the one in the PDF. The artwork comes from
+        # assets/card_overrides/<id>.png; where a field was reprinted differently,
+        # data/card_corrections.json carries the value exactly as the new card shows it.
         override = ROOT / "assets" / "card_overrides" / f"{stem}.png"
         if override.exists():
             shutil.copyfile(override, photo)
             overrides.append(stem)
+        for field, value in corrections.get(stem, {}).items():
+            if field not in rec:
+                problems.append(f"{stem}: correction names an unknown field {field!r}")
+            elif rec[field] != value:
+                corrected.append(f"{stem}.{field}: {rec[field]!r} -> {value!r}")
+                rec[field] = value
         # Page render at 2x, kept so the extraction can be checked against the slide.
         page.get_pixmap(dpi=144).save(cards / f"{stem}_slide.png")
 
@@ -142,7 +151,8 @@ def main():
     (ROOT / "reports" / "extraction_report.json").write_text(json.dumps(
         {"pdf": PDF.name, "pages": doc.page_count, "players": len(players),
          "icons": len(icons), "regulars": len(players) - len(icons),
-         "card_overrides": overrides, "problems": problems}, indent=1))
+         "card_overrides": overrides, "field_corrections": corrected,
+         "problems": problems}, indent=1))
 
     for p in players:
         print(f"{p['sequence']:02d} p{p['page']:02d} {'ICON' if p['is_icon'] else '    '} "

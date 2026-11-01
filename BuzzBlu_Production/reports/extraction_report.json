@@ -5,7 +5,12 @@
  "icons": 4,
  "regulars": 36,
  "card_overrides": [
-  "14_rizvi_hasan"
+  "05_rakib",
+  "14_rizvi_hasan",
+  "15_apurbo"
+ ],
+ "field_corrections": [
+  "15_apurbo.base_price: '$15' -> '$10'"
  ],
  "problems": []
 }
