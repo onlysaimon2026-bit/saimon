@@ -571,6 +571,12 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     beds = {f"reveal_{v}": reveal_bed(v) for v in ("leader", "icon", "regular")}
     beds["seg_divider"] = segment_bed("divider")
+    # A bed per chapter card, each carrying its heading read aloud.
+    for vo in sorted(out.glob("vo_div_*.wav")):
+        beds[f"seg_{vo.stem[len('vo_'):]}"] = segment_bed("divider", vo_path=vo)
+    lineup_vo = out / "vo_icon_lineup.wav"
+    if lineup_vo.exists():
+        beds["seg_icon_lineup"] = segment_bed("lineup", count=4, vo_path=lineup_vo)
     closing_vo = out / "vo_closing.wav"
     if closing_vo.exists():
         beds["seg_closing"] = segment_bed("closing", vo_path=closing_vo)

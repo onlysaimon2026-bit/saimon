@@ -4,9 +4,9 @@ import { GREEN, Theme } from "../theme";
 import { Football } from "./Football";
 
 // 8.0-10.0s. The card recedes, the lockup lands on the final impact, and the frame
-// settles to black so the next segment can begin cleanly. The line under the wordmark
-// names this card's category: the full tournament line belongs to the film's opening.
-export const Signature: React.FC<{ theme: Theme; subtitle: string }> = ({ theme, subtitle }) => {
+// settles to black so the next segment can begin cleanly. Nothing is written under the
+// wordmark here: the category is already named under the lockup that opens the card.
+export const Signature: React.FC<{ theme: Theme }> = ({ theme }) => {
   const frame = useCurrentFrame();
   const { fps, width, durationInFrames } = useVideoConfig();
   const t = frame / fps;
@@ -15,7 +15,6 @@ export const Signature: React.FC<{ theme: Theme; subtitle: string }> = ({ theme,
   const hit = spring({ frame: frame - Math.round(8 * fps), fps, config: { damping: 13, stiffness: 140 } });
   const ring = interpolate(t, [8.0, 8.7], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   const line = interpolate(t, [8.25, 8.8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.exp) });
-  const tag = spring({ frame: frame - Math.round(8.45 * fps), fps, config: { damping: 18 } });
   const fade = interpolate(frame, [durationInFrames - 12, durationInFrames - 1], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -71,20 +70,6 @@ export const Signature: React.FC<{ theme: Theme; subtitle: string }> = ({ theme,
           boxShadow: `0 0 22px ${theme.glow}`,
         }}
       />
-      <div
-        style={{
-          marginTop: 22,
-          fontFamily: UI,
-          fontWeight: 500,
-          fontSize: width * 0.0165,
-          letterSpacing: width * 0.0085,
-          color: "rgba(234,244,255,0.86)",
-          opacity: tag,
-          transform: `translateY(${(1 - tag) * 16}px)`,
-        }}
-      >
-        {subtitle}
-      </div>
       <AbsoluteFill style={{ backgroundColor: "#04070d", opacity: fade }} />
     </AbsoluteFill>
   );

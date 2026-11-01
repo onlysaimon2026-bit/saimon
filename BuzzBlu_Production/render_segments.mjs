@@ -30,6 +30,7 @@ const arg = (flag) => {
   const i = process.argv.indexOf(flag);
   return i === -1 ? null : process.argv[i + 1];
 };
+const hasBed = (name) => fs.existsSync(path.join(PUBLIC, "audio", `${name}.wav`));
 const read = (name) => JSON.parse(fs.readFileSync(path.join(ROOT, "data", name), "utf8"));
 
 const { segments } = read("segments.json");
@@ -85,7 +86,7 @@ const PLAN = {
   }),
   divider: (s) => ({
     composition: "Divider",
-    bed: s.bed ?? "seg_divider",
+    bed: s.bed ?? (hasBed(`seg_${s.id}`) ? `seg_${s.id}` : "seg_divider"),
     props: { title: s.title, subtitle: s.subtitle, style: s.style },
   }),
   category: (s) => ({
@@ -95,7 +96,7 @@ const PLAN = {
   }),
   lineup: (s) => ({
     composition: "IconLineup",
-    bed: `seg_lineup_${s.cards.length}`,
+    bed: hasBed(`seg_${s.id}`) ? `seg_${s.id}` : `seg_lineup_${s.cards.length}`,
     props: {
       title: s.title,
       cards: s.cards,

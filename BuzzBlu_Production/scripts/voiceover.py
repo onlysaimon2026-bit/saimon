@@ -20,7 +20,8 @@ import numpy as np
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import pymupdf
 
-from extract_structure import CATEGORY_ORDER, read_category
+from extract_structure import (CATEGORY_ORDER, DIVIDER_PAGES, LINEUP_PAGE, read_category,
+                               read_divider)
 from sound_design import SR, one_pole, place, reverb
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -43,7 +44,7 @@ LINES = [
     ("THIS IS YOUR MOMENT.", "This is your moment.", 1.5, 0.95),
     ("SUPPORTERS, THE CHOICE IS YOURS.", "Supporters, the choice is yours.", 1.16, 0.4),
     ("CHOOSE YOUR TEAM.", "Choose your team.", 1.4, 0.9),
-    ("THIS IS BUZZBLU 2026.", "This is Buzz Blue, twenty twenty six.", 1.16, 1.0),
+    ("THIS IS BUZZBLU — PLAYER AUCTION 2026.", "This is Buzz Blue. Player auction, twenty twenty six.", 1.14, 1.0),
     ("LET THE BATTLE BEGIN.", "Let the battle begin!", 1.5, 2.6),
 ]
 
@@ -96,6 +97,25 @@ def write_wav(path, stereo):
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes((stereo * 32767).astype(np.int16).tobytes())
+
+
+def chapter_announcements(voice, out_dir):
+    """The round and chapter headings, read like the positions are."""
+    doc = pymupdf.open(ROOT / "source" / "BuzzBlu_Auction_2026.pdf")
+    voice.config.length_scale = 1.22
+    made = []
+    chapters = [(f"div_{kind}", " ".join(read_divider(doc[page - 1])["title"]))
+                for page, kind in DIVIDER_PAGES.items()]
+    chapters.append(("icon_lineup", read_category(doc[LINEUP_PAGE - 1])["title"]))
+    for seg_id, title in chapters:
+        a = announcer(synth(voice, title.title().replace("The ", "the ") + "."))
+        wet = reverb(a * 0.3, size=1.3, damp=3500)
+        mix = a + wet * 0.48
+        mix /= np.max(np.abs(mix)) + 1e-9
+        mix *= 0.92
+        write_wav(out_dir / f"vo_{seg_id}.wav", np.stack([mix, np.roll(mix, int(0.004 * SR))], axis=1))
+        made.append((seg_id, len(a) / SR, title))
+    return made
 
 
 def closing_announcement(voice, out_dir):
@@ -175,6 +195,8 @@ def main():
 
     for slug, seconds, title in category_announcements(voice, ROOT / "public" / "audio"):
         print(f"  vo_cat_{slug:<22} {seconds:4.2f}s  {title}")
+    for seg_id, seconds, title in chapter_announcements(voice, ROOT / "public" / "audio"):
+        print(f"  vo_{seg_id:<25} {seconds:4.2f}s  {title}")
     print(f"  vo_closing{'':<20} {closing_announcement(voice, ROOT / 'public' / 'audio'):4.2f}s  GOOD LUCK, TEAM MANAGERS!")
 
 

@@ -45,7 +45,7 @@ export const Reveal: React.FC<RevealProps> = ({ subject }) => {
       </AbsoluteFill>
       <Hero subject={subject} theme={theme} />
       <BrandIntro theme={theme} subtitle={subject.category} />
-      <Signature theme={theme} subtitle={subject.category} />
+      <Signature theme={theme} />
     </AbsoluteFill>
   );
 };
