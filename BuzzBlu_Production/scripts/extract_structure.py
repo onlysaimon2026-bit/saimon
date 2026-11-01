@@ -30,10 +30,10 @@ MANAGER_PAGES = [5, 6, 7, 8]
 DIVIDER_PAGES = {4: "leaders", 16: "icons", 22: "regulars"}
 # Pages of the position slides. CATEGORY_PAGES is the PDF's own order and still decides
 # which players belong to which category; CATEGORY_ORDER is the order the film plays
-# them in, which runs from the strikers back to the goalkeepers. The midfield umbrella
-# slide (33) keeps its place ahead of the three midfield categories it introduces.
+# them in, which runs from the goalkeepers forward to the strikers. Reversing the film
+# is a matter of reversing this list: no clip changes, only the order they are joined in.
 CATEGORY_PAGES = [23, 29, 33, 34, 41, 51, 56, 62, 64]
-CATEGORY_ORDER = [64, 62, 56, 33, 51, 41, 34, 29, 23]
+CATEGORY_ORDER = [23, 29, 33, 34, 41, 51, 56, 62, 64]
 LINEUP_PAGE = 17
 CLOSING_PAGE = 68
 
