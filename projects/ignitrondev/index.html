@@ -1,0 +1,594 @@
+<title>IgnitronDev</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+/* Layout concept: one dark column, full-bleed hairline bands, mono labels on the left rail,
+   numbered sections [01]–[05], one saturated accent reserved for the section index. */
+:root{
+  --ink:#07070A;          /* page ground, blue-biased near-black */
+  --ink-2:#0C0D11;        /* raised surface */
+  --line:#1B1D24;         /* hairline */
+  --fg:#F2F3F6;           /* primary text */
+  --fg-2:#9298A6;         /* secondary text, grey biased to the blue ground */
+  --fg-3:#5B606E;         /* labels */
+  --accent:#FF6A1F;       /* section index + eyebrows only */
+  --blue:#1E5FE6;         /* object / focus */
+  --gold:#FFC21A;         /* object */
+  --display:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gutter:max(20px,env(safe-area-inset-left,0px));
+  --gutter-r:max(20px,env(safe-area-inset-right,0px));
+  --max:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ink);color:var(--fg);
+  font-family:var(--display);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(7,7,10,.92);backdrop-filter:blur(14px)}
+/* fine grain so the flat black does not band on big screens */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.035;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+img,canvas{max-width:100%}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.rule{height:1px;background:var(--line);width:100%}
+
+/* ─────────── type ─────────── */
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);font-weight:500}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.048em;line-height:.96;text-wrap:balance}
+h1{font-size:clamp(2.9rem,8.4vw,5.6rem)}
+h2{font-size:clamp(2.05rem,5.2vw,3.7rem)}
+h3{font-size:clamp(1.35rem,2.6vw,1.75rem);letter-spacing:-.025em;line-height:1.1}
+.dim{color:var(--fg-2)}
+p{margin:0;color:var(--fg-2)}
+.lede{font-size:clamp(1rem,1.45vw,1.1rem);max-width:60ch;line-height:1.62}
+
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
+.sec-head .idx{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+
+/* ─────────── nav ─────────── */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(7,7,10,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:30px;height:62px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.03em;font-size:15px;flex:none}
+.mark{width:21px;height:21px;border-radius:6px;background:linear-gradient(150deg,#fff,#C4C8D2);position:relative;flex:none}
+.mark::after{content:"";position:absolute;inset:0;border-radius:6px;background:
+  linear-gradient(135deg,transparent 46%,rgba(7,7,10,.92) 46%,rgba(7,7,10,.92) 54%,transparent 54%)}
+.brand b{font-weight:800}
+.brand b span{color:var(--fg-2);font-weight:600}
+.nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--fg-2)}
+.nav-links a{transition:color .18s}
+.nav-links a:hover{color:var(--fg)}
+.nav-cta{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:8px 13px;border-radius:7px;color:var(--fg-2);transition:.18s;flex:none}
+.nav-cta:hover{border-color:#343846;color:var(--fg);background:var(--ink-2)}
+.nav-links.m{display:none}
+
+/* ─────────── hero ─────────── */
+.hero{position:relative;padding-block:clamp(54px,8vw,96px) 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:40px;align-items:center}
+.eyebrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.dot{width:6px;height:6px;border-radius:50%;background:#49D17A;box-shadow:0 0 0 3px rgba(73,209,122,.14)}
+.hero h1{margin-bottom:26px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:9px;font-size:14.5px;font-weight:600;letter-spacing:-.01em;transition:.2s;border:1px solid transparent}
+.btn-solid{background:#fff;color:#0A0A0D}
+.btn-solid:hover{background:#D9DCE3;transform:translateY(-1px)}
+.btn-ghost{border-color:#262933;color:var(--fg)}
+.btn-ghost:hover{border-color:#3C4150;background:var(--ink-2)}
+.stage{position:relative;aspect-ratio:1/1;max-width:100%;min-height:260px}
+.stage canvas{display:block;width:100%;height:100%}
+.stage::before{content:"";position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(255,138,46,.30),rgba(30,95,230,.12) 48%,transparent 70%);filter:blur(42px);pointer-events:none}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding-block:clamp(44px,6vw,72px) clamp(44px,6vw,76px)}
+.stat .mono{display:block;margin-bottom:9px}
+.stat .num{font-size:clamp(1.9rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.045em;font-variant-numeric:tabular-nums;line-height:1}
+
+/* ─────────── sections ─────────── */
+section{padding-block:clamp(66px,8.5vw,112px)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.84fr);gap:36px 56px;align-items:end}
+
+.practice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:54px}
+.pcard{background:var(--ink);padding:clamp(26px,3.2vw,40px);display:flex;flex-direction:column;gap:15px;min-width:0;transition:background .25s}
+.pcard:hover{background:var(--ink-2)}
+.pcard .bar{height:2px;width:58px;background:linear-gradient(90deg,var(--accent),rgba(255,106,31,0));border-radius:2px;margin-bottom:6px}
+.pcard p{font-size:15px;max-width:40ch}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:12px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--ink-2)}
+
+.products{display:flex;flex-direction:column;margin-top:56px;border-top:1px solid var(--line)}
+.prod{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,.78fr);gap:28px;padding-block:38px;border-bottom:1px solid var(--line);align-items:start;transition:.25s}
+.prod:hover{background:linear-gradient(90deg,rgba(255,255,255,.028),transparent 60%)}
+.prod-k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--fg-3);padding-top:6px}
+.prod-kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
+.prod h3{margin-bottom:12px}
+.prod p{font-size:15px;max-width:46ch}
+.prod-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start;min-width:0}
+.link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--fg);border-bottom:1px solid #2B2F3A;padding-bottom:3px;transition:.2s}
+.link:hover{border-color:var(--fg);gap:11px}
+.link .arr{font-family:var(--mono);font-size:12px;color:var(--fg-2)}
+
+.quote{border:1px solid var(--line);border-radius:16px;padding:clamp(28px,3.6vw,44px);background:linear-gradient(160deg,var(--ink-2),var(--ink) 65%);display:flex;flex-direction:column;gap:26px}
+.quote blockquote{margin:0;font-size:clamp(1.15rem,2.1vw,1.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.38;text-wrap:balance}
+.who{display:flex;align-items:center;gap:13px}
+.avatar{width:40px;height:40px;border-radius:50%;flex:none;background:linear-gradient(145deg,#1E5FE6,#FFC21A);display:grid;place-items:center;font-weight:800;font-size:14px;color:#07070A;letter-spacing:-.02em}
+.who-t{font-size:14px;font-weight:600;line-height:1.35}
+.who-t small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);font-weight:500;margin-top:3px}
+.sectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sector{background:var(--ink);padding:22px 24px;min-width:0}
+.sector .num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em}
+.sector .nm{font-size:15px;font-weight:600;margin-top:7px;letter-spacing:-.015em}
+.sector .sub{font-size:13px;color:var(--fg-2);margin-top:3px}
+
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:52px}
+.pr{background:var(--ink);padding:30px 26px 32px;min-width:0}
+.pr .mono{display:block;margin-bottom:14px;color:var(--accent)}
+.pr strong{display:block;font-size:16.5px;font-weight:700;letter-spacing:-.02em;margin-bottom:9px}
+.pr p{font-size:14.5px}
+
+/* contact */
+.contact-frame{position:relative;padding:clamp(30px,4.4vw,52px);display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.68fr);gap:40px;align-items:start}
+.contact-frame h2{font-size:clamp(1.95rem,4.4vw,3.2rem);text-wrap:nowrap}
+.contact-frame::before,.contact-frame::after{content:"";position:absolute;width:26px;height:26px;border:1px solid #2B2F3A;pointer-events:none}
+.contact-frame::before{top:0;left:0;border-right:0;border-bottom:0}
+.contact-frame::after{bottom:0;right:0;border-left:0;border-top:0}
+.cmail{display:block;background:#fff;color:#0A0A0D;border-radius:11px;padding:19px 22px;font-size:clamp(.95rem,1.7vw,1.12rem);font-weight:600;letter-spacing:-.015em;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:.2s;word-break:break-word}
+.cmail:hover{background:#E4E7ED;transform:translateY(-1px)}
+.cmail .arr{font-family:var(--mono);font-size:15px;flex:none}
+.c-sub{display:flex;justify-content:flex-end;margin-top:16px}
+.copied{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#49D17A}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:clamp(46px,6vw,70px) 30px}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:36px 28px}
+.fcol h4{margin:0 0 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);font-weight:500}
+.fcol ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.fcol a,.fcol li{font-size:14px;color:var(--fg-2);transition:color .18s}
+.fcol a:hover{color:var(--fg)}
+.fbrand p{font-size:14px;max-width:34ch;margin-top:16px}
+.fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(40px,5vw,62px);padding-top:24px;border-top:1px solid var(--line)}
+.fbot span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--fg-3)}
+
+/* ─────────── reveal ─────────── */
+.rv{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.js .rv{opacity:0;transform:translateY(16px)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ─────────── responsive ─────────── */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:18px}
+  .stage{order:-1;max-width:300px;margin-inline:auto;aspect-ratio:1/1}
+  .split{grid-template-columns:1fr;align-items:start}
+  .practice,.principles,.sectors{grid-template-columns:1fr}
+  .prod{grid-template-columns:1fr;gap:14px;padding-block:32px}
+  .prod-k{padding-top:0}
+  .contact-frame{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{display:none}
+  .nav-links.m{display:flex;gap:18px;font-size:13px}
+}
+@media (max-width:620px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 18px}
+  .fgrid{grid-template-columns:1fr}
+  .nav-links.m{display:none}
+  .nav-in{height:58px}
+  .cmail{flex-direction:row;font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><b>Ignitron<span>Dev</span></b></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#practice">Practice</a>
+      <a href="#work">Work</a>
+      <a href="#clients">Clients</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+    </nav>
+    <nav class="nav-links m" aria-label="Primary compact">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/ignitrondev" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ── hero ───────────────────────────────── -->
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="mono">Independent engineering studio</span>
+          <span class="mono" style="color:#30343F" aria-hidden="true">/</span>
+          <span class="mono">Est. 2019</span>
+        </div>
+        <h1>Systems that<br><span class="dim">hold up.</span></h1>
+        <p class="lede">IgnitronDev designs and builds the technical foundations behind useful software: architecture, backend systems, cloud infrastructure, data flows, and AI systems that can be understood and operated.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="#work">See the work</a>
+          <a class="btn btn-ghost" href="#contact">Start a conversation</a>
+        </div>
+      </div>
+      <div class="stage"><canvas id="obj" aria-label="Rotating three-dimensional knot, the IgnitronDev mark"></canvas></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="mono">Founded</span><span class="num">2019</span></div>
+      <div class="stat"><span class="mono">Live products</span><span class="num">02</span></div>
+      <div class="stat"><span class="mono">Client systems</span><span class="num">07</span></div>
+      <div class="stat"><span class="mono">Open-source packages</span><span class="num">01</span></div>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <!-- ── 01 practice ────────────────────────── -->
+  <section id="practice"><div class="wrap">
+    <div class="sec-head rv"><span class="idx">[01]</span><span class="mono">Practice</span></div>
+    <div class="split rv">
+      <h2>Four areas, one<br>way of working.</h2>
+      <p class="lede">Every engagement starts with the same question: what does this system have to keep doing five years from now? The answer decides the architecture, not the framework of the month.</p>
+    </div>
+
+    <div class="practice rv">
+      <article class="pcard">
+        <span class="bar" aria-hidden="true"></span>
+        <h3>Software architecture</h3>
+        <p>Clear domains, dependable interfaces, and systems designed for change rather than for the first release.</p>
+        <div class="tags"><span class="tag">Domain modelling</span><span class="tag">Service design</span><span class="tag">API contracts</span></div>
+      </article>
+      <article class="pcard">
+        <span class="bar" aria-hidden="true"></span>
+        <h3>Cloud &amp; delivery</h3>
+        <p>Infrastructure that makes delivery repeatable and runtime behaviour visible to the people on call.</p>
+        <div class="tags"><span class="tag">Containers</span><span class="tag">CI/CD</span><span class="tag">Observability</span></div>
+      </article>
+      <article class="pcard">
+        <span class="bar" aria-hidden="true"></span>
+        <h3>Data &amp; AI systems</h3>
+        <p>Pipelines and model workflows that stay explainable after they reach production, with evaluation built in.</p>
+        <div class="tags"><span class="tag">Pipelines</span><span class="tag">Retrieval</span><span class="tag">Evaluation</span></div>
+      </article>
+      <article class="pcard">
+        <span class="bar" aria-hidden="true"></span>
+        <h3>Product engineering</h3>
+        <p>Interfaces built on explicit data contracts, so the screen and the system never drift apart.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Design systems</span></div>
+      </article>
+    </div>
+  </div></section>
+  <div class="rule"></div>
+
+  <!-- ── 02 work ────────────────────────────── -->
+  <section id="work"><div class="wrap">
+    <div class="sec-head rv"><span class="idx">[02]</span><span class="mono">Products and public work</span></div>
+    <div class="split rv">
+      <h2>Proof lives in<br>what we run.</h2>
+      <p class="lede">Independent products and open-source building blocks provide a concrete place to test ideas about interfaces, operations, data, and technical systems.</p>
+    </div>
+
+    <div class="products">
+      <article class="prod rv">
+        <div class="prod-k">Product / 01</div>
+        <div>
+          <span class="prod-kind">Maritime software</span>
+          <h3>ShipRadar</h3>
+          <p>A maritime vessel tracking platform for monitoring ships, routes, and fleet activity in near real time, built on live AIS feeds.</p>
+        </div>
+        <div class="prod-side">
+          <div class="tags" style="margin-top:0;padding-top:0"><span class="tag">Vessel tracking</span><span class="tag">AIS data</span><span class="tag">Fleet ops</span></div>
+          <a class="link" href="#contact">Visit ShipRadar <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="prod rv">
+        <div class="prod-k">Product / 02</div>
+        <div>
+          <span class="prod-kind">Geophysical monitoring</span>
+          <h3>IGN Volcano</h3>
+          <p>An observatory dashboard for tracking volcanic activity across Indonesian volcanoes: eruption status, current alert levels, and weather at each station.</p>
+        </div>
+        <div class="prod-side">
+          <div class="tags" style="margin-top:0;padding-top:0"><span class="tag">Alert levels</span><span class="tag">Observatories</span><span class="tag">Open data</span></div>
+          <a class="link" href="#contact">Visit IGN Volcano <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="prod rv">
+        <div class="prod-k">Product / 03</div>
+        <div>
+          <span class="prod-kind">Clinical software infrastructure</span>
+          <h3>Ignitron Clinical UI</h3>
+          <p>Reusable React components for difficult clinical workflows, built around explicit data contracts and clear integration boundaries.</p>
+        </div>
+        <div class="prod-side">
+          <div class="tags" style="margin-top:0;padding-top:0"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Clinical data</span></div>
+          <a class="link" href="#contact">Read the docs <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="prod rv">
+        <div class="prod-k">Package / 01</div>
+        <div>
+          <span class="prod-kind">Open source</span>
+          <h3>@ignitrondev/odontogram</h3>
+          <p>An interactive dental chart for clinical records: per-surface state, a typed change model, and no assumptions about the backend behind it.</p>
+        </div>
+        <div class="prod-side">
+          <div class="tags" style="margin-top:0;padding-top:0"><span class="tag">npm</span><span class="tag">MIT</span><span class="tag">Zero deps</span></div>
+          <a class="link" href="https://github.com/ignitrondev" target="_blank" rel="noopener">View on GitHub <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </div>
+  </div></section>
+  <div class="rule"></div>
+
+  <!-- ── 03 clients ─────────────────────────── -->
+  <section id="clients"><div class="wrap">
+    <div class="sec-head rv"><span class="idx">[03]</span><span class="mono">Clients</span></div>
+    <div class="split rv" style="align-items:start;gap:36px 56px">
+      <div class="quote">
+        <blockquote>“They did not hand us a repository and leave. They handed us a system we could still reason about six months later — and the on-call rota to go with it.”</blockquote>
+        <div class="who">
+          <span class="avatar" aria-hidden="true">BN</span>
+          <span class="who-t">Bima Adam Nugraha<small>Founder &amp; CEO · Nusantara Logistik</small></span>
+        </div>
+      </div>
+      <div>
+        <p class="lede" style="margin-bottom:26px">Seven client systems in production across logistics, healthcare, and public data. Most of them are now maintained by the client's own team.</p>
+        <div class="sectors">
+          <div class="sector"><span class="num">01</span><div class="nm">Logistics</div><div class="sub">Fleet &amp; routing platforms</div></div>
+          <div class="sector"><span class="num">02</span><div class="nm">Healthcare</div><div class="sub">Clinical records &amp; intake</div></div>
+          <div class="sector"><span class="num">03</span><div class="nm">Public data</div><div class="sub">Monitoring &amp; reporting</div></div>
+          <div class="sector"><span class="num">04</span><div class="nm">Industrial</div><div class="sub">Telemetry pipelines</div></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+  <div class="rule"></div>
+
+  <!-- ── 04 about ───────────────────────────── -->
+  <section id="about"><div class="wrap">
+    <div class="sec-head rv"><span class="idx">[04]</span><span class="mono">About IgnitronDev</span></div>
+    <div class="split rv">
+      <h2>We build systems,<br><span class="dim">not just software.</span></h2>
+      <p class="lede">A small studio that takes a narrow number of engagements at a time. We work in the parts most teams postpone: the data model, the boundaries between services, the thing that pages someone at 3am.</p>
+    </div>
+
+    <div class="principles rv">
+      <div class="pr">
+        <span class="mono">Principle 01</span>
+        <strong>Start from the problem, not a template</strong>
+        <p>No reference architecture survives contact with a real domain. The shape of the system comes out of the work it has to do.</p>
+      </div>
+      <div class="pr">
+        <span class="mono">Principle 02</span>
+        <strong>Make behaviour observable</strong>
+        <p>A system nobody can inspect is a system nobody can operate. Logs, traces, and alerts are part of the build, not a later phase.</p>
+      </div>
+      <div class="pr">
+        <span class="mono">Principle 03</span>
+        <strong>Hand it over properly</strong>
+        <p>Every engagement ends with a team that can change the system without us: runbooks, decision records, and a real handover.</p>
+      </div>
+    </div>
+  </div></section>
+  <div class="rule"></div>
+
+  <!-- ── 05 contact ─────────────────────────── -->
+  <section id="contact"><div class="wrap">
+    <div class="contact-frame rv">
+      <div>
+        <div class="sec-head" style="margin-bottom:24px"><span class="idx">[05]</span><span class="mono">Contact</span></div>
+        <h2>Have a difficult system<br>to think through?</h2>
+        <p class="lede" style="margin-top:22px">Talk to IgnitronDev about architecture, infrastructure, or the next useful thing to build. We reply to everything within two working days.</p>
+      </div>
+      <div>
+        <button class="cmail" id="copy" type="button">
+          <span id="copy-label">info@ignitrondev.space</span>
+          <span class="arr" aria-hidden="true">↗</span>
+        </button>
+        <div class="c-sub">
+          <a class="link" href="https://github.com/ignitrondev" target="_blank" rel="noopener" style="border:0;font-size:13px;color:var(--fg-2)">Follow on GitHub <span class="arr" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fcol fbrand">
+      <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><b>Ignitron<span>Dev</span></b></a>
+      <p>An independent engineering studio for software systems, cloud infrastructure, and technical products.</p>
+    </div>
+    <div class="fcol">
+      <h4>Work</h4>
+      <ul>
+        <li><a href="#work">ShipRadar</a></li>
+        <li><a href="#work">IGN Volcano</a></li>
+        <li><a href="#work">Ignitron Clinical UI</a></li>
+        <li><a href="#work">@ignitrondev/odontogram</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#about">About IgnitronDev</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#work">Clinical UI catalog</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#contact">info@ignitrondev.space</a></li>
+        <li><a href="https://github.com/ignitrondev" target="_blank" rel="noopener">GitHub · ignitrondev</a></li>
+        <li><a href="https://instagram.com/ignitrondev" target="_blank" rel="noopener">Instagram · @ignitrondev</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2026 IgnitronDev · Independent products</span>
+    <span>Est. 2019 · ignitrondev.space</span>
+  </div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  document.documentElement.classList.add("js");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reveal on scroll ------------------------------------------------ */
+  var items = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i,3)*60) + "ms"; io.observe(el); });
+  }
+
+  /* copy the address ------------------------------------------------ */
+  var btn = document.getElementById("copy"), label = document.getElementById("copy-label");
+  if (btn) btn.addEventListener("click", function(){
+    var mail = "info@ignitrondev.space", done = function(){
+      label.textContent = "Copied to clipboard";
+      label.classList.add("copied");
+      setTimeout(function(){ label.textContent = mail; label.classList.remove("copied"); }, 1800);
+    };
+    try {
+      navigator.clipboard.writeText(mail).then(done, function(){
+        var r = document.createRange(); r.selectNodeContents(label);
+        var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      });
+    } catch (err) {
+      var r2 = document.createRange(); r2.selectNodeContents(label);
+      var s2 = getSelection(); s2.removeAllRanges(); s2.addRange(r2);
+    }
+  });
+
+  /* the hero object -------------------------------------------------- */
+  var cv = document.getElementById("obj");
+  if (!cv || typeof THREE === "undefined") return;
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+  } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  var scene  = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+  camera.position.set(0, 0, 8.9);
+
+  var group = new THREE.Group();
+  scene.add(group);
+
+  // blue ribbon knot
+  var knot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(1.65, 0.40, 220, 24, 2, 3),
+    new THREE.MeshStandardMaterial({ color: 0x1E5FE6, roughness: 0.26, metalness: 0.42,
+      emissive: 0x071A45, emissiveIntensity: 1 })
+  );
+  group.add(knot);
+
+  // gold spheres riding the curve
+  var curve = new THREE.CurvePath();
+  var beads = [], BEADS = 9;
+  var gMat = new THREE.MeshStandardMaterial({ color: 0xFFC21A, roughness: 0.18, metalness: 0.55,
+    emissive: 0x5A3D00, emissiveIntensity: 1 });
+  var gGeo = new THREE.SphereGeometry(0.26, 30, 30);
+  for (var i = 0; i < BEADS; i++) {
+    var m = new THREE.Mesh(gGeo, gMat);
+    m.userData.t = i / BEADS;
+    beads.push(m); group.add(m);
+  }
+  // parametric point on a (2,3) torus knot, matching the geometry above
+  var TUBE = 0.40, OFFSET = TUBE + 0.17;
+  function knotPoint(t, out) {
+    var p = 2, q = 3, u = t * Math.PI * 2 * p, r = 1.65;
+    var cu = Math.cos(u), su = Math.sin(u);
+    var quOverP = (q / p) * u, cq = Math.cos(quOverP), sq = Math.sin(quOverP);
+    var R = r * (2 + cq) * 0.5;
+    // centre-line point, then pushed out along the tube's own radial direction
+    out.set((R + OFFSET * cq) * cu, (R + OFFSET * cq) * su, r * sq * 0.5 + OFFSET * sq);
+    return out;
+  }
+
+  scene.add(new THREE.AmbientLight(0x5A6478, 0.85));
+  var key = new THREE.DirectionalLight(0xFFFFFF, 1.15); key.position.set(3, 4, 5); scene.add(key);
+  var warm = new THREE.PointLight(0xFF7A26, 2.6, 18); warm.position.set(-2.6, -1.4, -2.2); scene.add(warm);
+  var cool = new THREE.PointLight(0x2F7BFF, 1.5, 16); cool.position.set(3.2, 2.2, -1.6); scene.add(cool);
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    var w = Math.max(1, r.width), h = Math.max(1, r.height);
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  var px = 0, py = 0, tx = 0, ty = 0, tmp = new THREE.Vector3();
+  window.addEventListener("pointermove", function(ev){
+    tx = (ev.clientX / window.innerWidth - 0.5) * 0.5;
+    ty = (ev.clientY / window.innerHeight - 0.5) * 0.4;
+  }, { passive: true });
+
+  var visible = true;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }, { threshold: 0 })
+      .observe(cv);
+  }
+
+  var start = performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    if (!visible) return;
+    var t = (now - start) / 1000;
+    px += (tx - px) * 0.05; py += (ty - py) * 0.05;
+    if (!reduce) {
+      group.rotation.y = t * 0.30 + px * 2;
+      group.rotation.x = Math.sin(t * 0.22) * 0.18 + py * 1.4;
+      group.position.y = Math.sin(t * 0.7) * 0.08;
+    } else {
+      group.rotation.set(0.2, 0.6, 0);
+    }
+    for (var i = 0; i < beads.length; i++) {
+      var b = beads[i];
+      var tt = (b.userData.t + (reduce ? 0 : t * 0.035)) % 1;
+      knotPoint(tt, tmp);
+      b.position.copy(tmp);
+      var s = 0.82 + Math.sin(t * 1.6 + i) * 0.1;
+      b.scale.setScalar(reduce ? 0.9 : s);
+    }
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
