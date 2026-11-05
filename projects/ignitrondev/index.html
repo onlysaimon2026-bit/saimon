@@ -183,14 +183,18 @@ footer{border-top:1px solid var(--line);padding-block:clamp(46px,6vw,70px) 30px}
   #cursors{display:none}
 }
 
-/* ═══════════ scroll reveal: a cursor drags each line in as it enters view ═══════════ */
-.wd{display:inline-block;opacity:0;transform:translateY(8px);filter:blur(2.5px);
-  transition:opacity .4s cubic-bezier(.2,.7,.3,1),transform .46s cubic-bezier(.2,.7,.3,1),filter .4s ease}
-.wd.on{opacity:1;transform:none;filter:none}
+/* ═══════════ scroll reveal: lines scrub in exactly as far as you've scrolled them ═══════════
+   .wd carries no transition of its own — its opacity/transform/filter are written every
+   frame straight from scroll position, so the reveal tracks the scrollbar 1:1 instead of
+   playing out on its own clock. The one exception is the quick on-load entrance (.wd.pop),
+   which gets a short eased transition since there is no scroll distance to scrub there. */
+.wd{display:inline-block;opacity:0;transform:translateY(8px);filter:blur(2.5px)}
+.wd.pop{transition:opacity .5s cubic-bezier(.2,.7,.3,1),transform .56s cubic-bezier(.2,.7,.3,1),filter .5s ease}
+.wd.pop.on{opacity:1;transform:none;filter:none}
 
 #cursors{position:fixed;inset:0;z-index:45;pointer-events:none;overflow:hidden}
 .cur{position:absolute;top:0;left:0;will-change:transform,opacity;opacity:0;
-  transition:opacity .25s ease;display:flex;align-items:flex-start;gap:3px}
+  transition:opacity .35s ease;display:flex;align-items:flex-start;gap:3px}
 .cur.on{opacity:1}
 .cur svg{display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));flex:none}
 .cur .tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
@@ -471,12 +475,15 @@ footer{border-top:1px solid var(--line);padding-block:clamp(46px,6vw,70px) 30px}
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ════════ scroll reveal ═══════════════════════════════════════════════
-     Headings and paragraphs are split into words, words are grouped into
-     their visual lines, and each line is observed on its own. The first
-     time a line scrolls into view (in either direction) one cursor from a
-     small roaming pool sweeps across it and the line's words fade in in
-     its wake. Nothing is timed on a clock — it only ever runs because the
-     reader scrolled, at whatever pace they scroll.                      */
+     Headings and paragraphs are split into words, grouped into their
+     visual lines. Each line's reveal amount is a direct function of how
+     far it has scrolled through a band of the viewport — recomputed every
+     frame while it is near the screen, so slow scrolling reveals it
+     slowly and stopping mid-scroll leaves it half-revealed, exactly where
+     the scrollbar left it. Nothing runs on its own clock; it only moves
+     because the reader is scrolling. The one exception is content already
+     on screen at load (the hero), which gets a short one-off entrance
+     since there is no scroll distance behind it to scrub through.       */
   function initReveal(){
     var curWrap = document.getElementById("cursors");
     if (!curWrap || !("IntersectionObserver" in window)) return;
@@ -515,14 +522,30 @@ footer{border-top:1px solid var(--line);padding-block:clamp(46px,6vw,70px) 30px}
       return walk(root);
     }
 
-    /* cluster words sharing a visual line (reading order already holds) */
+    /* cluster words sharing a visual line, and cache each word's fraction
+       across the line's width once — it never changes from vertical
+       scrolling, so the per-frame loop below only has to re-read one rect */
     function groupLines(words){
       var lines = [], tol = 4;
       words.forEach(function(w){
-        var top = w.getBoundingClientRect().top;
+        var r = w.getBoundingClientRect();
         var cur = lines[lines.length - 1];
-        if (cur && Math.abs(top - cur.top) <= tol) cur.words.push(w);
-        else lines.push({ top: top, docTop: top + window.scrollY, done: false, words: [w] });
+        if (cur && Math.abs(r.top - cur.top) <= tol) {
+          cur.words.push(w);
+          cur.left = Math.min(cur.left, r.left);
+          cur.right = Math.max(cur.right, r.right);
+          cur.bottom = Math.max(cur.bottom, r.bottom);
+        } else {
+          lines.push({ top: r.top, bottom: r.bottom, left: r.left, right: r.right, words: [w] });
+        }
+      });
+      lines.forEach(function(ln){
+        ln.span = Math.max(24, ln.right - ln.left);
+        ln.h = ln.bottom - ln.top;
+        ln.fracs = ln.words.map(function(w){
+          var r = w.getBoundingClientRect();
+          return Math.max(0, Math.min(1, (r.left - ln.left) / ln.span));
+        });
       });
       return lines;
     }
@@ -549,76 +572,138 @@ footer{border-top:1px solid var(--line);padding-block:clamp(46px,6vw,70px) 30px}
       curWrap.appendChild(el);
       return el;
     }
+    function dropCursor(line){
+      if (!line.cur) return;
+      var c = line.cur; line.cur = null;
+      c.style.opacity = 0;
+      setTimeout(function(){ c.remove(); }, 320);
+    }
 
-    /* drag one line in: a cursor sweeps left-to-right over it, words fade
-       in behind it with a delay proportional to their position in the line */
-    function revealLine(line){
-      if (line.done) return;
-      line.done = true;
+    /* ── scroll-scrubbed reveal: the working set of lines near the screen ── */
+    var BAND_BOTTOM = 1.0, BAND_TOP = 0.26;   // fraction of viewport height
+    var active = new Set(), raf = 0;
+
+    function paintWord(w, frac, P){
+      var start = frac * 0.52, end = Math.min(1, start + 0.48);
+      var wp = Math.max(0, Math.min(1, (P - start) / (end - start)));
+      w.style.opacity = wp;
+      if (wp >= 0.995) { w.style.transform = "none"; w.style.filter = "none"; }
+      else {
+        w.style.transform = "translateY(" + ((1 - wp) * 8).toFixed(1) + "px)";
+        w.style.filter = "blur(" + ((1 - wp) * 2.3).toFixed(2) + "px)";
+      }
+    }
+
+    function settle(line, revealed){
+      line.committed = true;
+      active.delete(line);
+      io.unobserve(line.words[0]);
+      line.words.forEach(function(w){
+        w.style.opacity = revealed ? 1 : 0;
+        w.style.transform = revealed ? "none" : "translateY(8px)";
+        w.style.filter = revealed ? "none" : "blur(2.3px)";
+      });
+      dropCursor(line);
+    }
+    function pause(line){
+      active.delete(line);
+      line.words.forEach(function(w){ w.style.opacity = 0; w.style.transform = "translateY(8px)"; w.style.filter = "blur(2.3px)"; });
+      dropCursor(line);
+    }
+
+    function atPageEnd(){
+      var doc = document.documentElement;
+      return window.scrollY + window.innerHeight >= doc.scrollHeight - 2;
+    }
+
+    function tick(){
+      raf = 0;
+      if (!active.size) return;
+      var vh = window.innerHeight;
+      var bandBottom = vh * BAND_BOTTOM, bandTop = vh * BAND_TOP;
+      var floor = atPageEnd() ? 1 : 0;   // nothing left to scroll: stop scrubbing, just finish
+      active.forEach(function(line){
+        var top = line.words[0].getBoundingClientRect().top;
+        var P = Math.max(0, Math.min(1, Math.max(floor, (bandBottom - top) / (bandBottom - bandTop))));
+        for (var i = 0; i < line.words.length; i++) paintWord(line.words[i], line.fracs[i], P);
+
+        if (!line.cur) line.cur = spawnCursor();
+        var y = top + line.h / 2 - 9;
+        var cx = (line.left - 18) + ((line.left + line.span + 6) - (line.left - 18)) * P;
+        line.cur.style.transform = "translate3d(" + cx.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+        line.cur.style.opacity = (P > 0.012 && P < 0.99) ? "1" : "0";
+
+        if (P >= 1) settle(line, true);
+      });
+      if (active.size) raf = requestAnimationFrame(tick);
+    }
+    function ensureTick(){ if (!raf && active.size) raf = requestAnimationFrame(tick); }
+
+    /* a short one-off entrance for anything already on screen at load —
+       there is no scroll distance for it to scrub through */
+    function popIn(line){
+      line.committed = true;
+      io.unobserve(line.words[0]);
       var words = line.words;
-      var r0 = words[0].getBoundingClientRect();
-      var r1 = words[words.length - 1].getBoundingClientRect();
-      var y = (r0.top + r1.bottom) / 2 - 9;
-      var x0 = r0.left, x1 = Math.max(r1.right, x0 + 24);
-      var span = x1 - x0;
-      var dur = Math.max(360, Math.min(640, span * 1.5));
-
+      var x0 = line.left, span = line.span;
+      var dur = Math.max(340, Math.min(600, span * 1.4));
       var cur = spawnCursor();
-      var startX = x0 - 18, endX = x1 + 6;
+      var startX = x0 - 18, endX = x0 + span + 6;
+      var y = line.top + line.h / 2 - 9;
       cur.style.transform = "translate3d(" + startX.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
-
-      words.forEach(function(w){
-        var wr = w.getBoundingClientRect();
-        var frac = Math.max(0, Math.min(1, (wr.left - x0) / span));
-        w.style.transitionDelay = (frac * dur * 0.7).toFixed(0) + "ms";
+      words.forEach(function(w, i){
+        w.classList.add("pop");
+        w.style.transitionDelay = (line.fracs[i] * dur * 0.7).toFixed(0) + "ms";
       });
       requestAnimationFrame(function(){
         cur.classList.add("on");
-        requestAnimationFrame(function(){
-          words.forEach(function(w){ w.classList.add("on"); });
-        });
+        requestAnimationFrame(function(){ words.forEach(function(w){ w.classList.add("on"); }); });
       });
-
       var t0 = performance.now();
       (function step(now){
         var k = Math.min(1, (now - t0) / dur);
         var e = 1 - Math.pow(1 - k, 2);
         cur.style.transform = "translate3d(" + (startX + (endX - startX) * e).toFixed(1) + "px," + y.toFixed(1) + "px,0)";
-        if (k < 1) { requestAnimationFrame(step); }
-        else {
-          cur.classList.remove("on");
-          setTimeout(function(){ cur.remove(); }, 280);
-        }
+        if (k < 1) requestAnimationFrame(step);
+        else { cur.classList.remove("on"); setTimeout(function(){ cur.remove(); }, 300); }
       })(t0);
     }
 
-    /* lines that enter view in the same scroll moment still get revealed
-       one at a time, top to bottom — each batch staggers from the instant
-       it was seen, so a fast scroll runs several cursors at once across
-       different sections instead of backing up into one long queue */
-    var GAP = 85, MAXSTAGGER = 9;
-    function schedule(lines){
-      lines.sort(function(a, b){ return a.docTop - b.docTop; });
-      lines.forEach(function(ln, i){
-        setTimeout(function(){ revealLine(ln); }, Math.min(i, MAXSTAGGER) * GAP);
-      });
-    }
-
     var io = new IntersectionObserver(function(entries){
-      var fresh = [];
       entries.forEach(function(entry){
-        if (!entry.isIntersecting) return;
-        var ln = entry.target.__line;
-        io.unobserve(entry.target);
-        if (ln && !ln.queued) { ln.queued = true; fresh.push(ln); }
+        var line = entry.target.__line;
+        if (!line || line.committed) return;
+        if (entry.isIntersecting) {
+          var top = entry.target.getBoundingClientRect().top;
+          if (top <= window.innerHeight * BAND_TOP) { popIn(line); return; }
+          active.add(line);
+          ensureTick();
+        } else if (active.has(line)) {
+          pause(line);
+        }
       });
-      if (fresh.length) schedule(fresh);
-    }, { rootMargin: "40px 0px -10% 0px", threshold: 0 });
+    }, { rootMargin: "0px 0px 0px 0px", threshold: 0 });
 
     allLines.forEach(function(ln){
       ln.words[0].__line = ln;
       io.observe(ln.words[0]);
     });
+
+    /* safety net: if a run of scrolling lands somewhere without ever
+       rendering a frame while a line was mid-transit (a very large jump),
+       settle anything that has clearly already scrolled past once things
+       stop moving, so nothing is ever left stuck invisible */
+    var idleTimer = null;
+    window.addEventListener("scroll", function(){
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function(){
+        allLines.forEach(function(line){
+          if (line.committed) return;
+          var top = line.words[0].getBoundingClientRect().top;
+          if (top < -60) settle(line, true);
+        });
+      }, 420);
+    }, { passive: true });
   }
 
   if (!reduce) initReveal();
